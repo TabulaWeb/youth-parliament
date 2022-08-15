@@ -11,6 +11,7 @@ const lightTheme = atom({
 
   // Set fonts
   inter: 'Inter, sans-serif',
+  golos: 'Golos',
 
   // Set breakpoints
   tablet: '@media (max-width: 768px)',
@@ -21,7 +22,7 @@ const lightTheme = atom({
   background: '#f2f2f6',
   card: '#ffffff',
   border: '#eeeeee',
-  text: '#242931',
+  text: '#323232',
   light: '#888888',
   hover: '#cccccc'
 })
@@ -36,6 +37,7 @@ const darkTheme = atom({
 
   // Set fonts
   inter: 'Inter, sans-serif',
+  golos: 'Golos',
 
   // Set breakpoints
   tablet: '@media (max-width: 768px)',
@@ -46,7 +48,7 @@ const darkTheme = atom({
   background: '#f2f2f6',
   card: '#ffffff',
   border: '#eeeeee',
-  text: '#242931',
+  text: '#323232',
   light: '#888888',
   hover: '#cccccc'
 })

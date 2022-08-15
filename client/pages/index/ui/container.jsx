@@ -7,14 +7,28 @@ const Container = ({ children }) => {
 
   // Return jsx
   return <Main>
-    {children}
+    <Wrapper>
+      {children}
+    </Wrapper>
   </Main>
 
 }
 
 // Create Main styled component
 const Main = styled.section`
-  margin: ${({ theme }) => theme.margin}px 0;
+  position: relative;
+`
+
+// Create Wrapper styled component
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  padding: 0 4%;
+  margin: 0 auto;
 `
 
 // Export default Container ui

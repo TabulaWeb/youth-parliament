@@ -18,21 +18,21 @@ const Main = createGlobalStyle`
     font-family: Inter;
     font-style: normal;
     font-weight: 400;
-    src: url(/fonts/Inter-Regular.ttf) format('ttf');
+    src: url('/fonts/Inter-Regular.ttf') format('ttf');
   }
 
   @font-face {
     font-family: Inter;
     font-style: medium;
     font-weight: 500;
-    src: url(/fonts/Inter-Medium.ttf) format('ttf');
+    src: url('/fonts/Inter-Medium.ttf') format('ttf');
   }
 
   @font-face {
     font-family: Golos;
     font-style: normal;
     font-weight: 400;
-    src: url(/fonts/Golos-Regular.ttf) format('ttf')
+    src: url('/fonts/Golos-Regular.ttf') format('ttf')
   }
 
   /* Set global styles */
@@ -43,6 +43,7 @@ const Main = createGlobalStyle`
   /* Set tag styles */
   body {
     line-height: 1.5;
+    box-sizing: border-box;
     margin: 0;
     background-color: ${({ theme }) => theme.background};
     font-size: 14px;
@@ -84,10 +85,7 @@ const Main = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.primary};
-    &:hover {
-      text-decoration: underline;
-    }
+    color: ${({ theme }) => theme.text};
   }
 `
 
