@@ -18,6 +18,7 @@ const Main = styled.div`
   position: relative;
   max-width: 700px;
   text-align: center;
+  margin-top: 60px;
 `
 
 // Create Title styled component

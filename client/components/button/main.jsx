@@ -38,8 +38,6 @@ const Main = styled.button`
 
     & svg {
         position: absolute;
-        top: 0;
-        left: 0;
 
         & rect {
             stroke-width: 2;

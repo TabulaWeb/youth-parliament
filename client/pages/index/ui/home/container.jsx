@@ -21,6 +21,11 @@ const Main = styled.section`
 
 // Create Wrapper styled component
 const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 1200px;
   padding: 0 4%;
   margin: 0 auto;

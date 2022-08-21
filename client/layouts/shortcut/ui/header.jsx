@@ -37,7 +37,8 @@ const Header = () => {
 const Main = styled.header`
   margin-top: 20px;
   position: absolute;
-  width: 100%
+  width: 100%;
+  z-index: 2;
 `
 
 // Create Wrapper styled component
@@ -82,10 +83,16 @@ const Nav = styled.nav`
 const LinkText = styled.a`
   color: ${(theme) => theme.text};
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   cursor: pointer;
   text-decoration: none;
+  transition: .2s;
+
+  &:hover {
+    color: #2F4395;
+    transition: .2s;
+  }
 `
 
 // Export default Header ui
