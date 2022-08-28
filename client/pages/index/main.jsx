@@ -3,8 +3,9 @@ import React from 'react'
 
 import HomeSection from './ui/home/homeSection'
 import AboutSection from './ui/about/aboutSection'
-
+import MediaSection from './ui/media/mediaSection'
 import NewsSection from './ui/news/newsSection'
+import FormSection from './ui/form/formSection'
 
 // Create Index main
 const Index = () => {
@@ -13,8 +14,9 @@ const Index = () => {
   return <>
     <HomeSection />
     <AboutSection />
-
+    <MediaSection />
     <NewsSection />
+    <FormSection />
   </>
 
 }
