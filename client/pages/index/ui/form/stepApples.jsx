@@ -98,7 +98,6 @@ const StepApples = ({ step }) => {
 }
 
 const Container = styled.div`
-    transition: .8s;
     opacity: ${({ step }) => step == 3 ? '1' : '0'};
     position: ${({ step }) => step == 3 ? 'static' : 'absolute'};
     pointer-events: ${({ step }) => step == 3 ? 'auto' : 'none'};

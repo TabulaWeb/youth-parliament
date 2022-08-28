@@ -13,7 +13,7 @@ const options = [
     },
     {
         id: 3,
-        value: 'qwerty',
+        value: 'hui',
     },
     {
         id: 4,
@@ -51,41 +51,77 @@ const options = [
     }
 ];
 
-const StepPersonal = ({ step }) => {
+const StepPersonal = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
+    
+    const [errorName, setErrorName] = useState(false)
+    const [errorLastname, setLastname] = useState(false)
+    const [errorPatronymic, setErrorPatronymic] = useState(false)
+    const [errorSocial, setErrorSocial] = useState(false)
+    const [errorEmail, setErrorEmail] = useState(false)
+    const [errorPhone, setErrorPhone] = useState(false)
 
     const toggling = () => setIsOpen(!isOpen);
 
     const onOptionClicked = value => () => {
         setSelectedOption(value);
-        setIsOpen(false);
-        console.log(selectedOption);
+        props.setSocial(value)
+        // setIsOpen(false);
     };
 
-    return <Container step={step}>
+    // Ошибка в имени
+    const checkErrorName = (event) => {
+        event.target.value.length < 2 ? setErrorName(true) : setErrorName(false)
+    }
+
+    // Ошибка в фамилии
+    const checkErrorLastname = (event) => {
+        event.target.value.length < 2 ? setLastname(true) : setLastname(false)
+    }
+
+    // Ошибка в социальном статусе
+
+    // Ошибка в мыле
+    const checkErrorEmail = (event) => {
+        event.target.value.includes('@') ? setErrorEmail(false) : setErrorEmail(true)
+    }
+
+    // Ошибка в телефоне
+    const checkErrorPhone = (event) => {
+        event.target.value.includes('_') ? setErrorPhone(false) : setErrorPhone(true)
+    } 
+
+    return <Container step={props.step}>
         <TextField>
             <Placeholder>Имя</Placeholder>
-            <Input 
-                onChange={(event) => changeName(event)}
-                onBlur={() => checkErrorName()}
-            />
+            <InputContainer>
+                <Input 
+                    onChange={(event) => props.setName(event.target.value)}
+                    onBlur={(event) => checkErrorName(event)}
+                    onFocus={() => setErrorName(false)}
+                />
+            </InputContainer>
         </TextField>
 
         <TextField>
             <Placeholder>Фамилия</Placeholder>
-            <Input 
-                onChange={(event) => changeLastname(event)}
-                onBlur={(event) => checkErrorLastname(event)}
-            />
+            <InputContainer>
+                <Input 
+                    onChange={(event) => props.setLastname(event.target.value)}
+                    onBlur={(event) => checkErrorLastname(event)}
+                    onFocus={() => setLastname(false)}
+                />
+            </InputContainer>
         </TextField>
 
         <TextField>
             <Placeholder>Отчество</Placeholder>
-            <Input 
-                onChange={(event) => changePatronymic(event)}
-                onBlur={(event) => checkErrorPatronymic(event)}
-            />
+            <InputContainer>
+                <Input 
+                    onChange={(event) => props.setPatronymic(event.target.value)}
+                />
+            </InputContainer>
         </TextField>
 
         <CustomSelect>
@@ -94,13 +130,22 @@ const StepPersonal = ({ step }) => {
                 <DropDownContainer>
                     <DropDownHeader onClick={toggling}>
                         {selectedOption || ''}
+                        <DropdownIcon open={isOpen}>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.43151 4.63119C1.5956 4.46715 1.81812 4.375 2.05014 4.375C2.28216 4.375 2.50467 4.46715 2.66876 4.63119L7.00001 8.96244L11.3313 4.63119C11.4963 4.4718 11.7173 4.3836 11.9467 4.3856C12.1762 4.38759 12.3956 4.47961 12.5579 4.64185C12.7201 4.80408 12.8121 5.02354 12.8141 5.25296C12.8161 5.48238 12.7279 5.70341 12.5685 5.86844L7.61864 10.8183C7.45455 10.9823 7.23203 11.0745 7.00001 11.0745C6.76799 11.0745 6.54547 10.9823 6.38139 10.8183L1.43151 5.86844C1.26747 5.70435 1.17532 5.48183 1.17532 5.24981C1.17532 5.01779 1.26747 4.79527 1.43151 4.63119Z" fill="#323232"/>
+                            </svg>
+                        </DropdownIcon>
                     </DropDownHeader>
                     
                     <DropDownListContainer isOpen={isOpen}>
                         <DropDownList isOpen={isOpen}>
                         {options.map(option => (
                             <ListItem key={option.id} onClick={onOptionClicked(option.value)}>
-                            {option.value}
+                                <input id={`one${option.id}`} type='radio' name='socialStatus' />
+                                <label for={`one${option.id}`} >
+                                    <span></span>
+                                    {option.value}
+                                </label>
                             </ListItem>
                         ))}
                         </DropDownList>
@@ -112,27 +157,32 @@ const StepPersonal = ({ step }) => {
 
         <TextField>
             <Placeholder>Электронная почта</Placeholder>
-            <Input type='email'
-                onChange={(event) => changeEmail(event)}
-                onBlur={(event) => checkErrorEmail(event)}
-            />
+            <InputContainer>
+                <Input type='email'
+                    onChange={(event) => props.setEmail(event.target.value)}
+                    onBlur={(event) => checkErrorEmail(event)}
+                    onFocus={() => setErrorEmail(false)}
+                />
+            </InputContainer>
         </TextField>
 
         <TextField>
             <Placeholder>Контактный телефон</Placeholder>
-            <InputMask 
-                className='input-phone' 
-                mask='+7(999)999-99-99' 
-                placeholder='+7(___)___-__-__'
-                onChange={(event) => changePhone(event)}
-                onBlur={(event) => checkErrorPhone(event)}
+            <InputContainer>
+                <InputMask 
+                    className='input-phone' 
+                    mask='+7(999)999-99-99' 
+                    placeholder='+7(___)___-__-__'
+                    onChange={(event) => props.setPhone(event.target.value)}
+                    onBlur={(event) => checkErrorPhone(event)}
+                    onFocus={() => setErrorPhone(false)}
                 />
+            </InputContainer>
         </TextField>
     </Container>
 }
 
 const Container = styled.div`
-    transition: .8s;
     opacity: ${({ step }) => step == 2 ? '1' : '0'};
     position: ${({ step }) => step == 2 ? 'static' : 'absolute'};
     pointer-events: ${({ step }) => step == 2 ? 'auto' : 'none'};
@@ -190,6 +240,9 @@ const DropDownContainer = styled.div`
 `
 
 const DropDownHeader = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 48px;
     padding: 15px 25px;
@@ -197,6 +250,7 @@ const DropDownHeader = styled.div`
     background-color: #fff;
     border-radius: 8px;
     margin-bottom: 8px;
+    cursor: pointer;
 
     font-weight: 400;
     font-size: 13px;
@@ -211,6 +265,7 @@ const DropDownMain = styled.div`
 const DropDownListContainer = styled.div`
     transition: height .4s;
     position: absolute;
+    z-index: 2;
     height: ${({isOpen}) => isOpen ? '200' : '0'}px;
     overflow-y: scroll;
     background: #FFFCF9;
@@ -230,7 +285,7 @@ const DropDownListContainer = styled.div`
 `
 
 const DropDownList = styled.ul`
-    padding: 24px;
+    padding: 24px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -250,10 +305,24 @@ const DropDownList = styled.ul`
 `
 
 const ListItem = styled.li`
-padding-left: 0;
-  list-style: none;
+    padding-left: 0;
+    list-style: none;
 `
 
+const InputContainer = styled.div`
+    position: relative;
+    width: 100%;
+`
 
+const DropdownIcon = styled.div`
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 17px;
+    transition: .4s;
+
+    rotate: ${({open}) => open ? '180deg': '0deg'};
+`
 
 export default StepPersonal

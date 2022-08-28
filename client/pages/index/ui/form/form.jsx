@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components'
 
 import StepRules from "./stepRules";
@@ -11,6 +11,14 @@ import BackStep from "./backStep";
 import Agreement from './agreement'
 
 const Form = ({ step, setStep }) => {
+    const [name, setName] = useState()
+    const [lastname, setLastname] = useState()
+    const [patronymic, setPatronymic] = useState()
+    const [email, setEmail] = useState()
+    const [phone, setPhone] = useState()
+    const [social, setSocial] = useState()
+
+
     return <Container>
         <FormHeader>
             <Rules step={step}>
@@ -75,7 +83,21 @@ const Form = ({ step, setStep }) => {
         </FormHeader>
         <FormBody>
             <StepRules step={step} />
-            <StepPersonal step={step} />
+            <StepPersonal 
+                step={step} 
+                setName={setName}
+                name={name}
+                setLastname={setLastname}
+                lastname={lastname}
+                setPatronymic={setPatronymic}
+                patronymic={patronymic}
+                setEmail={setEmail}
+                email={email}
+                setPhone={setPhone}
+                phone={phone}
+                setSocial={setSocial}
+                social={social}
+            />
             <StepApples step={step} />
             <StepReady step={step} />
 
