@@ -40,6 +40,26 @@ const Main = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  .input-phone {
+    width: 100%;
+    height: 48px;
+    padding: 15px 25px;
+    border: 1.5px solid rgba(50, 50, 50, 0.5);
+    border-radius: 8px;
+    transition: .4s;
+
+    outline: none;
+
+    font-weight: 400;
+    font-size: 13px;
+    color: #323232;
+
+    &:focus {
+        transition: .4s;
+        border-color: #2F4395;
+    }
+  }
+
   /* Set tag styles */
   body {
     line-height: 1.5;

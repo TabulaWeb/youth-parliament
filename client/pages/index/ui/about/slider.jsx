@@ -32,8 +32,7 @@ const slide = [
 ]
 
 const Slider = () => {
-    const slideSwiper = useSwiperSlide();
-
+    
     return <>
     <Swiper
         spaceBetween={50}

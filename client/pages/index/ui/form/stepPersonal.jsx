@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import InputMask from 'react-input-mask';
 
 const options = [
     {
@@ -65,17 +66,26 @@ const StepPersonal = ({ step }) => {
     return <Container step={step}>
         <TextField>
             <Placeholder>Имя</Placeholder>
-            <Input />
+            <Input 
+                onChange={(event) => changeName(event)}
+                onBlur={() => checkErrorName()}
+            />
         </TextField>
 
         <TextField>
             <Placeholder>Фамилия</Placeholder>
-            <Input />
+            <Input 
+                onChange={(event) => changeLastname(event)}
+                onBlur={(event) => checkErrorLastname(event)}
+            />
         </TextField>
 
         <TextField>
             <Placeholder>Отчество</Placeholder>
-            <Input />
+            <Input 
+                onChange={(event) => changePatronymic(event)}
+                onBlur={(event) => checkErrorPatronymic(event)}
+            />
         </TextField>
 
         <CustomSelect>
@@ -102,12 +112,21 @@ const StepPersonal = ({ step }) => {
 
         <TextField>
             <Placeholder>Электронная почта</Placeholder>
-            <Input />
+            <Input type='email'
+                onChange={(event) => changeEmail(event)}
+                onBlur={(event) => checkErrorEmail(event)}
+            />
         </TextField>
 
         <TextField>
             <Placeholder>Контактный телефон</Placeholder>
-            <Input />
+            <InputMask 
+                className='input-phone' 
+                mask='+7(999)999-99-99' 
+                placeholder='+7(___)___-__-__'
+                onChange={(event) => changePhone(event)}
+                onBlur={(event) => checkErrorPhone(event)}
+                />
         </TextField>
     </Container>
 }
@@ -143,10 +162,18 @@ const Input = styled.input`
     padding: 15px 25px;
     border: 1.5px solid rgba(50, 50, 50, 0.5);
     border-radius: 8px;
+    transition: .4s;
+
+    outline: none;
 
     font-weight: 400;
     font-size: 13px;
     color: #323232;
+
+    &:focus {
+        transition: .4s;
+        border-color: #2F4395;
+    }
 `
 
 const CustomSelect = styled.div`
