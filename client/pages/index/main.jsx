@@ -6,6 +6,7 @@ import AboutSection from './ui/about/aboutSection'
 import MediaSection from './ui/media/mediaSection'
 import NewsSection from './ui/news/newsSection'
 import FormSection from './ui/form/formSection'
+import ApplicationsSection from './ui/applications/applicationsSection'
 
 // Create Index main
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
     <MediaSection />
     <NewsSection />
     <FormSection />
+    <ApplicationsSection />
   </>
 
 }
