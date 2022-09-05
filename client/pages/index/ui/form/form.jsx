@@ -100,13 +100,17 @@ const Form = ({ step, setStep }) => {
             />
             <StepApples step={step} />
             <StepReady step={step} />
-
+            
+            {step < 4 ?
             <Buttons>
                 <BackStep step={step} setStep={setStep} />
                 <NextStep step={step} setStep={setStep} />
             </Buttons>
+            : null}
 
-            <Agreement step={step} />
+            {step < 4 ?
+                <Agreement step={step} />
+            : null}
         </FormBody>
     </Container>
 }

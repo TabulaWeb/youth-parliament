@@ -8,7 +8,7 @@ import Text from './text'
 import Form from './form'
 
 const FormSection = () => {
-    const [step, setStep] = useState(2)
+    const [step, setStep] = useState(4)
 
     return <Container>
         <Wrapper>
