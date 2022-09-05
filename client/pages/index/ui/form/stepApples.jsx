@@ -17,36 +17,6 @@ const options = [
     {
         id: 4,
         value: 'qwerty',
-    },
-    {
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
-    },
-    {
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
-    },{
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
-    },{
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
     }
 ];
 

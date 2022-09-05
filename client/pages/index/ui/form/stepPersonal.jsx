@@ -18,36 +18,6 @@ const options = [
     {
         id: 4,
         value: 'qwerty',
-    },
-    {
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
-    },
-    {
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
-    },{
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
-    },{
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
     }
 ];
 
@@ -142,7 +112,7 @@ const StepPersonal = (props) => {
                         {options.map(option => (
                             <ListItem key={option.id} onClick={onOptionClicked(option.value)}>
                                 <input id={`one${option.id}`} type='radio' name='socialStatus' />
-                                <label for={`one${option.id}`} >
+                                <label htmlFor={`one${option.id}`} >
                                     <span></span>
                                     {option.value}
                                 </label>

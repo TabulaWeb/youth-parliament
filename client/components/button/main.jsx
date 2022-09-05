@@ -10,8 +10,8 @@ const Button = ({ onClick, type, text }) => {
     <svg width="277" height="62">
         <defs>
             <linearGradient id="grad1">
-                <stop offset="0%" stop-color="#FF8282"/>
-                <stop offset="100%" stop-color="#E178ED" />
+                <stop offset="0%" stopColor="#FF8282"/>
+                <stop offset="100%" stopColor="#E178ED" />
             </linearGradient>
         </defs>
         <rect x="7" y="7" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
