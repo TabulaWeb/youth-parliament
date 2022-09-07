@@ -18,6 +18,12 @@ const Title = styled.h2`
     line-height: 52px;
     color: #323232;
     margin-bottom: 60px;
+
+    @media screen and (max-width: 991px) {
+        font-size: clamp(24px, 7vw, 44px);
+        line-height: clamp(28px, 7vw, 52px);
+        margin-bottom: clamp(40px, 8vw, 60px);
+    }
 `
 
 const Pragraph = styled.div`
@@ -25,6 +31,10 @@ const Pragraph = styled.div`
     display: flex;
     flex-direction: column;
     gap: 16px 0;
+
+    @media screen and (max-width: 991px) {
+        margin-bottom: clamp(40px, 8vw, 60px);
+    }
 `
 
 const PragraphText = styled.p`

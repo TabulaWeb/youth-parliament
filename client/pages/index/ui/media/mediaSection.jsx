@@ -127,7 +127,7 @@ const SliderBackground = styled.img`
 
 const SlideContainer = styled.div`
     position: relative;
-    width: 328px;
+    width: 100%;
     height: 328px;
     border-radius: 20px;
     overflow: hidden;

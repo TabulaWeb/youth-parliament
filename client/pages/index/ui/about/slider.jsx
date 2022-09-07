@@ -1,12 +1,11 @@
 // Import global npm modules
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useSwiper, useSwiperSlide } from 'swiper/react';
 import SliderButton from './sliderButton'
 
 // Import Swiper styles
-import 'swiper/css';
+import "swiper/css";
 
 const slide = [
     {
@@ -32,12 +31,13 @@ const slide = [
 ]
 
 const Slider = () => {
+    const [indexSlide, setIndexSlide] = useState(1)
     
     return <>
     <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
+        onSlideChange={(swiper) => setIndexSlide(swiper.realIndex+1)}
         onSwiper={(swiper) => console.log(swiper)}
         loop={true}
     >
@@ -60,7 +60,8 @@ const Slider = () => {
             </SwiperSlide>
         })}
         
-    
+        <ProgressBar max={slide.length} value={indexSlide} />
+        <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
     </Swiper>
   </>
 }
@@ -74,6 +75,9 @@ const SlideNav = styled.div`
     width: 100%;
     justify-content: space-between;
 
+    @media screen and (max-width: 991px) {
+        display: none;
+    }
 `
 
 const SliderBackground = styled.img`
@@ -87,6 +91,11 @@ const SliderBackground = styled.img`
     z-index: -1;
     transition: .4s;
     border-radius: 16px;
+    height: auto;
+
+    @media screen and (max-width: 991px) {
+        width: 100%;
+    }
 `
 
 const SlideContainer = styled.div`
@@ -95,11 +104,14 @@ const SlideContainer = styled.div`
     height: 500px;
     border-radius: 20px;
     overflow: hidden;
-    padding: 24px;
 
     display: flex;
     justify-content: center;
     align-items: flex-end;
+
+    @media screen and (max-width: 991px){
+        height: clamp(150px, 50vw, 500px);
+    }
 `
 
 const SlideText = styled.p`
@@ -108,6 +120,45 @@ const SlideText = styled.p`
     line-height: 24px;
     color: #323232;
     text-align: center;
+    margin-bottom: 24px;
+`
+
+const ProgressBar = styled.progress`
+    display: none;
+    border: 0;
+    border-radius: 100px;
+    max-width: 160px;
+    height: 6px;
+    width: 100%;
+    background-color: rgba(50, 50, 50, 0.1);
+    margin: 0 auto;
+    accent-color: #2F4395;
+    margin-bottom: 8px;
+
+    &::-webkit-progress-value{
+        border-radius: 100px;
+    }
+
+    &::-moz-progress-bar{
+        border-radius: 100px;   
+    }
+
+    @media screen and (max-width: 991px){
+        display: block;
+    }
+`
+
+const ProgressNumber = styled.p`
+    display: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(50, 50, 50, 0.5);
+    text-align: center;
+
+    @media screen and (max-width: 991px){
+        display: block;
+    }
 `
 
 export default Slider

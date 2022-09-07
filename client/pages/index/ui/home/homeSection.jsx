@@ -85,7 +85,7 @@ const ImageLink = styled.a`
     border-radius: 100px;
     width: 60px;
     height: 60px;
-    z-index: 5;
+    
 
      & svg:nth-child(1) {
         position: absolute;
@@ -100,10 +100,15 @@ const ImageLink = styled.a`
 
 const LinkToForm = styled.div`
     position: fixed;
+    z-index: 100;
     right: 4%;
     bottom: 40px;
     max-width: 1200px;
     padding: 0 4%;
+
+    @media screen and (max-width: 991px)  {
+        padding: 0;
+    }
 `
 
 // Export default Container ui
