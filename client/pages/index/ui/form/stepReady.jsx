@@ -86,6 +86,10 @@ const Code = styled.div`
     gap: 0 40px;
     justify-content: center;
     margin-bottom: 66px;
+
+    @media screen and (max-width: 991px) {
+        flex-direction: column;
+    }
 `
 
 const CodeContent = styled.div`
@@ -95,6 +99,10 @@ const CodeContent = styled.div`
     display: flex;
     flex-direction: row;
     gap: 0 40px;
+
+    @media screen and (max-width: 991px) {
+        padding: 0;
+    }
 `
 
 const Share = styled.div`

@@ -35,6 +35,10 @@ const AppealsFilter = () => {
 const Container = styled.div`
     max-width: 328px;
     width: 100%;
+
+    @media screen and (max-width: 991px) {
+        display: none;
+    }
 `
 
 const Wrapper = styled.div`

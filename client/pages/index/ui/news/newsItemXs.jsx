@@ -3,20 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 // ...
-const NewsItem = ({ pageIndex }) => {
+const NewsItemXs = ({ pageIndex }) => {
     return <Container>
-        <MainNews>
-            <MainNewsImage src='/images/photo.png' />
-            <MainNewsMeta>
-                <Tag>#МолодежныйПарламент</Tag>
-                <Data>4 авг <span></span> 18:00</Data>
-            </MainNewsMeta>
-            <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
-            <MainNewsText>
-                <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-                <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
-            </MainNewsText>
-        </MainNews>
         <OtherNews>
             <OtherNewsItem>
                 <OtherNewsImage src='/images/otherPhoto.png' />
@@ -59,41 +47,26 @@ const NewsItem = ({ pageIndex }) => {
 
 // ...
 const Container = styled.div`
-    display: flex;
-    gap: 0 40px;
+    display: none;
     margin-bottom: 40px;
 
     @media screen and (max-width: 991px) {
-        display: none;
+        display: flex;
     }
-`
-
-// ...
-const MainNews = styled.div`
-    width: 100%;
 `
 
 // ...
 const OtherNews = styled.div`
     width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 40px 0;
-`
-
-// ...
-const MainNewsImage = styled.img`
-    width: 100%;
-    border-radius: 16px;
-    margin-bottom: 24px;
-    height: 316px;
-`
-
-// ...
-const MainNewsMeta = styled.div`
-    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
     justify-content: space-between;
-    margin-bottom: 24px;
+
+    @media screen and (max-width: 550px){
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
 `
 
 // ...
@@ -116,40 +89,27 @@ const Data = styled.p`
 `
 
 // ...
-const MainNewsTitle = styled.p`
-    margin-bottom: 24px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
-    color: #323232;
-`
-
-// ...
-const MainNewsText = styled.div`
+const OtherNewsItem = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 16px 0;
+    gap: 0 24px;
+    max-width: 328px;
+    width: 100%;
 
-    & p {
-        margin-bottom: 0;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        color: #323232;
+
+    @media screen and (max-width: 756px){
+        max-width: none;
+        width: 100%;
     }
 `
 
 // ...
-const OtherNewsItem = styled.div`
-    display: flex;
-    flex-direction: row;
-    gap: 0 24px;
-`
-
-// ...
 const OtherNewsImage = styled.img`
-    width: 184px;
-    height: 184px;
+    width: 100%;
+    height: 328px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 18px;
 `
 
 // ...
@@ -184,4 +144,4 @@ const OtherNewsText = styled.p`
 `
 
 // ...
-export default NewsItem;
+export default NewsItemXs;

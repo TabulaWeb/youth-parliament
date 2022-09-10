@@ -4,7 +4,12 @@ import styled from 'styled-components'
 
 const Text = () => {
     return <Container>
-        <Title>Обращения</Title>
+        <TitleContent>
+            <Title>Обращения</Title>
+
+            <SelectCommitte>Выбрать комитет</SelectCommitte>
+        </TitleContent>
+        
         <Search>
             <SearchIcon>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,12 +34,21 @@ const Title = styled.h2`
     line-height: 52px;
     color: #323232;
     margin: 0;
+
+    @media screen and (max-width: 991px) {
+        font-size: clamp(24px, 7vw, 44px);
+        line-height: clamp(28px, 7vw, 52px);
+    }
 `
 
 const Search = styled.div`
     display: flex;
     align-items: center;
     position: relative;
+    max-width: 328px;
+    width: 100%;
+
+
 `
 
 const Container = styled.div`
@@ -42,14 +56,21 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 60px;
+
+    @media screen and (max-width: 991px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `
 
 const SearchInput = styled.input`
-    padding: 12px 75px 12px 56px;
     border: 1.5px solid rgba(50, 50, 50, 0.3);
     border-radius: 8px;
     font-size: 16px;
     color: #323232;
+    width: 100%;
+    height: 48px;
+    padding-left: 56px;
 `
 
 const SearchIcon = styled.div`
@@ -71,6 +92,31 @@ const SearchButton = styled.div`
     -webkit-box-shadow: -2px 0px 0px 0px rgba(50, 50, 50, 0.3); 
     -moz-box-shadow: -2px 0px 0px 0px rgba(50, 50, 50, 0.3); 
     box-shadow: -2px 0px 0px 0px rgba(50, 50, 50, 0.3);
+`
+
+const SelectCommitte = styled.p`
+    display: none;
+    margin-bottom: 0;
+    cursor: pointer;
+
+    @media screen and (max-width: 991px) {
+        display: block;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 18px;
+        color: #2F4395;
+    }
+`
+
+const TitleContent = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @media screen and (max-width: 991px) {
+        margin-bottom: 40px;
+    }
 `
 
 export default Text

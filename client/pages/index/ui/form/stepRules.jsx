@@ -68,6 +68,12 @@ const ListText = styled.li`
         line-height: 24px;
         color: #2F4395;
     }
+
+    @media screen and (max-width: 991px) {
+        &:before {
+            font-size: 16px;
+        }
+    }
 `
 
 export default StepRules

@@ -88,6 +88,10 @@ const Container = styled.div`
     grid-gap: 40px;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+
+    @media screen and (max-width: 550px) {
+        grid-template-columns: 1fr;
+    }
 `
 
 const Appeal = styled.div`
