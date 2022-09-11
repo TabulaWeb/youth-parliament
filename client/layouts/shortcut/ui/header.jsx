@@ -40,8 +40,21 @@ const Header = () => {
           <BurgerIconBottom active={active}></BurgerIconBottom>
         </BurgerIcon>
 
-        <BurgerMenu>
-
+        <BurgerMenu active={active}>
+          <BurgerNav>
+            <Link href='/'>
+              <BurgerLink>Парламент</BurgerLink>
+            </Link>
+            <Link href='/'>
+              <BurgerLink>О нас пишут</BurgerLink>
+            </Link>
+            <Link href='/'>
+              <BurgerLink>Новости</BurgerLink>
+            </Link>
+            <Link href='/'>
+              <BurgerLink>Обращения</BurgerLink>
+            </Link>
+          </BurgerNav>
         </BurgerMenu>
       </Burger>
     </Wrapper>
@@ -51,10 +64,20 @@ const Header = () => {
 
 // Create Main styled component
 const Main = styled.header`
-  margin-top: 20px;
+  padding-top: 20px;
   position: absolute;
   width: 100%;
   z-index: 2;
+`
+
+const BurgerNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 24px 0;
+`
+
+const BurgerLink = styled.a`
+  
 `
 
 // Create Wrapper styled component
@@ -101,7 +124,6 @@ const Nav = styled.nav`
 `
 
 const Burger = styled.div`
-  position: relative;
   display: none;
 
   @media screen and (max-width: 991px) {
@@ -114,6 +136,7 @@ const BurgerIcon = styled.div`
   width: 24px;
   height: 24px;
   transition: .4s;
+  z-index: 10;
 
   cursor: pointer;
 `
@@ -166,7 +189,19 @@ const BurgerIconBottom = styled.span`
 `
 
 const BurgerMenu = styled.div`
-  
+  width: 96%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #FFFCF9;
+  box-shadow: -8px 0px 20px rgba(56, 56, 56, 0.2);
+  transform: ${({ active }) => active ? 'translateX(0%)' : 'translateX(100%)'};
+  opacity: ${({ active }) => active ? '1' : '0'};
+  transition: .4s;
+  padding-top: 80px;
+  padding-left: 4%;
+  padding-right: 4%;
 `
 
 // Create LinkText styled component

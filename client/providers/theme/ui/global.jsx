@@ -70,6 +70,7 @@ const Main = createGlobalStyle`
     font-family: ${({ theme }) => theme.inter};
     -webkit-font-smoothing: antialiased;
     color: ${({ theme }) => theme.text};
+    overflow-x: hidden;
   }
   h1, h2, h3 {
     line-height: 1.2;
