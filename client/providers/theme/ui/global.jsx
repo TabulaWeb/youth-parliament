@@ -60,6 +60,11 @@ const Main = createGlobalStyle`
     }
   }
 
+  html, body {
+    /* Убирает прокрутку по горизонтале, для мобильной версии */
+    overflow-x: hidden;
+  }
+
   /* Set tag styles */
   body {
     line-height: 1.5;
@@ -72,7 +77,7 @@ const Main = createGlobalStyle`
     overflow-x: hidden;
     background-color: rgba(255, 252, 249, 0.089);
     /* background-color: purple; */
-    box-shadow: inset 78px -78px 78px rgba(194, 192, 189, 0.089), inset -78px 78px 78px rgba(255, 255, 255, 0.089);
+    /* box-shadow: inset 78px -78px 78px rgba(194, 192, 189, 0.089), inset -78px 78px 78px rgba(255, 255, 255, 0.089); */
   }
   h1, h2, h3 {
     line-height: 1.2;
