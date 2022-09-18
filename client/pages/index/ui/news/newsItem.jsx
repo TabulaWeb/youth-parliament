@@ -1,12 +1,13 @@
 // Import global npm modules
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 // ...
 const NewsItem = ({ pageIndex }) => {
     return <Container>
         <MainNews>
-            <MainNewsImage src='/images/photo.png' />
+            <MainNewsImage src='/images/photo.png' width='100%' height='316' />
             <MainNewsMeta>
                 <Tag>#МолодежныйПарламент</Tag>
                 <Data>4 авг <span></span> 18:00</Data>
@@ -19,7 +20,7 @@ const NewsItem = ({ pageIndex }) => {
         </MainNews>
         <OtherNews>
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -31,7 +32,7 @@ const NewsItem = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -43,7 +44,7 @@ const NewsItem = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -82,7 +83,7 @@ const OtherNews = styled.div`
 `
 
 // ...
-const MainNewsImage = styled.img`
+const MainNewsImage = styled(Image)`
     width: 100%;
     border-radius: 16px;
     margin-bottom: 24px;
@@ -147,7 +148,7 @@ const OtherNewsItem = styled.div`
 `
 
 // ...
-const OtherNewsImage = styled.img`
+const OtherNewsImage = styled(Image)`
     width: 184px;
     height: 184px;
 `

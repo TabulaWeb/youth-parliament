@@ -25,6 +25,7 @@ const TitleText = styled.h1`
     line-height: 48px;
     color: #323232;
     margin-bottom: 28px;
+    margin-top: 0;
 `
 
 const MetaData = styled.div`

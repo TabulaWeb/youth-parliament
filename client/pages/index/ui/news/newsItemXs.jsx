@@ -1,13 +1,14 @@
 // Import global npm modules
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 // ...
 const NewsItemXs = ({ pageIndex }) => {
     return <Container>
         <OtherNews>
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' />
+                <OtherNewsImage src='/images/otherPhoto.png'  width='100%' height='328px'/>
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -19,7 +20,7 @@ const NewsItemXs = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -31,7 +32,7 @@ const NewsItemXs = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -104,7 +105,7 @@ const OtherNewsItem = styled.div`
 `
 
 // ...
-const OtherNewsImage = styled.img`
+const OtherNewsImage = styled(Image)`
     width: 100%;
     height: 328px;
     object-fit: cover;

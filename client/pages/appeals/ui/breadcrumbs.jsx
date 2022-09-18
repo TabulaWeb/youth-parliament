@@ -5,7 +5,7 @@ import Link from "next/link";
 const Breadctumbs = () => {
     return <Container>
         <Link href='/'><TextLink>Главная <SpanText>/</SpanText></TextLink></Link>
-        <Text>Новости <SpanText>/</SpanText></Text>
+        <Text>Обращение №123 <SpanText>/</SpanText></Text>
     </Container>
 }
 

@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SliderButton from './sliderButton'
+import Image from 'next/image';
 
 // Import Swiper styles
 import "swiper/css";

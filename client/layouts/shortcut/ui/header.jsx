@@ -1,6 +1,7 @@
 // Import global npm modules
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import Image from 'next/image';
 import Link from 'next/link'
 
 // Create Header ui
@@ -53,7 +54,7 @@ const Header = () => {
 
     <Wrapper>
       <Logo>
-        <LogoImage src='/images/logo.png' />
+        <LogoImage src='/images/logo.png' width='60' height='60' alt="Logo" />
         <LogoText>Молодежный парламентпри</LogoText>
       </Logo>
       
@@ -134,7 +135,7 @@ const Wrapper = styled.div`
 ` 
 
 // Create LogoImage styled component
-const LogoImage = styled.img``
+const LogoImage = styled(Image)``
 
 // Create LogoText styled component
 const LogoText = styled.p`
