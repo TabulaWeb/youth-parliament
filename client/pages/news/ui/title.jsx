@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-import Container from "./ui/container";
-
-const News = () => {
+const Title = () => {
     return <Container>
-        <p>123123</p>
+    
     </Container>
 }
 
-export default News;
+const Container = styled.div``
+
+export default Title

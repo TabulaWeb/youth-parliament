@@ -51,7 +51,7 @@ const Appeals = () => {
     return <Container>
         {data.map(item => {
             return (
-                <Link href={`/applicetions/${item.id}`}>
+                <Link href={`/appeals/${item.id}`}>
                     <Appeal key={item.id}>
                         <AppealHead>
                             <AppealIcon>
