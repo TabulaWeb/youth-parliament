@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Picture = () => {
     return <Container>
-        <PostPicrute src='/images/photo.png' width='100%' height='100%' />
+        <PostPicrute src='/images/photo.png' width='100%' height='100%' alt='post image' />
 
         <SocialLink>
             <Link href=''>

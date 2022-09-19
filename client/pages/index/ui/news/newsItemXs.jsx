@@ -8,7 +8,7 @@ const NewsItemXs = ({ pageIndex }) => {
     return <Container>
         <OtherNews>
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png'  width='100%' height='328px'/>
+                <OtherNewsImage src='/images/otherPhoto.png'  width='100%' height='328px' alt='news image'/>
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -20,7 +20,7 @@ const NewsItemXs = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -32,7 +32,7 @@ const NewsItemXs = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>

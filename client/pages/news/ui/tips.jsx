@@ -5,7 +5,7 @@ import Image from "next/image";
 const Tips = () => {
     return <Container>
         <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' />
+            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
             <MainNewsMeta>
                 <Tag>#МолодежныйПарламент</Tag>
                 <Data>4 авг <span></span> 18:00</Data>
@@ -17,7 +17,7 @@ const Tips = () => {
             </MainNewsText>
         </MainNews>
         <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' />
+            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
             <MainNewsMeta>
                 <Tag>#МолодежныйПарламент</Tag>
                 <Data>4 авг <span></span> 18:00</Data>
@@ -29,7 +29,7 @@ const Tips = () => {
             </MainNewsText>
         </MainNews>
         <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' />
+            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
             <MainNewsMeta>
                 <Tag>#МолодежныйПарламент</Tag>
                 <Data>4 авг <span></span> 18:00</Data>

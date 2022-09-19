@@ -6,8 +6,8 @@ import styled from 'styled-components'
 const Button = ({ onClick, type, text }) => {
 
   // Return jsx
-  return <Main>
-    <svg width="277" height="62">
+  return <Main name='send message'>
+    <svg width="274" height="61">
         <defs>
             <linearGradient id="grad1">
                 <stop offset="0%" stopColor="#FF8282"/>

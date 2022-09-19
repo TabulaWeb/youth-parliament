@@ -1,7 +1,7 @@
 // Import global npm modules
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import background from '../../../../../public/images/home/photo.png'
+import Image from 'next/image'
 // Import local ui modules
 import Container from '../container'
 import SliderButton from './sliderButton'
@@ -112,7 +112,7 @@ const MediaSection = () => {
                     return (
                         <SwiperSlide key={item.id}>
                             <SlideContainer>
-                                <SliderBackground src={item.image} width='100%'  height='100%' />
+                                <SliderBackground src={item.image} width='100%'  height='100%' alt='slider background' />
                                 <SlideText>{item.text}</SlideText>
                             </SlideContainer>
                         </SwiperSlide>
@@ -148,7 +148,7 @@ const Header = styled.div`
     align-items: center;
 `
 
-const SliderBackground = styled.img`
+const SliderBackground = styled(Image)`
     position: absolute;
     top: 0;
     right: 0;

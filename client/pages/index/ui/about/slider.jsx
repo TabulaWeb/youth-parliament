@@ -52,7 +52,7 @@ const Slider = () => {
                 {({ isActive }) => (
                     <>
                         <SlideContainer active={isActive}>
-                            <SliderBackground src={item.image} width='80%'  height='100%' />
+                            <SliderBackground src={item.image} width='80%'  height='100%' alt='slider background' />
                         </SlideContainer>
                         
                         <SlideText>{item.text}</SlideText>
@@ -81,7 +81,7 @@ const SlideNav = styled.div`
     }
 `
 
-const SliderBackground = styled.img`
+const SliderBackground = styled(Image)`
     position: absolute;
     height: -webkit-fill-available;
     max-height: 500px;

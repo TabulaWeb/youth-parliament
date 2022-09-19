@@ -7,7 +7,7 @@ import Image from 'next/image'
 const NewsItem = ({ pageIndex }) => {
     return <Container>
         <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' />
+            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
             <MainNewsMeta>
                 <Tag>#МолодежныйПарламент</Tag>
                 <Data>4 авг <span></span> 18:00</Data>
@@ -20,7 +20,7 @@ const NewsItem = ({ pageIndex }) => {
         </MainNews>
         <OtherNews>
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -32,7 +32,7 @@ const NewsItem = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>
@@ -44,7 +44,7 @@ const NewsItem = ({ pageIndex }) => {
             </OtherNewsItem>
 
             <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' />
+                <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
                         <Tag>#МолодежныйПарламент</Tag>

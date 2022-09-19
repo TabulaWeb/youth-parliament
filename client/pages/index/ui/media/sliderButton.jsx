@@ -7,7 +7,8 @@ const SliderButton = ({image, next}) => {
     const swiper = useSwiper()
     
     return next ? 
-    <ButtonNext  
+    <ButtonNext
+        name='next'
         onClick={() => {
             swiper.slideNext(); 
         }} 
@@ -19,6 +20,7 @@ const SliderButton = ({image, next}) => {
     </ButtonNext>
     :
     <ButtonPrev 
+        name='prev'
         onClick={() => {
             swiper.slidePrev()
         }} 
