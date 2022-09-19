@@ -1,6 +1,5 @@
 // Import global npm modules
 import React from 'react'
-import dynamic from 'next/dynamic';
 
 import HomeSection from './ui/home/homeSection'
 import AboutSection from './ui/about/aboutSection'
@@ -17,9 +16,9 @@ const Index = () => {
     <HomeSection />
     <AboutSection />
     <MediaSection />
-    {/* <NewsSection /> */}
-    {/* <FormSection /> */}
-    {/* <ApplicationsSection /> */}
+     <NewsSection />
+     <FormSection />
+     <ApplicationsSection />
   </>
 
 }
