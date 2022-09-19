@@ -5,7 +5,7 @@ const NextStep = ({ step, setStep }) => {
 
     const next = (step) => step >= 4 ? step : step+1
 
-    return <NextButton name='continue' type='button' onClick={() => setStep(next)}>ПРОДОЛЖИТЬ</NextButton>
+    return <NextButton aria-label='continue' type='button' onClick={() => setStep(next)}>ПРОДОЛЖИТЬ</NextButton>
 }
 
 const NextButton = styled.button`

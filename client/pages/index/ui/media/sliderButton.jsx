@@ -8,7 +8,7 @@ const SliderButton = ({image, next}) => {
     
     return next ? 
     <ButtonNext
-        name='next'
+        aria-label='next'
         onClick={() => {
             swiper.slideNext(); 
         }} 
@@ -20,7 +20,7 @@ const SliderButton = ({image, next}) => {
     </ButtonNext>
     :
     <ButtonPrev 
-        name='prev'
+        aria-label='prev'
         onClick={() => {
             swiper.slidePrev()
         }} 

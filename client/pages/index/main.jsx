@@ -17,9 +17,9 @@ const Index = () => {
     <HomeSection />
     <AboutSection />
     <MediaSection />
-    <NewsSection />
-    <FormSection />
-    <ApplicationsSection />
+    {/* <NewsSection /> */}
+    {/* <FormSection /> */}
+    {/* <ApplicationsSection /> */}
   </>
 
 }

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Button = ({ onClick, type, text }) => {
 
   // Return jsx
-  return <Main name='send message'>
+  return <Main aria-label='send message'>
     <svg width="274" height="61">
         <defs>
             <linearGradient id="grad1">
