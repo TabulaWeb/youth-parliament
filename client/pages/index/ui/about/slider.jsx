@@ -17,7 +17,7 @@ const slide = [
     {
         id: 2,
         image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-        text: ''
+        text: 'qwe'
     },
     {
         id: 3,
@@ -41,6 +41,7 @@ const Slider = () => {
         onSlideChange={(swiper) => setIndexSlide(swiper.realIndex+1)}
         onSwiper={(swiper) => console.log(swiper)}
         loop={true}
+        className='sliderAbout'
     >
         <SlideNav slot="container-start">
             <SliderButton image={'назад'} next={false}/>
@@ -48,10 +49,10 @@ const Slider = () => {
         </SlideNav>
         
         {slide.map(item => {
-            return <SwiperSlide key={item.id}>
+            return <SwiperSlide key={item.id} className='slideAbout'>
                 {({ isActive }) => (
                     <>
-                        <SlideContainer active={isActive}>
+                        <SlideContainer className='slideImageAbout' active={isActive}>
                             <SliderBackground src={item.image} width='80%'  height='100%' alt='slider background' />
                         </SlideContainer>
                         

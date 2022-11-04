@@ -2,24 +2,27 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // ...
 const NewsItem = ({ pageIndex }) => {
     return <Container>
-        <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
-            <MainNewsMeta>
-                <Tag>#МолодежныйПарламент</Tag>
-                <Data>4 авг <span></span> 18:00</Data>
-            </MainNewsMeta>
-            <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
-            <MainNewsText>
-                <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-                <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
-            </MainNewsText>
-        </MainNews>
+        <MainLink href='news/1'>
+            <MainNews className='newsItemMain'>
+                <MainNewsImage className='imageMainNews' src='/images/photo.png' width='100%' height='316' alt='news image' />
+                <MainNewsMeta>
+                    <Tag>#МолодежныйПарламент</Tag>
+                    <Data>4 авг <span></span> 18:00</Data>
+                </MainNewsMeta>
+                <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+                <MainNewsText>
+                    <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
+                    <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+                </MainNewsText>
+            </MainNews>
+        </MainLink>
         <OtherNews>
-            <OtherNewsItem>
+            <OtherNewsItem className='newsItemOther'>
                 <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
@@ -31,7 +34,7 @@ const NewsItem = ({ pageIndex }) => {
                 </OtherContent>
             </OtherNewsItem>
 
-            <OtherNewsItem>
+            <OtherNewsItem className='newsItemOther'>
                 <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
@@ -43,7 +46,7 @@ const NewsItem = ({ pageIndex }) => {
                 </OtherContent>
             </OtherNewsItem>
 
-            <OtherNewsItem>
+            <OtherNewsItem className='newsItemOther'>
                 <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
                 <OtherContent>
                     <OtherNewsMeta>
@@ -70,7 +73,12 @@ const Container = styled.div`
 `
 
 // ...
-const MainNews = styled.div`
+const MainLink = styled(Link)`
+    width: 100%;
+`
+
+// ...
+const MainNews = styled.a`
     width: 100%;
 `
 

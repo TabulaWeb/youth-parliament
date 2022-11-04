@@ -171,6 +171,41 @@ input[type='radio']:checked + label > span:before{
   animation: checkbox-check 125ms 250ms cubic-bezier(.4,.0,.23,1) forwards;
 }
 
+.slideImageAbout span{
+  width: 100%!important;
+  height: 100%!important;
+}
+
+.slideImageAbout img{
+  left: 50%!important;
+  min-width: 80%!important;
+}
+
+.slideMediaContainer span{
+  width: 100%!important;
+  height: 100%!important;
+  position: absolute!important;
+  top: 0!important;
+  left: 0!important;
+}
+
+.newsItemMain span {
+  width: 100%!important;
+}
+
+.newsItemOther span {
+  max-width: 184px!important;
+  max-height: 184px!important;
+  width: 100%!important;
+  height: 100%!important;
+}
+
+.imageMainNews img{
+  width: 100%!important;
+  height: 100%!important;
+}
+
+
 @keyframes shrink-bounce{
   0%{
     transform: scale(1);

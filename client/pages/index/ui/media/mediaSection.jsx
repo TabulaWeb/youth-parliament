@@ -99,6 +99,7 @@ const MediaSection = () => {
                 spaceBetween={40}
                 slidesPerGroup={3}
                 rewind={true}
+                className='sliderMedia'
             >
                 <Header slot="container-start">
                     <Title>О нас пишут</Title>
@@ -110,8 +111,8 @@ const MediaSection = () => {
                 </Header>
                 {slide.map(item => {
                     return (
-                        <SwiperSlide key={item.id}>
-                            <SlideContainer>
+                        <SwiperSlide key={item.id} className='slideMedia'>
+                            <SlideContainer className='slideMediaContainer'>
                                 <SliderBackground src={item.image} width='100%'  height='100%' alt='slider background' />
                                 <SlideText>{item.text}</SlideText>
                             </SlideContainer>
