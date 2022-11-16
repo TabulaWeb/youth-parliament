@@ -146,8 +146,8 @@ const LogoText = styled.p`
   font-size: 14px;
   line-height: 130%;
   text-transform: uppercase;
+  color:${(theme:any) => theme.text};
   `
-  //  color:${(theme) => theme.text};
 
 // Create Logo styled component
 const Logo = styled.div`
@@ -191,9 +191,10 @@ const BurgerIconTop = styled.span<any>`
   border-radius: 25px;
   position: absolute;
   transition: .4s;
+   top: ${({ active }) => active ? 11 : 0}px;
+   transform: ${({ active }) => active ? 'rotate(45deg)' : 'rotate(0deg)'};
   `
-  // top: ${({ active }) => active ? 11 : 0}px;
-  // transform: ${({ active }) => active ? 'rotate(45deg)' : 'rotate(0deg)'};
+  
 
 const BurgerIconMiddle = styled.span<any>`
   display: flex;
@@ -202,6 +203,7 @@ const BurgerIconMiddle = styled.span<any>`
   position: absolute;
   transition: .4s;
   top: 11px;
+   opacity: ${({ active }) => active ? 0 : 1};
   
   & span:nth-child(1) {
     width: 100%;
@@ -218,7 +220,6 @@ const BurgerIconMiddle = styled.span<any>`
   }
   
   `
-  // opacity: ${({ active }) => active ? 0 : 1};
 
 const BurgerIconBottom = styled.span<any>`
   width: 100%;
@@ -227,9 +228,9 @@ const BurgerIconBottom = styled.span<any>`
   border-radius: 25px;
   position: absolute;
   transition: .4s;
+   top: ${({ active }) => active ? 11 : 21}px;
+   transform: ${({ active }) => active ? 'rotate(-45deg)' : 'rotate(0deg)'};
   `
-  // top: ${({ active }) => active ? 11 : 21}px;
-  // transform: ${({ active }) => active ? 'rotate(-45deg)' : 'rotate(0deg)'};
 
 const BurgerMenu = styled.div<any>`
   width: 96%;
@@ -243,9 +244,9 @@ const BurgerMenu = styled.div<any>`
   padding-top: 80px;
   padding-left: 4%;
   padding-right: 4%;
+  transform: ${({ active }) => active ? 'translateX(0%)' : 'translateX(100%)'};
+   opacity: ${({ active }) => active ? '1' : '0'};
   `
-  // transform: ${({ active }) => active ? 'translateX(0%)' : 'translateX(100%)'};
-  // opacity: ${({ active }) => active ? '1' : '0'};
 
 // Create LinkText styled component
 const LinkText = styled.a`
@@ -255,19 +256,18 @@ const LinkText = styled.a`
   cursor: pointer;
   text-decoration: none;
   transition: .2s;
+   color: ${(theme:any) => theme.text};
   
   &:hover {
     color: #2F4395;
     transition: .2s;
   }
   `
-// color: ${(theme) => theme.text};
 
 const StainImageOne = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-
   z-index: -1;
 `
 
