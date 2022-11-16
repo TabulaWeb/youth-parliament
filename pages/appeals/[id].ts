@@ -1,4 +1,4 @@
-import Appeals from "#/pages/appeals";
+import Appeals from "#/screens/appeals";
 
 // Export object
 export {

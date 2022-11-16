@@ -1,4 +1,4 @@
-import News from "#/pages/news";
+import News from "#/screens/news";
 
 // Export object
 export {
