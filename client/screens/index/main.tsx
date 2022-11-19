@@ -14,12 +14,12 @@ const Index = () => {
 
   // Return jsx
   return <>
-  <HomeSection />
-  <AboutSection/>
-  <MediaSection/>
- <NewsSection/>
-  <FormSection/>
-  <ApplicationsSection/>
+    <HomeSection />
+    <AboutSection/>
+    <MediaSection/>
+    <NewsSection/>
+    <FormSection/>
+    <ApplicationsSection/>
   </>
 
 }
