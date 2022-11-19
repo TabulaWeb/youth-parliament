@@ -121,7 +121,7 @@ const MediaSection = () => {
           return (
             <SwiperSlide key={item.id} className='slideMedia'>
               <SlideContainer className='slideMediaContainer'>
-                <SliderBackground src={item.image} width='100' height='100' alt='slider background' />
+                <SliderBackground src={item.image} fill alt='slider background' />
                 <SlideText>{item.text}</SlideText>
               </SlideContainer>
             </SwiperSlide>

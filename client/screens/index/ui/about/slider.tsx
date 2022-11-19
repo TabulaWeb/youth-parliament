@@ -44,7 +44,7 @@ const Slider = () => {
       spaceBetween={50}
       slidesPerView={1}
       onSlideChange={(swiper) => setIndexSlide(swiper.realIndex+1)}
-      onSwiper={(swiper) => console.log(swiper)}
+      onSwiper={(swiper) => {}}
       loop={true}
       className='sliderAbout'
     >
@@ -59,7 +59,9 @@ const Slider = () => {
           {({ isActive }) => (
             <>
               <SlideContainer className='slideImageAbout' active={isActive}>
-                <SliderBackground src={item.image} width={100} height={100} alt='slider background' />
+                <SliderBackground src={item.image} 
+                  fill
+                  alt='slider background' />
               </SlideContainer>
                         
               <SlideText>{item.text}</SlideText>
@@ -80,31 +82,23 @@ const SlideNav = styled.div`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
+    
+    z-index: 12;
     display: flex;
     width: 100%;
+    
     justify-content: space-between;
+    color: white;
 
     @media screen and (max-width: 991px) {
         display: none;
     }
 `
 
-const SliderBackground = styled(Image)`
-    position: absolute;
-    height: -webkit-fill-available;
-    max-height: 500px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-    object-fit: cover;
-    z-index: -1;
-    transition: .4s;
-    border-radius: 16px;
-    height: auto;
+const SliderBackground = styled(Image)`   
 
     @media screen and (max-width: 991px) {
-        width: 100px;
+        width: 100%;
     }
 `
 
@@ -114,10 +108,13 @@ const SlideContainer = styled.div<any>`
     height: 500px;
     border-radius: 20px;
     overflow: hidden;
+    width: 100%;
+    z-index: 10;
+    
 
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 
     @media screen and (max-width: 991px){
         height: clamp(150px, 50vw, 500px);

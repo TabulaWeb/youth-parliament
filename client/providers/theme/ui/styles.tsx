@@ -71,7 +71,7 @@ const Main = (theme: Theme) => css`
     margin: 0 0 10px;
   }
   img {
-    max-width: 100px;
+    max-width: 100%;
   }
   a {
     color: ${theme.primary};
