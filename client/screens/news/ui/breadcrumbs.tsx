@@ -1,12 +1,14 @@
-import React from "react";
-import styled from "@emotion/styled";
-import Link from "next/link";
+import React from 'react'
+import styled from '@emotion/styled'
+import Link from 'next/link'
 
 const Breadctumbs = () => {
-    return <Container>
-        <Link href='/'><TextLink>Главная <SpanText>/</SpanText></TextLink></Link>
-        <Text>Новости <SpanText>/</SpanText></Text>
-    </Container>
+
+  return <Container>
+    <Link href='/'><TextLink>Главная <SpanText>/</SpanText></TextLink></Link>
+    <Text>Новости <SpanText>/</SpanText></Text>
+  </Container>
+
 }
 
 const Container = styled.div`
@@ -16,7 +18,7 @@ const Container = styled.div`
     margin-bottom: 40px;
 `
 
-const TextLink = styled.a`
+const TextLink = styled.p`
     /* font-family: 'Golos UI'; */
     font-style: normal;
     font-weight: 400;

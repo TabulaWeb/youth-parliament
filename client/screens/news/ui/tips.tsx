@@ -1,46 +1,48 @@
-import React from "react";
-import styled from "@emotion/styled";
-import Image from "next/image";
+import React from 'react'
+import styled from '@emotion/styled'
+import Image from 'next/image'
 
 const Tips = () => {
-    return <Container>
-        <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
-            <MainNewsMeta>
-                <Tag>#МолодежныйПарламент</Tag>
-                <Data>4 авг <span></span> 18:00</Data>
-            </MainNewsMeta>
-            <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
-            <MainNewsText>
-                <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-                <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
-            </MainNewsText>
-        </MainNews>
-        <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
-            <MainNewsMeta>
-                <Tag>#МолодежныйПарламент</Tag>
-                <Data>4 авг <span></span> 18:00</Data>
-            </MainNewsMeta>
-            <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
-            <MainNewsText>
-                <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-                <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
-            </MainNewsText>
-        </MainNews>
-        <MainNews>
-            <MainNewsImage src='/images/photo.png' width='100%' height='316' alt='news image' />
-            <MainNewsMeta>
-                <Tag>#МолодежныйПарламент</Tag>
-                <Data>4 авг <span></span> 18:00</Data>
-            </MainNewsMeta>
-            <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
-            <MainNewsText>
-                <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-                <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
-            </MainNewsText>
-        </MainNews>
-    </Container>
+
+  return <Container>
+    <MainNews>
+      <MainNewsImage src='/images/photo.png' width='100' height='316' alt='news image' />
+      <MainNewsMeta>
+        <Tag>#МолодежныйПарламент</Tag>
+        <Data>4 авг <span></span> 18:00</Data>
+      </MainNewsMeta>
+      <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+      <MainNewsText>
+        <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
+        <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+      </MainNewsText>
+    </MainNews>
+    <MainNews>
+      <MainNewsImage src='/images/photo.png' width='100' height='316' alt='news image' />
+      <MainNewsMeta>
+        <Tag>#МолодежныйПарламент</Tag>
+        <Data>4 авг <span></span> 18:00</Data>
+      </MainNewsMeta>
+      <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+      <MainNewsText>
+        <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
+        <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+      </MainNewsText>
+    </MainNews>
+    <MainNews>
+      <MainNewsImage src='/images/photo.png' width='100' height='316' alt='news image' />
+      <MainNewsMeta>
+        <Tag>#МолодежныйПарламент</Tag>
+        <Data>4 авг <span></span> 18:00</Data>
+      </MainNewsMeta>
+      <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+      <MainNewsText>
+        <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
+        <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+      </MainNewsText>
+    </MainNews>
+  </Container>
+
 }
 
 const Container = styled.div`

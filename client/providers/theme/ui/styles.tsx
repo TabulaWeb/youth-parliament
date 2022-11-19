@@ -13,6 +13,11 @@ const Styles: FC = () => {
 // Create Main styled component
 const Main = (theme: Theme) => css`
 
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* Set font-face styles */
   @font-face {
     font-family: 'Inter';
@@ -30,6 +35,7 @@ const Main = (theme: Theme) => css`
 
   /* Set tag styles */
   body {
+    
     line-height: 1.2;
     margin: 0;
     background-color: ${theme.background};
@@ -65,7 +71,7 @@ const Main = (theme: Theme) => css`
     margin: 0 0 10px;
   }
   img {
-    max-width: 100%;
+    max-width: 100px;
   }
   a {
     color: ${theme.primary};

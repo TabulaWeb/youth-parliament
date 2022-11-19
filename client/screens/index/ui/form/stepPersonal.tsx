@@ -1,66 +1,100 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
-import InputMask from 'react-input-mask';
+import InputMask from 'react-input-mask'
 
 const options = [
   {
     id: 1,
-    value: 'qwerty',
+    value: 'qwerty'
   },
   {
     id: 2,
-    value: 'qwerty',
+    value: 'qwerty'
   },
   {
     id: 3,
-    value: 'qwerty',
+    value: 'qwerty'
   },
   {
     id: 4,
-    value: 'qwerty',
+    value: 'qwerty'
   }
-];
+]
 
 const StepPersonal = (props: any) => {
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [
+    isOpen,
+    setIsOpen
+  ] = useState(false)
+  const [
+    selectedOption,
+    setSelectedOption
+  ] = useState(null)
 
-  const [errorName, setErrorName] = useState(false)
-  const [errorLastname, setLastname] = useState(false)
-  const [errorPatronymic, setErrorPatronymic] = useState(false)
-  const [errorSocial, setErrorSocial] = useState(false)
-  const [errorEmail, setErrorEmail] = useState(false)
-  const [errorPhone, setErrorPhone] = useState(false)
+  const [
+    errorName,
+    setErrorName
+  ] = useState(false)
+  const [
+    errorLastname,
+    setLastname
+  ] = useState(false)
+  const [
+    errorPatronymic,
+    setErrorPatronymic
+  ] = useState(false)
+  const [
+    errorSocial,
+    setErrorSocial
+  ] = useState(false)
+  const [
+    errorEmail,
+    setErrorEmail
+  ] = useState(false)
+  const [
+    errorPhone,
+    setErrorPhone
+  ] = useState(false)
 
-  const toggling = () => setIsOpen(!isOpen);
+  const toggling = () => setIsOpen(!isOpen)
 
   const onOptionClicked = (value: any) => () => {
-    setSelectedOption(value);
+
+    setSelectedOption(value)
     props.setSocial(value)
     // setIsOpen(false);
-  };
+  
+  }
 
   // Ошибка в имени
   const checkErrorName = (event: any) => {
+
     event.target.value.length < 2 ? setErrorName(true) : setErrorName(false)
+  
   }
 
   // Ошибка в фамилии
   const checkErrorLastname = (event: any) => {
+
     event.target.value.length < 2 ? setLastname(true) : setLastname(false)
+  
   }
 
   // Ошибка в социальном статусе
 
   // Ошибка в мыле
   const checkErrorEmail = (event: any) => {
+
     event.target.value.includes('@') ? setErrorEmail(false) : setErrorEmail(true)
+  
   }
 
   // Ошибка в телефоне
   const checkErrorPhone = (event: any) => {
+
     event.target.value.includes('_') ? setErrorPhone(false) : setErrorPhone(true)
+  
   }
 
   return <Container step={props.step}>
@@ -151,6 +185,7 @@ const StepPersonal = (props: any) => {
       </InputContainer>
     </TextField>
   </Container>
+
 }
 
 const Container = styled.div<any>`

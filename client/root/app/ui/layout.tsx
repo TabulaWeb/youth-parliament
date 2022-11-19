@@ -1,10 +1,9 @@
 // Import global npm modules
-import Shortcut from '#/layouts/shortcut'
 import { FC } from 'react'
 
+import Shortcut from '#/layouts/shortcut'
+
 // Import client proveders modules
-
-
 
 // Create Props interface
 interface Props {

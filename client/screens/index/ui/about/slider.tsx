@@ -1,71 +1,79 @@
 // Import global npm modules
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import Image from 'next/image'
+
 import SliderButton from './sliderButton'
-import Image from 'next/image';
 
 // Import Swiper styles
-import "swiper/css";
+import 'swiper/css'
 
 const slide = [
-    {
-        id: 1,
-        image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-        text: 'qwerty'
-    },
-    {
-        id: 2,
-        image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-        text: 'qwe'
-    },
-    {
-        id: 3,
-        image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-        text: ''
-    },
-    {
-        id: 4,
-        image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-        text: ''
-    }
+  {
+    id: 1,
+    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    text: 'qwerty'
+  },
+  {
+    id: 2,
+    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    text: 'qwe'
+  },
+  {
+    id: 3,
+    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    text: ''
+  },
+  {
+    id: 4,
+    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    text: ''
+  }
 ]
 
 const Slider = () => {
-    const [indexSlide, setIndexSlide] = useState(1)
+
+  const [
+    indexSlide,
+    setIndexSlide
+  ] = useState(1)
     
-    return <>
+  return <>
     <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        onSlideChange={(swiper) => setIndexSlide(swiper.realIndex+1)}
-        onSwiper={(swiper) => console.log(swiper)}
-        loop={true}
-        className='sliderAbout'
+      spaceBetween={50}
+      slidesPerView={1}
+      onSlideChange={(swiper) => setIndexSlide(swiper.realIndex+1)}
+      onSwiper={(swiper) => console.log(swiper)}
+      loop={true}
+      className='sliderAbout'
     >
-        <SlideNav slot="container-start">
-            <SliderButton image={'назад'} next={false}/>
-            <SliderButton image={'вперед'} next={true}/>
-        </SlideNav>
+      <SlideNav slot="container-start">
+        <SliderButton image={'назад'} next={false}/>
+        <SliderButton image={'вперед'} next={true}/>
+      </SlideNav>
         
-        {slide.map(item => {
-            return <SwiperSlide key={item.id} className='slideAbout'>
-                {({ isActive }) => (
-                    <>
-                        <SlideContainer className='slideImageAbout' active={isActive}>
-                            <SliderBackground src={item.image} width='80%'  height='100%' alt='slider background' />
-                        </SlideContainer>
+      {slide.map(item => {
+
+        return <SwiperSlide key={item.id} className='slideAbout'>
+          {({ isActive }) => (
+            <>
+              <SlideContainer className='slideImageAbout' active={isActive}>
+                <SliderBackground src={item.image} width={100} height={100} alt='slider background' />
+              </SlideContainer>
                         
-                        <SlideText>{item.text}</SlideText>
-                    </>
-                )}
-            </SwiperSlide>
-        })}
+              <SlideText>{item.text}</SlideText>
+            </>
+          )}
+        </SwiperSlide>
+      
+      })}
         
-        <ProgressBar max={slide.length} value={indexSlide} />
-        <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
+      <ProgressBar max={slide.length} value={indexSlide} />
+      <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
     </Swiper>
   </>
+
 }
 
 const SlideNav = styled.div`
@@ -96,13 +104,13 @@ const SliderBackground = styled(Image)`
     height: auto;
 
     @media screen and (max-width: 991px) {
-        width: 100%;
+        width: 100px;
     }
 `
 
 const SlideContainer = styled.div<any>`
     position: relative;
-    width: ${({isActive}) => isActive ? '50%' : '100%'};
+    width: ${({ isActive }) => isActive ? '50%' : '100%'};
     height: 500px;
     border-radius: 20px;
     overflow: hidden;
