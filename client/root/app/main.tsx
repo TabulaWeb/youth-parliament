@@ -1,5 +1,6 @@
 // Import global npm modules
 import { FC } from 'react'
+
 import Layout from './ui/layout'
 
 // Import local ui modules

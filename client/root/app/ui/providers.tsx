@@ -14,11 +14,9 @@ interface Props {
 const Providers: FC<Props> = ({ children }) => {
 
   // Return tsx
-  return <Swr>
-    <Theme>
-      {children}
-    </Theme>
-  </Swr>
+  return <Theme>
+    {children}
+  </Theme>
 
 }
 

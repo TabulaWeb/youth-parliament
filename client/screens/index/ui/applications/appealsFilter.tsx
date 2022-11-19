@@ -3,33 +3,60 @@ import styled from '@emotion/styled'
 
 const AppealsFilter = () => {
 
-    const data = [
-        {id: 1, name: 'Все', count: 100},
-        {id: 2, name: 'По труду и социальной политике ', count: 20},
-        {id: 3, name: 'По бюджету и финансам и налоговой политики', count: 30},
-        {id: 4, name: 'По законодательству и местному самоуправлению', count: 15},
-        {id: 5, name: 'По экономической политике агропромышленному комплексу экологии и природопользованию', count: 35},
-    ]
-    const [active, setActive] = useState('Все')
+  const data = [
+    {
+      id: 1,
+      name: 'Все',
+      count: 100 
+    },
+    {
+      id: 2,
+      name: 'По труду и социальной политике ',
+      count: 20 
+    },
+    {
+      id: 3,
+      name: 'По бюджету и финансам и налоговой политики',
+      count: 30 
+    },
+    {
+      id: 4,
+      name: 'По законодательству и местному самоуправлению',
+      count: 15 
+    },
+    {
+      id: 5,
+      name: 'По экономической политике агропромышленному комплексу экологии и природопользованию',
+      count: 35 
+    }
+  ]
+  const [
+    active,
+    setActive
+  ] = useState('Все')
 
+  const handleChange = (event:any) => {
 
-    const handleChange = (event:any) => {
-        setActive(event.target.value);
-    };
+    setActive(event.target.value)
+  
+  }
 
-    return <Container>
-        <Wrapper>
-        {data.map((item, itemId) => {
-            return <FilterItem key={item.id}>
-                <FilterInput type='radio' name='filter' value={item.name} checked={active == item.name} onChange={handleChange}/>
-                <FilterName className='name'>{item.name}</FilterName>
-                <FilterCount>{item.count}</FilterCount>
+  return <Container>
+    <Wrapper>
+      {data.map((item, itemId) => {
 
-                <Span></Span>
-            </FilterItem>
-        })}
-        </Wrapper>
-    </Container>
+        return <FilterItem key={item.id}>
+          <FilterInput type='radio' name='filter' value={item.name} checked={active == item.name} onChange={handleChange}/>
+          <FilterName className='name'>{item.name}</FilterName>
+          <FilterCount>{item.count}</FilterCount>
+
+          <Span></Span>
+        </FilterItem>
+      
+      })}
+    </Wrapper>
+  </Container>
+
 }
 
 const Container = styled.div`

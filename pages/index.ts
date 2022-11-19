@@ -2,6 +2,4 @@
 import Index from '#/screens/index'
 
 // Export object
-export {
-  Index as default
-}
+export { Index as default }

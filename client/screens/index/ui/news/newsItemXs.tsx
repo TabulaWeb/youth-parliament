@@ -5,45 +5,47 @@ import Image from 'next/image'
 
 // ...
 const NewsItemXs = ({ pageIndex }:any) => {
-    return <Container>
-        <OtherNews>
-            <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png'  width='100%' height='328px' alt='news image'/>
-                <OtherContent>
-                    <OtherNewsMeta>
-                        <Tag>#МолодежныйПарламент</Tag>
-                        <Data>4 авг</Data>
-                    </OtherNewsMeta>
-                    <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
-                    <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
-                </OtherContent>
-            </OtherNewsItem>
 
-            <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' alt='news image' />
-                <OtherContent>
-                    <OtherNewsMeta>
-                        <Tag>#МолодежныйПарламент</Tag>
-                        <Data>4 авг</Data>
-                    </OtherNewsMeta>
-                    <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
-                    <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
-                </OtherContent>
-            </OtherNewsItem>
+  return <Container>
+    <OtherNews>
+      <OtherNewsItem>
+        <OtherNewsImage src='/images/otherPhoto.png' width='100' height='328' alt='news image'/>
+        <OtherContent>
+          <OtherNewsMeta>
+            <Tag>#МолодежныйПарламент</Tag>
+            <Data>4 авг</Data>
+          </OtherNewsMeta>
+          <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
+          <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
+        </OtherContent>
+      </OtherNewsItem>
 
-            <OtherNewsItem>
-                <OtherNewsImage src='/images/otherPhoto.png' width='100%' height='328px' alt='news image' />
-                <OtherContent>
-                    <OtherNewsMeta>
-                        <Tag>#МолодежныйПарламент</Tag>
-                        <Data>4 авг</Data>
-                    </OtherNewsMeta>
-                    <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
-                    <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
-                </OtherContent>
-            </OtherNewsItem>
-        </OtherNews>
-    </Container>
+      <OtherNewsItem>
+        <OtherNewsImage src='/images/otherPhoto.png' width='100' height='328' alt='news image' />
+        <OtherContent>
+          <OtherNewsMeta>
+            <Tag>#МолодежныйПарламент</Tag>
+            <Data>4 авг</Data>
+          </OtherNewsMeta>
+          <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
+          <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
+        </OtherContent>
+      </OtherNewsItem>
+
+      <OtherNewsItem>
+        <OtherNewsImage src='/images/otherPhoto.png' width='100' height='328' alt='news image' />
+        <OtherContent>
+          <OtherNewsMeta>
+            <Tag>#МолодежныйПарламент</Tag>
+            <Data>4 авг</Data>
+          </OtherNewsMeta>
+          <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
+          <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
+        </OtherContent>
+      </OtherNewsItem>
+    </OtherNews>
+  </Container>
+
 }
 
 // ...
@@ -145,4 +147,4 @@ const OtherNewsText = styled.p`
 `
 
 // ...
-export default NewsItemXs;
+export default NewsItemXs

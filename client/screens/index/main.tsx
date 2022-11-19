@@ -1,7 +1,6 @@
 // Import global npm modules
 import React, { Suspense } from 'react'
 
-
 import HomeSection from './ui/home/homeSection'
 import AboutSection from './ui/about/aboutSection'
 import MediaSection from './ui/media/mediaSection'

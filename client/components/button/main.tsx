@@ -24,13 +24,13 @@ const Button: FC<Props> = ({
   // Return jsx
   return <Main aria-label='send message'>
     <svg width="274" height="61">
-        <defs>
-            <linearGradient id="grad1">
-                <stop offset="0%" stopColor="#FF8282"/>
-                <stop offset="100%" stopColor="#E178ED" />
-            </linearGradient>
-        </defs>
-        <rect x="7" y="7" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
+      <defs>
+        <linearGradient id="grad1">
+          <stop offset="0%" stopColor="#FF8282"/>
+          <stop offset="100%" stopColor="#E178ED" />
+        </linearGradient>
+      </defs>
+      <rect x="7" y="7" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
     </svg>
     <ButtonText>Отправить обращение</ButtonText>
   </Main>

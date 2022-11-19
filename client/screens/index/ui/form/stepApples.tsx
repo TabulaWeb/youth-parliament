@@ -1,70 +1,80 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
 const options = [
-    {
-        id: 1,
-        value: 'qwerty',
-    },
-    {
-        id: 2,
-        value: 'qwerty',
-    },
-    {
-        id: 3,
-        value: 'qwerty',
-    },
-    {
-        id: 4,
-        value: 'qwerty',
-    }
-];
+  {
+    id: 1,
+    value: 'qwerty'
+  },
+  {
+    id: 2,
+    value: 'qwerty'
+  },
+  {
+    id: 3,
+    value: 'qwerty'
+  },
+  {
+    id: 4,
+    value: 'qwerty'
+  }
+]
 
 const StepApples = ({ step }:any) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
 
-    const toggling = () => setIsOpen(!isOpen);
+  const [
+    isOpen,
+    setIsOpen
+  ] = useState(false)
+  const [
+    selectedOption,
+    setSelectedOption
+  ] = useState(null)
 
-    const onOptionClicked = (value:any) => () => {
-        setSelectedOption(value);
-        setIsOpen(false);
-        console.log(selectedOption);
-    };
+  const toggling = () => setIsOpen(!isOpen)
 
-    return <Container step={step}>
-        <CustomSelect>
-            <Placeholder>Социальный статус</Placeholder>
-            <DropDownMain>
-                <DropDownContainer>
-                    <DropDownHeader onClick={toggling}>
-                        {selectedOption || ''}
-                    </DropDownHeader>
+  const onOptionClicked = (value:any) => () => {
+
+    setSelectedOption(value)
+    setIsOpen(false)
+    // console.log(selectedOption)
+  
+  }
+
+  return <Container step={step}>
+    <CustomSelect>
+      <Placeholder>Социальный статус</Placeholder>
+      <DropDownMain>
+        <DropDownContainer>
+          <DropDownHeader onClick={toggling}>
+            {selectedOption || ''}
+          </DropDownHeader>
                     
-                    <DropDownListContainer isOpen={isOpen}>
-                        <DropDownList isOpen={isOpen}>
-                        {options.map(option => (
-                            <ListItem key={option.id} onClick={onOptionClicked(option.value)}>
-                            {option.value}
-                            </ListItem>
-                        ))}
-                        </DropDownList>
-                    </DropDownListContainer>
+          <DropDownListContainer isOpen={isOpen}>
+            <DropDownList isOpen={isOpen}>
+              {options.map(option => (
+                <ListItem key={option.id} onClick={onOptionClicked(option.value)}>
+                  {option.value}
+                </ListItem>
+              ))}
+            </DropDownList>
+          </DropDownListContainer>
                     
-                </DropDownContainer>
-            </DropDownMain>
-        </CustomSelect>
+        </DropDownContainer>
+      </DropDownMain>
+    </CustomSelect>
 
-        <TextField>
-            <Placeholder>Электронная почта</Placeholder>
-            <Input />
-        </TextField>
+    <TextField>
+      <Placeholder>Электронная почта</Placeholder>
+      <Input />
+    </TextField>
 
-        <TextField>
-            <Placeholder>Контактный телефон</Placeholder>
-            <Input />
-        </TextField>
-    </Container>
+    <TextField>
+      <Placeholder>Контактный телефон</Placeholder>
+      <Input />
+    </TextField>
+  </Container>
+
 }
 
 const Container = styled.div<any>`
@@ -138,7 +148,7 @@ const DropDownMain = styled.div`
 const DropDownListContainer = styled.div<any>`
     transition: height .4s;
     position: absolute;
-    height: ${({isOpen}) => isOpen ? '200' : '0'}px;
+    height: ${({ isOpen }) => isOpen ? '200' : '0'}px;
     overflow-y: scroll;
     background: #FFFCF9;
     box-shadow: 2px 2px 12px rgba(141, 141, 141, 0.2);

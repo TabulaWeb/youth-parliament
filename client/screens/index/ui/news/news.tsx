@@ -7,13 +7,15 @@ import NewsItem from './newsItem'
 import NewsItemXs from './newsItemXs'
 
 const News = () => {
-    return <>
-        <Title>Новости</Title>
-        <NewsItem />
-        <NewsItemXs />
-        <Pagination />
-        <Loader />
-    </>
+
+  return <>
+    <Title>Новости</Title>
+    <NewsItem />
+    <NewsItemXs />
+    <Pagination />
+    <Loader />
+  </>
+
 }
 
 const Title = styled.h2`
