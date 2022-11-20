@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import InputMask from 'react-input-mask'
+import ToolTip from '#/components/tool'
 
 const options = [
   {
@@ -64,21 +65,21 @@ const StepPersonal = (props: any) => {
     setSelectedOption(value)
     props.setSocial(value)
     // setIsOpen(false);
-  
+
   }
 
   // Ошибка в имени
   const checkErrorName = (event: any) => {
 
     event.target.value.length < 2 ? setErrorName(true) : setErrorName(false)
-  
+
   }
 
   // Ошибка в фамилии
   const checkErrorLastname = (event: any) => {
 
     event.target.value.length < 2 ? setLastname(true) : setLastname(false)
-  
+
   }
 
   // Ошибка в социальном статусе
@@ -87,14 +88,14 @@ const StepPersonal = (props: any) => {
   const checkErrorEmail = (event: any) => {
 
     event.target.value.includes('@') ? setErrorEmail(false) : setErrorEmail(true)
-  
+
   }
 
   // Ошибка в телефоне
   const checkErrorPhone = (event: any) => {
 
     event.target.value.includes('_') ? setErrorPhone(false) : setErrorPhone(true)
-  
+
   }
 
   return <Container step={props.step}>
@@ -130,7 +131,10 @@ const StepPersonal = (props: any) => {
     </TextField>
 
     <CustomSelect>
-      <Placeholder>Социальный статус</Placeholder>
+      <Placeholder>
+        Социальный статус
+        <ToolTip text='123' />
+      </Placeholder>
       <DropDownMain>
         <DropDownContainer>
           <DropDownHeader onClick={toggling}>
@@ -163,7 +167,8 @@ const StepPersonal = (props: any) => {
     <TextField>
       <Placeholder>Электронная почта</Placeholder>
       <InputContainer>
-        <Input type='email'
+        <Input
+          type='email'
           onChange={(event) => props.setEmail(event.target.value)}
           onBlur={(event) => checkErrorEmail(event)}
           onFocus={() => setErrorEmail(false)}
@@ -209,6 +214,8 @@ const TextField = styled.div`
 
 const Placeholder = styled.p`
     width: 225px;
+    display: flex;
+    flex-direction: row;
     margin-bottom: 0;
 `
 
