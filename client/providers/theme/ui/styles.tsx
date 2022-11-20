@@ -6,7 +6,7 @@ import { Global, Theme, css } from '@emotion/react'
 const Styles: FC = () => {
 
   // Return jsx
-  return <Global styles={Main}/>
+  return <Global styles={Main} />
 
 }
 
@@ -16,6 +16,7 @@ const Main = (theme: Theme) => css`
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   /* Set font-face styles */
@@ -35,7 +36,7 @@ const Main = (theme: Theme) => css`
 
   /* Set tag styles */
   body {
-    
+    overflow-x: hidden
     line-height: 1.2;
     margin: 0;
     background-color: ${theme.background};
@@ -75,6 +76,7 @@ const Main = (theme: Theme) => css`
   }
   a {
     color: ${theme.primary};
+    text-decoration: none;
   }
 
 `
