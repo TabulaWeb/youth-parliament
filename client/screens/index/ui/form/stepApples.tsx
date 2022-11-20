@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
+import ToolTip from '#/components/tool'
+
 const options = [
   {
     id: 1,
@@ -20,7 +22,7 @@ const options = [
   }
 ]
 
-const StepApples = ({ step }:any) => {
+const StepApples = ({ step }: any) => {
 
   const [
     isOpen,
@@ -33,34 +35,46 @@ const StepApples = ({ step }:any) => {
 
   const toggling = () => setIsOpen(!isOpen)
 
-  const onOptionClicked = (value:any) => () => {
+  const onOptionClicked = (value: any) => () => {
 
     setSelectedOption(value)
     setIsOpen(false)
     // console.log(selectedOption)
-  
+
   }
 
   return <Container step={step}>
     <CustomSelect>
-      <Placeholder>Социальный статус</Placeholder>
+      <Placeholder>
+        Социальный статус
+        <ToolTip text='123' />
+      </Placeholder>
       <DropDownMain>
         <DropDownContainer>
           <DropDownHeader onClick={toggling}>
             {selectedOption || ''}
+            <DropdownIcon open={isOpen}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.43151 4.63119C1.5956 4.46715 1.81812 4.375 2.05014 4.375C2.28216 4.375 2.50467 4.46715 2.66876 4.63119L7.00001 8.96244L11.3313 4.63119C11.4963 4.4718 11.7173 4.3836 11.9467 4.3856C12.1762 4.38759 12.3956 4.47961 12.5579 4.64185C12.7201 4.80408 12.8121 5.02354 12.8141 5.25296C12.8161 5.48238 12.7279 5.70341 12.5685 5.86844L7.61864 10.8183C7.45455 10.9823 7.23203 11.0745 7.00001 11.0745C6.76799 11.0745 6.54547 10.9823 6.38139 10.8183L1.43151 5.86844C1.26747 5.70435 1.17532 5.48183 1.17532 5.24981C1.17532 5.01779 1.26747 4.79527 1.43151 4.63119Z" fill="#323232" />
+              </svg>
+            </DropdownIcon>
           </DropDownHeader>
-                    
+
           <DropDownListContainer isOpen={isOpen}>
             <DropDownList isOpen={isOpen}>
               {options.map(option => (
                 <ListItem key={option.id} onClick={onOptionClicked(option.value)}>
-                  {option.value}
+                  <input id={`one${option.id}`} type='radio' name='socialStatus' />
+                  <label htmlFor={`one${option.id}`} >
+                    <span></span>
+                    {option.value}
+                  </label>
                 </ListItem>
               ))}
             </DropDownList>
           </DropDownListContainer>
-                    
         </DropDownContainer>
+        <TextError>qwe</TextError>
       </DropDownMain>
     </CustomSelect>
 
@@ -98,6 +112,8 @@ const TextField = styled.div`
 
 const Placeholder = styled.p`
     width: 225px;
+    display: flex;
+    align-items: center;
     margin-bottom: 0;
 `
 
@@ -134,7 +150,7 @@ const DropDownHeader = styled.div`
     background-color: #fff;
     border-radius: 8px;
     margin-bottom: 8px;
-
+    cursor: pointer;
     font-weight: 400;
     font-size: 13px;
     color: #323232;
@@ -167,7 +183,7 @@ const DropDownListContainer = styled.div<any>`
 `
 
 const DropDownList = styled.ul<any>`
-    padding: 24px;
+    padding: 24px 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -187,8 +203,29 @@ const DropDownList = styled.ul<any>`
 `
 
 const ListItem = styled.li`
-padding-left: 0;
+  padding-left: 0;
   list-style: none;
+`
+
+const DropdownIcon = styled.div<any>`
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 17px;
+    transition: .4s;
+
+    rotate: ${({ open }) => open ? '180deg' : '0deg'};
+`
+
+const TextError = styled.p`
+  color: #952F2F;
+  position: absolute;
+  margin-bottom: 0;
+  bottom: -15px;
+  left: 16px;
+  opacity: 0;
+  pointer-events: none;
 `
 
 export default StepApples

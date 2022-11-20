@@ -38,39 +38,39 @@ const Slider = () => {
     indexSlide,
     setIndexSlide
   ] = useState(1)
-    
+
   return <>
     <Swiper
       spaceBetween={50}
       slidesPerView={1}
-      onSlideChange={(swiper) => setIndexSlide(swiper.realIndex+1)}
-      onSwiper={(swiper) => {}}
+      onSlideChange={(swiper) => setIndexSlide(swiper.realIndex + 1)}
+      onSwiper={(swiper) => { }}
       loop={true}
       className='sliderAbout'
     >
       <SlideNav slot="container-start">
-        <SliderButton image={'назад'} next={false}/>
-        <SliderButton image={'вперед'} next={true}/>
+        <SliderButton image={'назад'} next={false} />
+        <SliderButton image={'вперед'} next={true} />
       </SlideNav>
-        
+
       {slide.map(item => {
 
         return <SwiperSlide key={item.id} className='slideAbout'>
           {({ isActive }) => (
             <>
               <SlideContainer className='slideImageAbout' active={isActive}>
-                <SliderBackground src={item.image} 
+                <SliderBackground src={item.image}
                   fill
                   alt='slider background' />
               </SlideContainer>
-                        
+
               <SlideText>{item.text}</SlideText>
             </>
           )}
         </SwiperSlide>
-      
+
       })}
-        
+
       <ProgressBar max={slide.length} value={indexSlide} />
       <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
     </Swiper>
