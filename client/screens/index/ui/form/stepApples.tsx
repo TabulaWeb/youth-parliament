@@ -23,42 +23,60 @@ const options = [
   }
 ]
 
-const StepApples = ({ step }: any) => {
+const StepApples = ({ step, setTitle, title }: any) => {
 
   const [
-    isOpen,
-    setIsOpen
+    errorTitle,
+    setErrorTitle
   ] = useState(false)
-  const [
-    selectedOption,
-    setSelectedOption
-  ] = useState(null)
 
-  const toggling = () => setIsOpen(!isOpen)
+  const [limit, setLimit] = useState(false)
 
-  const onOptionClicked = (value: any) => () => {
+  // Ошибка в имени
+  const checkErrorTitle = (event: any) => {
 
-    setSelectedOption(value)
-    setIsOpen(false)
-    // console.log(selectedOption)
+    event.target.value.length < 2 ? setErrorTitle(true) : setErrorTitle(false)
+
+  }
+
+  // ограничение по кол-ву текста
+  const limitText = (event: any) => {
+    setLimit(true)
+
 
   }
 
   return <Container step={step}>
-    <Select answers={options} tooltip='123' placeholder='Социальный статус' />
+    <Select answers={options} tooltip='123' placeholder='Адресат обращения' />
 
-    <Select answers={options} tooltip='123' placeholder='Социальный статус' />
-
-    <Select answers={options} tooltip='123' placeholder='Социальный статус' />
+    <Select answers={options} tooltip='123' placeholder='Тематика обращения' />
 
     <TextField>
-      <Placeholder>Электронная почта</Placeholder>
-      <Input />
+      <Placeholder>Заголовок, краткая суть</Placeholder>
+
+      <InputContainer>
+        <Input
+          onChange={(event) => setTitle(event.target.value)}
+          onBlur={(event) => checkErrorTitle(event)}
+          onFocus={() => setErrorTitle(false)}
+        />
+        <TextError>qwe</TextError>
+        {/* <TextCount>{title.length} / 70</TextCount> */}
+      </InputContainer>
     </TextField>
 
     <TextField>
-      <Placeholder>Контактный телефон</Placeholder>
-      <Input />
+      <Placeholder>Обращение</Placeholder>
+
+      <InputContainer>
+        <Input
+          onChange={(event) => setTitle(event.target.value)}
+          onBlur={(event) => checkErrorTitle(event)}
+          onFocus={() => setErrorTitle(false)}
+        />
+        <TextError>qwe</TextError>
+        {/* <TextCount>{title.length} / 70</TextCount> */}
+      </InputContainer>
     </TextField>
   </Container>
 
@@ -102,92 +120,9 @@ const Input = styled.input`
     color: #323232;
 `
 
-const CustomSelect = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0 60px;
-`
-
-// Select
-const DropDownContainer = styled.div`
-    width: 100%;
-`
-
-const DropDownHeader = styled.div`
-    width: 100%;
-    height: 48px;
-    padding: 15px 25px;
-    border: 1.5px solid rgba(50, 50, 50, 0.5);
-    background-color: #fff;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    font-weight: 400;
-    font-size: 13px;
-    color: #323232;
-`
-
-const DropDownMain = styled.div`
-    width: 100%;
+const InputContainer = styled.div`
     position: relative;
-`
-
-const DropDownListContainer = styled.div<any>`
-    transition: height .4s;
-    position: absolute;
-    height: ${({ isOpen }) => isOpen ? '200' : '0'}px;
-    overflow-y: scroll;
-    background: #FFFCF9;
-    box-shadow: 2px 2px 12px rgba(141, 141, 141, 0.2);
-    border-radius: 8px;
     width: 100%;
-
-    &::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        box-shadow: inset 0 0 10px 10px #C1BEBC;
-        border: solid 3px transparent;
-        border-radius: 100px;
-    }
-`
-
-const DropDownList = styled.ul<any>`
-    padding: 24px 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px 0;
-    margin-top: 0;
-
-    &::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        box-shadow: inset 0 0 10px 10px #C1BEBC;
-        border: solid 3px transparent;
-        border-radius: 100px;
-    }
-
-`
-
-const ListItem = styled.li`
-  padding-left: 0;
-  list-style: none;
-`
-
-const DropdownIcon = styled.div<any>`
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 17px;
-    transition: .4s;
-
-    rotate: ${({ open }) => open ? '180deg' : '0deg'};
 `
 
 const TextError = styled.p`
@@ -198,6 +133,17 @@ const TextError = styled.p`
   left: 16px;
   opacity: 0;
   pointer-events: none;
+`
+
+const TextCount = styled.p`
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+
+  color: rgba(50, 50, 50, 0.5);
+  font-family: 'Golos UI';
+  font-weight: 400;
+  font-size: 13px;
 `
 
 export default StepApples
