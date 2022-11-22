@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "appeals",
+  "info": {
+    "singularName": "appeal",
+    "pluralName": "appeals",
+    "displayName": "appeal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
+    },
+    "patronymic": {
+      "type": "string"
+    },
+    "social": {
+      "type": "enumeration",
+      "enum": [
+        "Беженец",
+        "Безработный"
+      ]
+    },
+    "phone": {
+      "type": "string"
+    },
+    "adress": {
+      "type": "enumeration",
+      "enum": [
+        "test"
+      ]
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "test"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "appeal": {
+      "type": "text"
+    },
+    "file": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "publish": {
+      "type": "boolean"
+    },
+    "answer": {
+      "type": "text"
+    }
+  }
+}

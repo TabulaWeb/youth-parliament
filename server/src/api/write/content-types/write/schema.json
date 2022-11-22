@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "writes",
+  "info": {
+    "singularName": "write",
+    "pluralName": "writes",
+    "displayName": "write",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

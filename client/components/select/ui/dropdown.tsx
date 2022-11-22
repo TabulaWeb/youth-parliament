@@ -102,6 +102,7 @@ const TextError = styled.p`
 const DropDownListContainer = styled.div<any>`
   transition: height .4s;
   position: absolute;
+  z-index: 1;
   height: ${({ isOpen }) => isOpen ? '200' : '0'}px;
   overflow-y: scroll;
   background: #FFFCF9;

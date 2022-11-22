@@ -40,6 +40,7 @@ const Form = ({
   ] = useState()
 
   const [title, setTitle] = useState()
+  const [address, setAddress] = useState()
 
   return <Container>
     <FormHeader>
@@ -179,7 +180,7 @@ const Form = ({
         setSocial={setSocial}
         social={social}
       />
-      <StepApples step={step} setTitle={setTitle} title={title} />
+      <StepApples step={step} setTitle={setTitle} title={title} setAddress={setAddress} address={address} />
       <StepReady step={step} />
 
       {step < 4 ?
