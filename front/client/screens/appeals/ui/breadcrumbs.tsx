@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Breadctumbs = () => {
 
   return <Container>
-    <Link href='/'><TextLink>Главная <SpanText>/</SpanText></TextLink></Link>
+    <TextLink href='/'>Главная <SpanText>/</SpanText></TextLink>
     <Text>Обращение №123 <SpanText>/</SpanText></Text>
   </Container>
 
@@ -18,7 +18,7 @@ const Container = styled.div`
     margin-bottom: 40px;
 `
 
-const TextLink = styled.p`
+const TextLink = styled(Link)`
     /* font-family: 'Golos UI'; */
     font-style: normal;
     font-weight: 400;

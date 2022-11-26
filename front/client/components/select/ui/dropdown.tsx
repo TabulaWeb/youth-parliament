@@ -55,7 +55,7 @@ const Dropdown: FC<Props> = ({ answers }) => {
 
 }
 
-const Main = styled.p`
+const Main = styled.div`
   width: 100%;
   position: relative;
 `

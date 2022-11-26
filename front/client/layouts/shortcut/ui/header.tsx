@@ -75,18 +75,34 @@ const Header = () => {
       </Logo>
 
       <Nav>
-        <Link href="/#parliament" scroll={true} onClick={(e: any) => handleClick(e, 'parliament')}>
-          <LinkText>Парламент</LinkText>
-        </Link>
-        <Link href="/#media" scroll={true} onClick={(e: any) => handleClick(e, 'media')}>
-          <LinkText>О нас пишут</LinkText>
-        </Link>
-        <Link href="/#news" scroll={true} onClick={(e: any) => handleClick(e, 'news')}>
-          <LinkText>Новости</LinkText>
-        </Link>
-        <Link href="/#form" scroll={true} onClick={(e: any) => handleClick(e, 'form')}>
-          <LinkText>Обращения</LinkText>
-        </Link>
+        <LinkText
+          href="/#parliament"
+          scroll={true}
+          onClick={(e: any) => handleClick(e, 'parliament')}
+        >
+          Парламент
+        </LinkText>
+        <LinkText
+          href="/#media"
+          scroll={true}
+          onClick={(e: any) => handleClick(e, 'media')}
+        >
+          О нас пишут
+        </LinkText>
+        <LinkText
+          href="/#news"
+          scroll={true}
+          onClick={(e: any) => handleClick(e, 'news')}
+        >
+          Новости
+        </LinkText>
+        <LinkText
+          href="/#form"
+          scroll={true}
+          onClick={(e: any) => handleClick(e, 'form')}
+        >
+          Обращения
+        </LinkText>
       </Nav>
 
       <Burger>
@@ -101,18 +117,10 @@ const Header = () => {
 
         <BurgerMenu active={active}>
           <BurgerNav>
-            <Link href='/'>
-              <BurgerLink>Парламент</BurgerLink>
-            </Link>
-            <Link href='/'>
-              <BurgerLink>О нас пишут</BurgerLink>
-            </Link>
-            <Link href='/'>
-              <BurgerLink>Новости</BurgerLink>
-            </Link>
-            <Link href='/'>
-              <BurgerLink>Обращения</BurgerLink>
-            </Link>
+            <BurgerLink href='/'>Парламент</BurgerLink>
+            <BurgerLink href='/'>О нас пишут</BurgerLink>
+            <BurgerLink href='/'>Новости</BurgerLink>
+            <BurgerLink href='/'>Обращения</BurgerLink>
           </BurgerNav>
         </BurgerMenu>
       </Burger>
@@ -135,7 +143,7 @@ const BurgerNav = styled.nav`
   gap: 24px 0;
 `
 
-const BurgerLink = styled.p`
+const BurgerLink = styled(Link)`
   cursor: pointer;
   color: #323232;
 `
@@ -265,7 +273,7 @@ const BurgerMenu = styled.div<any>`
   `
 
 // Create LinkText styled component
-const LinkText = styled.p`
+const LinkText = styled(Link)`
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;

@@ -17,7 +17,7 @@ const Placeholder: FC<Props> = ({ placeholder, tooltip }) => {
 
 }
 
-const Main = styled.p`
+const Main = styled.div`
     width: 225px;
     display: flex;
     align-items: center;

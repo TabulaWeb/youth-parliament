@@ -20,7 +20,7 @@ const Container: FC<Props> = ({
 }
 
 // Create Main styled component
-const Main = styled.div`
+const Main = styled.span`
   width: 20px;
   height: 20px;
   margin-left: 8px;
