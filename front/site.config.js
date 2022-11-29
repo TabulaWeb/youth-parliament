@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'youth-site',
-      script: 'next start -p 6000',
+      script: 'next start -p 5000',
       watch: './',
       env: {
         MODE: 'development',
