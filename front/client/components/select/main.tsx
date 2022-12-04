@@ -1,8 +1,8 @@
-import { FC } from "react"
+import { FC } from 'react'
 
-import Container from "./ui/container"
-import Placeholder from "./ui/placehilder";
-import Dropdown from "./ui/dropdown";
+import Container from './ui/container'
+import Placeholder from './ui/placehilder'
+import Dropdown from './ui/dropdown'
 
 interface Props {
   answers: any;
@@ -10,7 +10,11 @@ interface Props {
   placeholder?: any;
 }
 
-const Select: FC<Props> = ({ answers, tooltip, placeholder }) => {
+const Select: FC<Props> = ({
+  answers,
+  tooltip,
+  placeholder
+}) => {
 
   return <Container>
     <Placeholder tooltip={tooltip} placeholder={placeholder} />

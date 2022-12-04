@@ -2,7 +2,7 @@
 import { FC } from 'react'
 
 // Import client proveders modules
-import Swr from '#/providers/swr'
+// import Swr from '#/providers/swr'
 import Theme from '#/providers/theme'
 
 // Create Props interface

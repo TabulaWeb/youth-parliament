@@ -1,8 +1,8 @@
-import { FC, useState } from "react"
+import { FC, useState } from 'react'
 import styled from '@emotion/styled'
 
 interface Props {
-  aswsers: any;
+  answers: any;
 }
 
 const Dropdown: FC<Props> = ({ answers }) => {
@@ -38,7 +38,7 @@ const Dropdown: FC<Props> = ({ answers }) => {
 
       <DropDownListContainer isOpen={isOpen}>
         <DropDownList isOpen={isOpen}>
-          {answers.map(answer => (
+          {answers.map((answer:any) => (
             <ListItem key={answer.id} onClick={onOptionClicked(answer.value)}>
               <input id={`one${answer.id}`} type='radio' name='socialStatus' />
               <label htmlFor={`one${answer.id}`} >
