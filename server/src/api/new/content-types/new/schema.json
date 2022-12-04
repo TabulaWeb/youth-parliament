@@ -26,13 +26,10 @@
     "title": {
       "type": "string"
     },
-    "date": {
-      "type": "datetime"
-    },
     "tag": {
       "type": "text"
     },
-    "test": {
+    "text": {
       "type": "richtext"
     }
   }

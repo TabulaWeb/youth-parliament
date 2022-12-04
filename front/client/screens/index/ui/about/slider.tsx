@@ -1,5 +1,7 @@
+'use client'
+
 // Import global npm modules
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
@@ -8,36 +10,24 @@ import SliderButton from './sliderButton'
 
 // Import Swiper styles
 import 'swiper/css'
-
-const slide = [
-  {
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'qwerty'
-  },
-  {
-    id: 2,
-    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'qwe'
-  },
-  {
-    id: 3,
-    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: ''
-  },
-  {
-    id: 4,
-    image: 'https://images.unsplash.com/photo-1564381800757-0425455b541d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: ''
-  }
-]
+import get from 'axios'
 
 const Slider = () => {
+  const [slide, setSlide] = useState([])
+
+  useEffect(() => {
+    get('http://localhost:1337/api/events?populate=slide').then((res) => {
+      setSlide(res.data.data)
+    })
+    
+  }, [])
 
   const [
     indexSlide,
     setIndexSlide
   ] = useState(1)
+
+  // const data = Array.isArray(slide) ? slide : []
 
   return <>
     <Swiper
@@ -53,18 +43,18 @@ const Slider = () => {
         <SliderButton image={'вперед'} next={true} />
       </SlideNav>
 
-      {slide.map(item => {
+      {slide.map((item:any) => {
 
         return <SwiperSlide key={item.id} className='slideAbout'>
           {({ isActive }) => (
             <>
               <SlideContainer className='slideImageAbout' active={isActive}>
-                <SliderBackground src={item.image}
+                <SliderBackground src={`http://localhost:1337${item.attributes.slide.data.attributes.url}`}
+                
                   fill
                   alt='slider background' />
               </SlideContainer>
-
-              <SlideText>{item.text}</SlideText>
+              <SlideText>{item.attributes.title}</SlideText>
             </>
           )}
         </SwiperSlide>

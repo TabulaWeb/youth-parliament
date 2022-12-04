@@ -4,7 +4,7 @@ const nextConfig = {
   experimental: { concurrentFeatures: true },
   
   // compiler: { emotion: true },
-  images: { domains: ['images.unsplash.com'] }
+  images: { domains: ['images.unsplash.com', 'localhost'] }
 }
 
 module.exports = nextConfig

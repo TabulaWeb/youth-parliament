@@ -14,7 +14,7 @@
   "attributes": {
     "slide": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",

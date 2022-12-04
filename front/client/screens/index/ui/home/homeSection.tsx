@@ -103,7 +103,7 @@ const LinkToForm = styled.div`
     bottom: 40px;
     max-width: 1200px;
     padding: 0 4%;
-    z-index: 1;
+    z-index: 10;
 
     @media screen and (max-width: 991px)  {
         padding: 0;

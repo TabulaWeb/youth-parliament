@@ -14,10 +14,10 @@ interface Props {
 const Theme: FC<Props> = ({ children }) => {
 
   // Return jsx
-  return <Provider>
+  return <>
     <Styles/>
     {children}
-  </Provider>
+  </>
 
 }
 

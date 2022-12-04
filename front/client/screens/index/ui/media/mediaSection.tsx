@@ -1,5 +1,5 @@
 // Import global npm modules
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 
@@ -9,56 +9,18 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SliderButton from './sliderButton'
 
 import Container from '../container'
-
-const slide = [
-  {
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Финал лиги дебатов «ИСТИНА»'
-  },
-  {
-    id: 2,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Слет молодежных советов «С властью на равных»'
-  },
-  {
-    id: 3,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Псковский велопарад Тинькофф'
-  },
-  {
-    id: 4,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Финал лиги дебатов «ИСТИНА»'
-  },
-  {
-    id: 5,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Финал лиги дебатов «ИСТИНА»'
-  },
-  {
-    id: 6,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Финал лиги дебатов «ИСТИНА»'
-  },
-  {
-    id: 7,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Финал лиги дебатов «ИСТИНА»'
-  },
-  {
-    id: 8,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Финал лиги дебатов «ИСТИНА»'
-  },
-  {
-    id: 9,
-    image: 'https://images.unsplash.com/photo-1661566306732-fe7ef26a8003?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    text: 'Финал лиги дебатов «ИСТИНА»'
-  }
-]
+import get from 'axios'
 
 const MediaSection = () => {
+
+  const [slide, setSlide] = useState([])
+
+  useEffect(() => {
+    get('http://localhost:1337/api/writes?populate=image').then((res) => {
+      setSlide(res.data.data)
+    })
+    
+  }, [])
 
   const [
     activeSlide,
@@ -121,8 +83,8 @@ const MediaSection = () => {
           return (
             <SwiperSlide key={item.id} className='slideMedia'>
               <SlideContainer className='slideMediaContainer'>
-                <SliderBackground src={item.image} fill alt='slider background' />
-                <SlideText>{item.text}</SlideText>
+                <SliderBackground src={item.attributes.image.data.attributes.url} fill alt='slider background' />
+                <SlideText>{item.attributes.title}</SlideText>
               </SlideContainer>
             </SwiperSlide>
           )
