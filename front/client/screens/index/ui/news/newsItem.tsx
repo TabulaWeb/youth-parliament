@@ -3,61 +3,42 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Link from 'next/link'
+import parse from 'html-react-parser'
 
 // ...
-const NewsItem = ({ pageIndex }:any) => {
-
+const NewsItem = ({ data }:any) => {
+  
   return <Container>
-    <MainLink href='news/1'>
+    <MainLink href='news/1' key={data[0].id}>
       <MainNews className='newsItemMain'>
-        <MainNewsImage className='imageMainNews' src='/images/photo.png' width='100' height='316' alt='news image' />
+        <MainNewsImage className='imageMainNews' src={`http://localhost:1337${data[0].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
         <MainNewsMeta>
-          <Tag>#МолодежныйПарламент</Tag>
+          <Tag>{data[0].attributes.tag}</Tag>
           <Data>4 авг <span></span> 18:00</Data>
         </MainNewsMeta>
-        <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+        <MainNewsTitle>{data[0].attributes.title}</MainNewsTitle>
         <MainNewsText>
-          <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-          <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+          {parse(data[0].attributes.text)}
         </MainNewsText>
       </MainNews>
     </MainLink>
     <OtherNews>
-      <OtherNewsItem className='newsItemOther'>
-        <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
+      {data.slice(1).map((item: any) => <OtherNewsItem className='newsItemOther' key={item.id}>
+        <OtherNewsImage src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} width='184' height='184' alt='news image' />
         <OtherContent>
           <OtherNewsMeta>
-            <Tag>#МолодежныйПарламент</Tag>
+            <Tag>{item.attributes.tag}</Tag>
             <Data>4 авг</Data>
           </OtherNewsMeta>
-          <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
-          <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
+          <OtherNewsTitle>{item.attributes.title}</OtherNewsTitle>
+          <OtherNewsText>
+            {parse(item.attributes.text)}
+          </OtherNewsText>
         </OtherContent>
       </OtherNewsItem>
+      )}
+      
 
-      <OtherNewsItem className='newsItemOther'>
-        <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
-        <OtherContent>
-          <OtherNewsMeta>
-            <Tag>#МолодежныйПарламент</Tag>
-            <Data>4 авг</Data>
-          </OtherNewsMeta>
-          <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
-          <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
-        </OtherContent>
-      </OtherNewsItem>
-
-      <OtherNewsItem className='newsItemOther'>
-        <OtherNewsImage src='/images/otherPhoto.png' width='184' height='184' alt='news image' />
-        <OtherContent>
-          <OtherNewsMeta>
-            <Tag>#МолодежныйПарламент</Tag>
-            <Data>4 авг</Data>
-          </OtherNewsMeta>
-          <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
-          <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
-        </OtherContent>
-      </OtherNewsItem>
     </OtherNews>
   </Container>
 

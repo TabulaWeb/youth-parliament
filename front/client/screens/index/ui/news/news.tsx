@@ -14,32 +14,38 @@ import get from 'axios'
 const News = () => {
   const [news, setNews] = useState([])
   const [page, setPage] = useState()
+  const [loader, setLoader] = useState(false)
 
   useEffect(() => {
+    setLoader(false)
     get(`http://localhost:1337/api/news?pagination[page]=1&pagination[pageSize]=4&populate=image`).then((res) => {
       setNews(res.data.data)
       console.log(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
+      setLoader(true)
     })
   }, [])
 
   const changePage = (page: any) => {
+    setLoader(false)
     get(`http://localhost:1337/api/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
       setNews(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
       console.log(res.data)
+      setLoader(true)
     })
   }
 
   return <>
     <Title>Новости</Title>
 
-    <NewsItem 
+    {loader && <NewsItem 
       data={news}
-    />
-    <NewsItemXs 
+    />}
+
+    {loader && <NewsItemXs 
       data={news}
-    />
+    />}
 
     <PaginationContainer>
       <Pagination 
