@@ -3,10 +3,10 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Picture = () => {
+const Picture = ({image}: any) => {
 
   return <Container>
-    <PostPicrute src='/images/photo.png' width='100' height='100' alt='post image' />
+    <PostPicrute src={`http://localhost:1337${image}`} width='100' height='100' alt='post image' />
 
     <SocialLink>
       <Link href=''>
@@ -46,8 +46,8 @@ const Container = styled.div`
 `
 
 const PostPicrute = styled(Image)`
-    max-width: 460px;
-    max-width: 460px;
+    width: 100%;
+    height: 460px;
 
     object-fit: cover;
 `
@@ -61,7 +61,10 @@ const SocialLink = styled.div`
 `
 
 const TextLink = styled.p`
-    
+  transition: .2s;
+  &:hover svg path{
+    fill: #2F4395;
+  }
 `
 
 const SocialText = styled.p`

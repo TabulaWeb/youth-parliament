@@ -7,14 +7,22 @@ import parse from 'html-react-parser'
 
 // ...
 const NewsItem = ({ data }:any) => {
+
+  const renderDate = (date) => {
+    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+    let time = date.split('T')[1]
+    let month = date.split('T')[0]
+
+    return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  }
   
   return <Container>
-    <MainLink href='news/1' key={data[0].id}>
+    <MainLink href={`news/${data[0].id}`} key={data[0].id}>
       <MainNews className='newsItemMain'>
         <MainNewsImage className='imageMainNews' src={`http://localhost:1337${data[0].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
         <MainNewsMeta>
           <Tag>{data[0].attributes.tag}</Tag>
-          <Data>4 авг <span></span> 18:00</Data>
+          <Data>{renderDate(data[0].attributes.createdAt)}</Data>
         </MainNewsMeta>
         <MainNewsTitle>{data[0].attributes.title}</MainNewsTitle>
         <MainNewsText>
@@ -23,12 +31,12 @@ const NewsItem = ({ data }:any) => {
       </MainNews>
     </MainLink>
     <OtherNews>
-      {data.slice(1).map((item: any) => <OtherNewsItem className='newsItemOther' key={item.id}>
+      {data.slice(1).map((item: any) => <OtherNewsItem href={`news/${item.id}`} className='newsItemOther' key={item.id}>
         <OtherNewsImage src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} width='184' height='184' alt='news image' />
         <OtherContent>
           <OtherNewsMeta>
             <Tag>{item.attributes.tag}</Tag>
-            <Data>4 авг</Data>
+            <Data>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</Data>
           </OtherNewsMeta>
           <OtherNewsTitle>{item.attributes.title}</OtherNewsTitle>
           <OtherNewsText>
@@ -132,7 +140,7 @@ const MainNewsText = styled.div`
 `
 
 // ...
-const OtherNewsItem = styled.div`
+const OtherNewsItem = styled(Link)`
     display: flex;
     flex-direction: row;
     gap: 0 24px;

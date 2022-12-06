@@ -1,17 +1,26 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Title = () => {
+const Title = ({title, date, tag}: any) => {
+
+    const renderDate = (date: any) => {
+        const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+        let time = date.split('T')[1]
+        let month = date.split('T')[0]
+    
+        console.log()
+    
+        return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+      }
+
     return <Container>
-        <TitleText>Активная форумная кампания проходит по всей стране ✅</TitleText>
+        <TitleText>{title}</TitleText>
 
         <MetaData>
-            <Tag>#МолодежныйПарламент</Tag>
+            <Tag>{tag}</Tag>
 
             <Date>
-                <DateText>4 авг</DateText>
-                <Seporator></Seporator>
-                <TimeText>18:00</TimeText>
+                {renderDate(date)}
             </Date>
         </MetaData>
     </Container>

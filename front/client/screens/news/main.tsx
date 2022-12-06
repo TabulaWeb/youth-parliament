@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "@emotion/styled";
+import get from 'axios'
 
 import Container from "./ui/container";
 import Breadcrumbs from "./ui/breadcrumbs";
@@ -9,16 +10,35 @@ import Tips from "./ui/tips";
 import Picture from "./ui/picture";
 
 const News = () => {
-    return <Container>
+    const [data, setData] = useState<any>()
+    const [load, setLoad] = useState(false)
+
+    useEffect(() => {
+        get(`http://localhost:1337/api/news/1?populate=image`).then((res) => {
+            setData(res.data.data)
+            console.log(res.data.data)
+            setLoad(true)
+        })
+    }, [])
+
+    return load && <Container>
         <NewsContent>
             <NewsContentText>
                 <Breadcrumbs />
-                <Title />
-                <Text />
+                <Title
+                    date={data.attributes.createdAt}
+                    tag={data.attributes.tag}
+                    title={data.attributes.title}
+                />
+                <Text 
+                    text={data.attributes.text}
+                />
             </NewsContentText>
 
             <NewsContentImage>
-                <Picture />
+                <Picture
+                    image={data.attributes.image.data.attributes.url}
+                />
             </NewsContentImage>
         </NewsContent>
 

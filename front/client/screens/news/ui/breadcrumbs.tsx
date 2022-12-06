@@ -24,6 +24,7 @@ const TextLink = styled.p`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
+    margin-bottom: 0;
     color: rgba(50, 50, 50, 0.5);
     cursor: pointer;
     transition: .4s;
