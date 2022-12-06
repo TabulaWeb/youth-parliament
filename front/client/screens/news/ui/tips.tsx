@@ -75,10 +75,11 @@ const MainNews = styled(Link)`
 
 // ...
 const MainNewsImage = styled(Image)`
-    width: 100%;
-    border-radius: 16px;
-    margin-bottom: 18px;
-    object-fit: cover;
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  object-fit: cover;
+  border-radius: 16px;
 `
 
 // ...
