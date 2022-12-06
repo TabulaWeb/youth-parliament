@@ -12,12 +12,17 @@ import Picture from "./ui/picture";
 const News = () => {
     const [data, setData] = useState<any>()
     const [load, setLoad] = useState(false)
+    const [news, setNews] = useState()
 
     useEffect(() => {
         get(`http://localhost:1337/api/news/1?populate=image`).then((res) => {
             setData(res.data.data)
             console.log(res.data.data)
             setLoad(true)
+        })
+
+        get(`http://localhost:1337/api/news?populate=image`).then((res) => {
+            setNews(res.data.data)
         })
     }, [])
 
@@ -43,7 +48,10 @@ const News = () => {
         </NewsContent>
 
         <TipsContent>
-            <Tips />
+            <Tips 
+                news={news}
+                id={data.id}
+            />
         </TipsContent>
     </Container>
 }

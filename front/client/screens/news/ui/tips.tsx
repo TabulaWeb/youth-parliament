@@ -1,44 +1,61 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
+import Link from 'next/link'
+import parse from 'html-react-parser'
 
-const Tips = () => {
+const Tips = ({news, id}: any) => {
+  
+  const getRandomInt = (max: number) => {
+    return Math.floor(Math.random() * max) != id ? Math.floor(Math.random() * max) : getRandomInt(max)
+  }
+
+  const renderDate = (date: any) => {
+    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+    let time = date.split('T')[1]
+    let month = date.split('T')[0]
+
+    return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  }
 
   return <Container>
-    <MainNews>
-      <MainNewsImage src='/images/photo.png' width='100' height='316' alt='news image' />
+    <MainNews href={`/news/${news[getRandomInt(news.length-1)].id}`}>
+      <MainNewsImage src={`http://localhost:1337${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
       <MainNewsMeta>
-        <Tag>#МолодежныйПарламент</Tag>
-        <Data>4 авг <span></span> 18:00</Data>
+        <Tag>{news[getRandomInt(news.length-1)].attributes.tag}</Tag>
+        <Data>
+          {renderDate(news[getRandomInt(news.length-1)].attributes.createdAt)}
+        </Data>
       </MainNewsMeta>
-      <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+      <MainNewsTitle>{news[getRandomInt(news.length-1)].attributes.title}</MainNewsTitle>
       <MainNewsText>
-        <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-        <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+        {parse(news[getRandomInt(news.length-1)].attributes.text)}
       </MainNewsText>
     </MainNews>
-    <MainNews>
-      <MainNewsImage src='/images/photo.png' width='100' height='316' alt='news image' />
+    <MainNews href={`/news/${news[getRandomInt(news.length-1)].id}`}>
+      <MainNewsImage src={`http://localhost:1337${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
       <MainNewsMeta>
-        <Tag>#МолодежныйПарламент</Tag>
-        <Data>4 авг <span></span> 18:00</Data>
+        <Tag>{news[getRandomInt(news.length-1)].attributes.tag}</Tag>
+        <Data>
+          {renderDate(news[getRandomInt(news.length-1)].attributes.createdAt)}
+        </Data>
       </MainNewsMeta>
-      <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+      <MainNewsTitle>{news[getRandomInt(news.length-1)].attributes.title}</MainNewsTitle>
       <MainNewsText>
-        <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-        <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+        {parse(news[getRandomInt(news.length-1)].attributes.text)}
       </MainNewsText>
     </MainNews>
-    <MainNews>
-      <MainNewsImage src='/images/photo.png' width='100' height='316' alt='news image' />
+    <MainNews href={`/news/${news[getRandomInt(news.length-1)].id}`}>
+      <MainNewsImage src={`http://localhost:1337${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
       <MainNewsMeta>
-        <Tag>#МолодежныйПарламент</Tag>
-        <Data>4 авг <span></span> 18:00</Data>
+        <Tag>{news[getRandomInt(news.length-1)].attributes.tag}</Tag>
+        <Data>
+          {renderDate(news[getRandomInt(news.length-1)].attributes.createdAt)}
+        </Data>
       </MainNewsMeta>
-      <MainNewsTitle>Активная форумная кампания проходит по всей стране  ✅</MainNewsTitle>
+      <MainNewsTitle>{news[getRandomInt(news.length-1)].attributes.title}</MainNewsTitle>
       <MainNewsText>
-        <p>Тысячи общественников и активистов стараются попасть на самые топовые форумы России. В настоящий момент заместитель председателя МП Владимир Алексеев принимает участиево Всероссийском молодёжном форуме «Территория смыслов».</p>
-        <p>Смена профильная - «политика». Именно на ней собрались коллеги с парламентов других регионов.</p>
+        {parse(news[getRandomInt(news.length-1)].attributes.text)}
       </MainNewsText>
     </MainNews>
   </Container>
@@ -52,7 +69,7 @@ const Container = styled.div`
     margin-bottom: 100px;
 `
 
-const MainNews = styled.div`
+const MainNews = styled(Link)`
     width: 100%;
 `
 
