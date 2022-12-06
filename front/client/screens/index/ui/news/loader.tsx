@@ -1,8 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from '@emotion/styled'
 
-const Loader = () => {
-    return <LoaderMore>
+const Loader = ({count, loadMore}: any) => {
+    const [index, setIndex] = useState(2)
+
+    return index <= count ? <LoaderMore
+        onClick={() => {
+            setIndex(index+1)
+            loadMore(index)
+
+            console.log(index, count)
+        }}
+    >
         <LoaderMoreText>Показать еще</LoaderMoreText>
         <LoaderMoreIcon>
             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,6 +20,8 @@ const Loader = () => {
             </svg>
         </LoaderMoreIcon>
     </LoaderMore>
+    :
+    null
 }
 
 const LoaderMore = styled.div`

@@ -4,36 +4,71 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 
 // import Pagination from './pagination'
+import { Pagination } from '@mui/material'
+import get from 'axios'
+
 import Loader from './loader'
 import NewsItem from './newsItem'
 import NewsItemXs from './newsItemXs'
-import {Pagination} from '@mui/material';
-
-import get from 'axios'
 
 const News = () => {
-  const [news, setNews] = useState([])
-  const [page, setPage] = useState()
-  const [loader, setLoader] = useState(false)
+
+  const [
+    news,
+    setNews
+  ] = useState([])
+  const [
+    page,
+    setPage
+  ] = useState()
+  const [
+    loader,
+    setLoader
+  ] = useState(false)
 
   useEffect(() => {
+
     setLoader(false)
-    get(`http://localhost:1337/api/news?pagination[page]=1&pagination[pageSize]=4&populate=image`).then((res) => {
+    get('http://localhost:1337/api/news?pagination[page]=1&pagination[pageSize]=4&populate=image').then((res) => {
+
       setNews(res.data.data)
       console.log(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
       setLoader(true)
+    
     })
+  
   }, [])
 
   const changePage = (page: any) => {
+
     setLoader(false)
     get(`http://localhost:1337/api/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
+
       setNews(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
-      console.log(res.data)
       setLoader(true)
+    
     })
+  
+  }
+
+  const loadMore = (page: any) => {
+
+    setLoader(false)
+    get(`http://localhost:1337/api/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
+
+      setNews([
+        ...news,
+        ...res.data.data
+      ])
+      // console.log([...news, ...res.data.data])
+      console.log(news)
+      setPage(res.data.meta.pagination.pageCount)
+      setLoader(true)
+    
+    })
+  
   }
 
   return <>
@@ -54,7 +89,10 @@ const News = () => {
       />
     </PaginationContainer>
     
-    <Loader />
+    <Loader
+      count={page}
+      loadMore={loadMore}
+    />
   </>
 
 }

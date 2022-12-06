@@ -2,21 +2,30 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
+import parse from 'html-react-parser'
 
 // ...
 const NewsItemXs = ({ data }:any) => {
 
+  const renderDate = (date) => {
+    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+    let time = date.split('T')[1]
+    let month = date.split('T')[0]
+
+    return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  }
+
   return <Container>
     <OtherNews>
-      {data.map((item) => <OtherNewsItem key={item.id}>
-        <OtherNewsImage src='/images/otherPhoto.png' width='100' height='328' alt='news image'/>
+      {data.map((item: any) => <OtherNewsItem key={item.id}>
+        <OtherNewsImage src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} width='100' height='328' alt='news image'/>
           <OtherContent>
             <OtherNewsMeta>
-              <Tag>#МолодежныйПарламент</Tag>
-              <Data>4 авг</Data>
+              <Tag>{item.attributes.tag}</Tag>
+              <Data>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</Data>
             </OtherNewsMeta>
-            <OtherNewsTitle>Будущее выборов 🗳</OtherNewsTitle>
-            <OtherNewsText>Член Молодежного парламента Алексей Жуковский разработал проект "Сад памяти героям-подпольщикам", который был поддержан Росмолодёжь.</OtherNewsText>
+            <OtherNewsTitle>{item.attributes.title}</OtherNewsTitle>
+            <OtherNewsText>{parse(item.attributes.text)}</OtherNewsText>
           </OtherContent>
         </OtherNewsItem>
       )}
