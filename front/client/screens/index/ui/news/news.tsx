@@ -114,6 +114,10 @@ const Title = styled.h2`
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
 `
 
 export default News
