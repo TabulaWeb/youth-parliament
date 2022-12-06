@@ -2,6 +2,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
+import Link from 'next/link'
 import parse from 'html-react-parser'
 
 // ...
@@ -17,7 +18,7 @@ const NewsItemXs = ({ data }:any) => {
 
   return <Container>
     <OtherNews>
-      {data.map((item: any) => <OtherNewsItem key={item.id}>
+      {data.map((item: any) => <OtherNewsItem href={`news/${item.id}`} key={item.id}>
         <OtherNewsImage src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} width='100' height='328' alt='news image'/>
           <OtherContent>
             <OtherNewsMeta>
@@ -78,7 +79,7 @@ const Data = styled.p`
 `
 
 // ...
-const OtherNewsItem = styled.div`
+const OtherNewsItem = styled(Link)`
     display: flex;
     flex-direction: column;
     gap: 0 24px;
