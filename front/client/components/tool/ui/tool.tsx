@@ -59,7 +59,7 @@ const TipText = styled.span<any>`
   background-color: #FFFCF9;
   border-radius: 5px;
   position: absolute;
-  top: ${({ tool }) => tool ? '-30px' : '0'};
+  top: ${({ tool }) => tool ? '-50px' : '0'};
   transition: 0.2s;
   max-width: 200px;
   z-index: 0;

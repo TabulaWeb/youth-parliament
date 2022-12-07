@@ -39,12 +39,8 @@ const Dropdown: FC<Props> = ({ answers }) => {
       <DropDownListContainer isOpen={isOpen}>
         <DropDownList isOpen={isOpen}>
           {answers.map((answer:any) => (
-            <ListItem key={answer.id} onClick={onOptionClicked(answer.value)}>
-              <input id={`one${answer.id}`} type='radio' name='socialStatus' />
-              <label htmlFor={`one${answer.id}`} >
-                <span></span>
-                {answer.value}
-              </label>
+            <ListItem key={answer.id} onClick={onOptionClicked(answer.value)} className={answer.value == selectedOption ? 'active' : ''}>
+              <ListItemText>{answer.value}</ListItemText>
             </ListItem>
           ))}
         </DropDownList>
@@ -126,7 +122,6 @@ const DropDownList = styled.ul<any>`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px 0;
   margin-top: 0;
 
   &::-webkit-scrollbar {
@@ -141,8 +136,27 @@ const DropDownList = styled.ul<any>`
 `
 
 const ListItem = styled.li`
-  padding-left: 0;
   list-style: none;
+  width: 100%;
+  padding: 8px 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(47, 67, 149, 0.1);
+  }
+
+  &.active {
+    background-color: rgba(47, 67, 149, 0.2);
+
+    &:hover {
+      background-color: rgba(47, 67, 149, 0.1);
+    }
+  }
+`
+
+const ListItemText = styled.p`
+  pointer-events: none;
+  margin-bottom: 0;
 `
 
 export default Dropdown

@@ -32,7 +32,6 @@ const News = () => {
     get('http://localhost:1337/api/news?pagination[page]=1&pagination[pageSize]=4&populate=image').then((res) => {
 
       setNews(res.data.data)
-      console.log(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
       setLoader(true)
     
@@ -62,8 +61,6 @@ const News = () => {
         ...news,
         ...res.data.data
       ])
-      // console.log([...news, ...res.data.data])
-      console.log(news)
       setPage(res.data.meta.pagination.pageCount)
       setLoader(true)
     

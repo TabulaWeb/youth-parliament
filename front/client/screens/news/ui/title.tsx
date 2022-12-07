@@ -8,8 +8,6 @@ const Title = ({title, date, tag}: any) => {
         let time = date.split('T')[1]
         let month = date.split('T')[0]
     
-        console.log()
-    
         return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
       }
 

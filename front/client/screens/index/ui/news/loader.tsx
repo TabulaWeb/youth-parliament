@@ -8,8 +8,6 @@ const Loader = ({count, loadMore}: any) => {
         onClick={() => {
             setIndex(index+1)
             loadMore(index)
-
-            console.log(index, count)
         }}
     >
         <LoaderMoreText>Показать еще</LoaderMoreText>

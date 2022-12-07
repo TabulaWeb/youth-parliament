@@ -17,7 +17,6 @@ const News = () => {
     useEffect(() => {
         get(`http://localhost:1337/api/news/1?populate=image`).then((res) => {
             setData(res.data.data)
-            console.log(res.data.data)
             setLoad(true)
         })
 
