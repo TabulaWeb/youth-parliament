@@ -1,14 +1,23 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Title = () => {
+const Title = ({title, date}: any) => {
+
+    const renderDate = (date) => {
+        const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+        let time = date.split('T')[1]
+        let month = date.split('T')[0]
+
+        return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+    }
+
     return <Container>
-        <TitleText>Запрос о разъяснении компетенции государственного органа</TitleText>
+        <TitleText>{title}</TitleText>
 
         <MetaData>
-            <Date>4 авг</Date>
+            <Date>{renderDate(date).split(' ')[0]} {renderDate(date).split(' ')[1]}</Date>
             <Seporator></Seporator>
-            <Time>18:00</Time>
+            <Time>{renderDate(date).split(' ')[2]}</Time>
         </MetaData>
     </Container>
 }

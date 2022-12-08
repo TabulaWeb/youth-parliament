@@ -2,11 +2,11 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
-const Breadctumbs = () => {
+const Breadctumbs = ({number}: any) => {
 
   return <Container>
     <TextLink href='/'>Главная <SpanText>/</SpanText></TextLink>
-    <Text>Обращение №123 <SpanText>/</SpanText></Text>
+    <Text>Обращение {number} <SpanText>/</SpanText></Text>
   </Container>
 
 }

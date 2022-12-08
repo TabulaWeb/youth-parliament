@@ -1,59 +1,58 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
+import get from 'axios'
 
-const AppealsFilter = () => {
-
-  const data = [
-    {
-      id: 1,
-      name: 'Все',
-      count: 100 
-    },
-    {
-      id: 2,
-      name: 'По труду и социальной политике ',
-      count: 20 
-    },
-    {
-      id: 3,
-      name: 'По бюджету и финансам и налоговой политики',
-      count: 30 
-    },
-    {
-      id: 4,
-      name: 'По законодательству и местному самоуправлению',
-      count: 15 
-    },
-    {
-      id: 5,
-      name: 'По экономической политике агропромышленному комплексу экологии и природопользованию',
-      count: 35 
-    }
-  ]
+const AppealsFilter = ({setFilter, changeResponse, page}: any) => {
+  
   const [
     active,
     setActive
   ] = useState('Все')
 
   const handleChange = (event:any) => {
-
     setActive(event.target.value)
-  
+    setFilter(event.target.value)
+    if(event.target.value != 'Все') {
+      changeResponse(event.target.value, page)
+    }
   }
 
   return <Container>
     <Wrapper>
-      {data.map((item, itemId) => {
+      <FilterItem>
+        <FilterInput type='radio' name='filter' value={'Все'} checked={active == 'Все'} onChange={handleChange}/>
+        <FilterName className='name'>Все</FilterName>
+        <FilterCount>{}</FilterCount>
+        <Span></Span>
+      </FilterItem>
 
-        return <FilterItem key={item.id}>
-          <FilterInput type='radio' name='filter' value={item.name} checked={active == item.name} onChange={handleChange}/>
-          <FilterName className='name'>{item.name}</FilterName>
-          <FilterCount>{item.count}</FilterCount>
+      <FilterItem>
+        <FilterInput type='radio' name='filter' value={'Комитет по труду и социальной политике'} checked={active == 'Комитет по труду и социальной политике'} onChange={handleChange}/>
+        <FilterName className='name'>Комитет по труду и социальной политике</FilterName>
+        <FilterCount>{}</FilterCount>
+        <Span></Span>
+      </FilterItem>
 
-          <Span></Span>
-        </FilterItem>
-      
-      })}
+      <FilterItem>
+        <FilterInput type='radio' name='filter' value={'Комитет по бюджету, финансам и налоговой политики'} checked={active == 'Комитет по бюджету, финансам и налоговой политики'} onChange={handleChange}/>
+        <FilterName className='name'>Комитет по бюджету, финансам и налоговой политики</FilterName>
+        <FilterCount>{}</FilterCount>
+        <Span></Span>
+      </FilterItem>
+
+      <FilterItem>
+        <FilterInput type='radio' name='filter' value={'Комитет по законодательству и местному самоуправлению'} checked={active == 'Комитет по законодательству и местному самоуправлению'} onChange={handleChange}/>
+        <FilterName className='name'>Комитет по законодательству и местному самоуправлению</FilterName>
+        <FilterCount>{}</FilterCount>
+        <Span></Span>
+      </FilterItem>
+
+      <FilterItem>
+        <FilterInput type='radio' name='filter' value={'Комитет по экономической политике агропромышленному комплексу экологии и природопользованию'} checked={active == 'Комитет по экономической политике агропромышленному комплексу экологии и природопользованию'} onChange={handleChange}/>
+        <FilterName className='name'>Комитет по экономической политике агропромышленному комплексу экологии и природопользованию</FilterName>
+        <FilterCount>{}</FilterCount>
+        <Span></Span>
+      </FilterItem>
     </Wrapper>
   </Container>
 

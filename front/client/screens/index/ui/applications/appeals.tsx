@@ -1,59 +1,66 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
-const data = [
-  {
-    id: 1,
-    title: 'Запрос о разъяснении компетенции государственного органа',
-    committee: 'По труду и социальной политике ',
-    time: '16:33',
-    data: '26 июл'
-  },
-  {
-    id: 2,
-    title: 'Запрос о разъяснении компетенции государственного органа',
-    committee: 'По труду и социальной политике ',
-    time: '16:33',
-    data: '26 июл'
-  },
-  {
-    id: 3,
-    title: 'Запрос о разъяснении компетенции государственного органа',
-    committee: 'По труду и социальной политике ',
-    time: '16:33',
-    data: '26 июл'
-  },
-  {
-    id: 4,
-    title: 'Запрос о разъяснении компетенции государственного органа',
-    committee: 'По труду и социальной политике ',
-    time: '16:33',
-    data: '26 июл'
-  },
-  {
-    id: 5,
-    title: 'Запрос о разъяснении компетенции государственного органа',
-    committee: 'По труду и социальной политике ',
-    time: '16:33',
-    data: '26 июл'
-  },
-  {
-    id: 6,
-    title: 'Запрос о разъяснении компетенции государственного органа',
-    committee: 'По труду и социальной политике ',
-    time: '16:33',
-    data: '26 июл'
-  }
-]
+// const data = [
+//   {
+//     id: 1,
+//     title: 'Запрос о разъяснении компетенции государственного органа',
+//     committee: 'По труду и социальной политике ',
+//     time: '16:33',
+//     data: '26 июл'
+//   },
+//   {
+//     id: 2,
+//     title: 'Запрос о разъяснении компетенции государственного органа',
+//     committee: 'По труду и социальной политике ',
+//     time: '16:33',
+//     data: '26 июл'
+//   },
+//   {
+//     id: 3,
+//     title: 'Запрос о разъяснении компетенции государственного органа',
+//     committee: 'По труду и социальной политике ',
+//     time: '16:33',
+//     data: '26 июл'
+//   },
+//   {
+//     id: 4,
+//     title: 'Запрос о разъяснении компетенции государственного органа',
+//     committee: 'По труду и социальной политике ',
+//     time: '16:33',
+//     data: '26 июл'
+//   },
+//   {
+//     id: 5,
+//     title: 'Запрос о разъяснении компетенции государственного органа',
+//     committee: 'По труду и социальной политике ',
+//     time: '16:33',
+//     data: '26 июл'
+//   },
+//   {
+//     id: 6,
+//     title: 'Запрос о разъяснении компетенции государственного органа',
+//     committee: 'По труду и социальной политике ',
+//     time: '16:33',
+//     data: '26 июл'
+//   }
+// ]
 
-const Appeals = () => {
+const Appeals = ({data, loader}: any) => {
+
+  const renderDate = (date) => {
+    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+    let time = date.split('T')[1]
+    let month = date.split('T')[0]
+
+    return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  }
 
   return <Container>
-    {data.map(item => {
+    {data?.map(item => {
 
-      return (
-        <Link key={item.id} href={`/appeals/${item.id}`}>
+      return loader && <Link key={item.id} href={`/appeals/${item.id}`}>
           <Appeal >
             <AppealHead>
               <AppealIcon>
@@ -72,18 +79,18 @@ const Appeals = () => {
               </AppealIcon>
 
               <AppealData>
-                <AppealDataTime>26 июл</AppealDataTime>
+                <AppealDataTime>{renderDate(item.attributes.createdAt).split(' ')[2]}</AppealDataTime>
                 <AppealDataSepor></AppealDataSepor>
-                <AppealDataTime>16:33</AppealDataTime>
+                <AppealDataTime>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</AppealDataTime>
               </AppealData>
             </AppealHead>
             <AppealBody>
-              <AppealMessage>Вывод России из политико-экономического кризиса</AppealMessage>
-              <AppealTag>По бюджету и финансам и налоговой политики</AppealTag>
+              <AppealMessage>{`${item.attributes.appeal.slice(0, 50)}...`}</AppealMessage>
+              <AppealTag>{item.attributes.adress}</AppealTag>
             </AppealBody>
           </Appeal>
         </Link>
-      )
+      
     
     })}
   </Container>

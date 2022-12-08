@@ -10,7 +10,6 @@ import ApplicationsSection from './ui/applications/applicationsSection'
 
 // Create Index main
 const Index = () => {
-
   // Return jsx
   return <>
     <HomeSection />
@@ -18,7 +17,7 @@ const Index = () => {
     <MediaSection />
     <NewsSection />
     <FormSection />
-    <ApplicationsSection />
+    <ApplicationsSection/>
   </>
 
 }

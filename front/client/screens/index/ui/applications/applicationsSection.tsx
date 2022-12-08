@@ -1,5 +1,5 @@
 // Import global npm modules
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from '@emotion/styled'
 
 // Import local ui modules
@@ -7,9 +7,32 @@ import Text from './text'
 import Appeals from './appeals'
 import AppealsFilter from './appealsFilter'
 
-import Container from '../container'
+import get from 'axios'
 
 const ApplicationsSection = () => {
+
+  const [data, setData] = useState([])
+  const [filter, setFilter] = useState('')
+  const [page, setPage] = useState(1)
+  const [loader, setLoader] = useState(false)
+
+  useEffect(() => {
+    setLoader(false)
+    get(`http://localhost:1337/api/appeals?pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      setData(res.data.data)
+      setLoader(true)
+    })
+
+  }, [])
+
+
+  const changeResponse = (filter, page) => {
+    setLoader(false)
+    get(`http://localhost:1337/api/appeals?filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      setData(res.data.data)
+      setLoader(true)
+    })
+  }
 
   return <Main>
     <Wrap>
@@ -58,8 +81,8 @@ const ApplicationsSection = () => {
         <Text />
 
         <Content>
-          <Appeals />
-          <AppealsFilter />
+          <Appeals data={data} loader={loader}/>
+          <AppealsFilter setFilter={setFilter} changeResponse={changeResponse} page={page} />
         </Content>
       </Wrapper>
 
