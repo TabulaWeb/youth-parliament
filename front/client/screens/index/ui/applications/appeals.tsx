@@ -1,53 +1,11 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import { Pagination } from '@mui/material'
 
-// const data = [
-//   {
-//     id: 1,
-//     title: 'Запрос о разъяснении компетенции государственного органа',
-//     committee: 'По труду и социальной политике ',
-//     time: '16:33',
-//     data: '26 июл'
-//   },
-//   {
-//     id: 2,
-//     title: 'Запрос о разъяснении компетенции государственного органа',
-//     committee: 'По труду и социальной политике ',
-//     time: '16:33',
-//     data: '26 июл'
-//   },
-//   {
-//     id: 3,
-//     title: 'Запрос о разъяснении компетенции государственного органа',
-//     committee: 'По труду и социальной политике ',
-//     time: '16:33',
-//     data: '26 июл'
-//   },
-//   {
-//     id: 4,
-//     title: 'Запрос о разъяснении компетенции государственного органа',
-//     committee: 'По труду и социальной политике ',
-//     time: '16:33',
-//     data: '26 июл'
-//   },
-//   {
-//     id: 5,
-//     title: 'Запрос о разъяснении компетенции государственного органа',
-//     committee: 'По труду и социальной политике ',
-//     time: '16:33',
-//     data: '26 июл'
-//   },
-//   {
-//     id: 6,
-//     title: 'Запрос о разъяснении компетенции государственного органа',
-//     committee: 'По труду и социальной политике ',
-//     time: '16:33',
-//     data: '26 июл'
-//   }
-// ]
-
-const Appeals = ({data, loader}: any) => {
+const Appeals = ({data, loader, page, filter, changeResponse, currentPage, setCurrentPage}: any) => {
 
   const renderDate = (date) => {
     const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
@@ -57,7 +15,8 @@ const Appeals = ({data, loader}: any) => {
     return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
   }
 
-  return <Container>
+  return<> 
+  <Container>
     {data?.map(item => {
 
       return loader && <Link key={item.id} href={`/appeals/${item.id}`}>
@@ -90,14 +49,31 @@ const Appeals = ({data, loader}: any) => {
             </AppealBody>
           </Appeal>
         </Link>
-      
-    
     })}
-  </Container>
+    {data.length != 0 && 
+      <PaginationContainer>
+        <Pagination 
+          count={page}
+          page={currentPage}
+          onChange={(event, page) => {
+            changeResponse(filter, page)
+            setCurrentPage(page)
+          }}
+        />
+      </PaginationContainer>
+    }
 
+    {data.length == 0 &&
+      <Empty>
+        <EmptyTitle>Нет ни одного обращения</EmptyTitle>
+      </Empty>
+    }
+  </Container>
+  </>
 }
 
 const Container = styled.div`
+    position: relative;
     display: grid;
     grid-gap: 40px;
     grid-template-columns: 1fr 1fr;
@@ -173,6 +149,38 @@ const AppealTag = styled.p`
     line-height: 18px;
     color: #2F4395;
     margin: 0;
+`
+
+const Empty = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`
+
+const EmptyTitle = styled.p`
+  width: max-content;
+  border-radius: 16px;
+  font-size: 20px;
+  background: rgba(249, 246, 243, 0.6);
+  border: 1px solid rgba(50, 50, 50, 0.08);
+  box-shadow: 2px 2px 12px rgba(141, 141, 141, 0.2);
+  padding: 20px 50px;
+  -webkit-backdrop-filter: blur(60px);
+`
+
+const PaginationContainer = styled.div`
+  position: absolute;
+  bottom: -60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
 `
 
 export default Appeals

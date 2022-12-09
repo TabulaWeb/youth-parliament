@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
-import get from 'axios'
 
-const AppealsFilter = ({setFilter, changeResponse, page}: any) => {
+const AppealsFilter = ({setFilter, changeResponse, page, setPage, setCurrentPage}: any) => {
   
   const [
     active,
@@ -12,8 +11,11 @@ const AppealsFilter = ({setFilter, changeResponse, page}: any) => {
   const handleChange = (event:any) => {
     setActive(event.target.value)
     setFilter(event.target.value)
+    setCurrentPage(1)
     if(event.target.value != 'Все') {
-      changeResponse(event.target.value, page)
+      changeResponse(event.target.value, 1)
+    } else {
+      changeResponse('', 1)
     }
   }
 
