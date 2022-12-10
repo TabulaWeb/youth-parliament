@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
+import ContentLoader from 'react-content-loader'
 
 // import Pagination from './pagination'
 import { Pagination } from '@mui/material'
@@ -71,13 +72,21 @@ const News = () => {
   return <>
     <Title>Новости</Title>
 
-    {loader && <NewsItem 
-      data={news}
-    />}
+    {loader ? <NewsItem data={news} />
+    :
+    <ContentLoader
+      speed={1}
+      width={'100%'}
+      height={632}
+    >
+      <rect x="0" y="0" rx="0" ry="0" width="512" height="632" />
+      <rect x="552" y="0" rx="0" ry="0" width="512" height="184" />
+      <rect x="552" y="224" rx="0" ry="0" width="512" height="184" />
+      <rect x="552" y="442" rx="0" ry="0" width="512" height="184" />
+    </ContentLoader>
+    }
 
-    {loader && <NewsItemXs 
-      data={news}
-    />}
+    {loader ? <NewsItemXs data={news} /> : <></>}
 
     <PaginationContainer>
       <Pagination 

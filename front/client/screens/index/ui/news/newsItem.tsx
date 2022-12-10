@@ -85,6 +85,7 @@ const OtherNews = styled.div`
 const MainNewsImage = styled(Image)`
     width: 100%;
     border-radius: 16px;
+    border-radius: 16px;
     margin-bottom: 24px;
     height: 316px;
 `

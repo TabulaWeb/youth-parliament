@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
+import ContentLoader from "react-content-loader"
 
 import SliderButton from './sliderButton'
 
@@ -14,10 +15,13 @@ import get from 'axios'
 
 const Slider = () => {
   const [slide, setSlide] = useState([])
+  const [loader, setLoader] = useState(false)
 
   useEffect(() => {
+    setLoader(false)
     get('http://localhost:1337/api/events?populate=slide').then((res) => {
       setSlide(res.data.data)
+      setLoader(true)
     })
     
   }, [])
@@ -29,7 +33,7 @@ const Slider = () => {
 
   // const data = Array.isArray(slide) ? slide : []
 
-  return <>
+  return loader ? <>
     <Swiper
       spaceBetween={50}
       slidesPerView={1}
@@ -65,7 +69,14 @@ const Slider = () => {
       <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
     </Swiper>
   </>
-
+  :
+  <ContentLoader
+    speed={2}
+    width={'100%'}
+    height={500}
+  > 
+    <rect x="0" y="0" rx="2" ry="2" width="100%" height="400" />
+  </ContentLoader>
 }
 
 const SlideNav = styled.div`

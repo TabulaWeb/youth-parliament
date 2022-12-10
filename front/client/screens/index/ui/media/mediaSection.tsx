@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
+import ContentLoader from 'react-content-loader'
 
 // Import local ui modules
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -10,14 +11,18 @@ import SliderButton from './sliderButton'
 
 import Container from '../container'
 import get from 'axios'
+import { flexbox } from '@mui/system'
 
 const MediaSection = () => {
 
   const [slide, setSlide] = useState([])
+  const [loader, setLoader] = useState(false)
 
   useEffect(() => {
+    setLoader(false)
     get('http://localhost:1337/api/writes?populate=image').then((res) => {
       setSlide(res.data.data)
+      setLoader(true)
     })
     
   }, [])
@@ -78,7 +83,8 @@ const MediaSection = () => {
             <SliderButton next={true} activeSlide={activeSlide} sliderLength={slide.length+1} />
           </SlideNav>
         </Header>
-        {slide.map(item => {
+
+        {loader ? slide.map(item => {
 
           return (
             <SwiperSlide key={item.id} className='slideMedia'>
@@ -89,7 +95,18 @@ const MediaSection = () => {
             </SwiperSlide>
           )
         
-        })}
+        })
+        :
+        <ContentLoader
+          speed={1}
+          width={'100%'}
+          height={328}
+        > 
+          <rect x="0" y="0" rx="0" ry="0" width="328" height="328" />
+          <rect x="368" y="0" rx="0" ry="0" width="328" height="328" />
+          <rect x="736" y="0" rx="0" ry="0" width="328" height="328" />
+        </ContentLoader>
+        }
       </Swiper>
     </Wrapper>
   </Container>

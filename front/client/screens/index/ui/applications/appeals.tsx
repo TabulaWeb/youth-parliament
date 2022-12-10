@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 import { Pagination } from '@mui/material'
+import ContentLoader from 'react-content-loader'
 
 const Appeals = ({data, loader, page, filter, changeResponse, currentPage, setCurrentPage}: any) => {
 
@@ -19,7 +20,7 @@ const Appeals = ({data, loader, page, filter, changeResponse, currentPage, setCu
   <Container>
     {data?.map(item => {
 
-      return loader && <Link key={item.id} href={`/appeals/${item.id}`}>
+      return loader ? <Link key={item.id} href={`/appeals/${item.id}`}>
           <Appeal >
             <AppealHead>
               <AppealIcon>
@@ -49,6 +50,19 @@ const Appeals = ({data, loader, page, filter, changeResponse, currentPage, setCu
             </AppealBody>
           </Appeal>
         </Link>
+        :
+        <ContentLoader
+          speed={1}
+          width={'100%'}
+          height={596}
+        >
+          <rect x="0" y="0" rx="0" ry="0" width="328" height="172" />
+          <rect x="0" y="212" rx="0" ry="0" width="328" height="172" />
+          <rect x="0" y="384" rx="0" ry="0" width="328" height="172" />
+          <rect x="368" y="0" rx="0" ry="0" width="328" height="172" />
+          <rect x="368" y="212" rx="0" ry="0" width="328" height="172" />
+          <rect x="368" y="384" rx="0" ry="0" width="328" height="172" />
+        </ContentLoader>
     })}
     {data.length != 0 && 
       <PaginationContainer>

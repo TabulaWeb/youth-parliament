@@ -17,6 +17,7 @@ const Appeals = () => {
         get(`http://localhost:1337/api/appeals/2`).then(res => {
             setData(res.data.data)
             setLoad(true)
+            console.log(res.data)
         })
     }, [])
 
