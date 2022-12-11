@@ -17,6 +17,12 @@ const ApplicationsSection = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [loader, setLoader] = useState(false)
 
+  const [modal, setModal] = useState(false)
+  const [
+    active,
+    setActive
+  ] = useState('Все')
+
   useEffect(() => {
     setLoader(false)
     get(`http://localhost:1337/api/appeals?pagination[page]=1&pagination[pageSize]=6`).then(res => {
@@ -46,7 +52,18 @@ const ApplicationsSection = () => {
     
   }
 
-  return <Main>
+  const FilterChange = (event) => {
+    setActive(event.target.innerText)
+    setFilter(event.target.innerText)
+    setCurrentPage(1)
+    if(event.target.innerText != 'Все') {
+      changeResponse(event.target.innerText, 1)
+    } else {
+      changeResponse('', 1)
+    }
+  }
+
+  return<> <Main>
     <Wrap>
       <StainImageNine>
         <svg width="1182" height="1269" viewBox="0 0 1182 1269" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +107,7 @@ const ApplicationsSection = () => {
       </StainImageNine>
 
       <Wrapper>
-        <Text />
+        <Text setModal={setModal} />
 
         <Content>
           <Appeals data={data} loader={loader} page={page} changeResponse={changeResponse} filter={filter} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
@@ -139,8 +156,60 @@ const ApplicationsSection = () => {
         </svg>
       </StainImageTen>
     </Wrap>
+
+    
   </Main>
 
+  <Modal modal={modal}>
+    <ModalHeader>
+      <ModalTitle>Комитеты</ModalTitle>
+      <ModalClose onClick={() => setModal(false)}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6L17.9998 17.9998" stroke="#323232" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6.00017 17.9998L18 6" stroke="#323232" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </ModalClose>
+    </ModalHeader>
+
+    <ModalBody>
+      <FilterItem
+        onClick={(event) => {
+          FilterChange(event)
+          setModal(false)
+        }}
+        className={active == 'Все' ? 'active' : ''}
+      >Все</FilterItem>
+      <FilterItem
+        onClick={(event) => {
+          FilterChange(event)
+          setModal(false)
+        }}
+        className={active == 'Комитет по труду и социальной политике' ? 'active' : ''}
+      >Комитет по труду и социальной политике</FilterItem>
+      <FilterItem
+        onClick={(event) => { 
+          FilterChange(event)
+          setModal(false)
+        }}
+        className={active == 'Комитет по бюджету, финансам и налоговой политики' ? 'active' : ''}
+      >Комитет по бюджету, финансам и налоговой политики</FilterItem>
+      <FilterItem
+        onClick={(event) => {
+          FilterChange(event)
+          setModal(false)
+        }}
+        className={active == 'Комитет по законодательству и местному самоуправлению' ? 'active' : ''}
+      >Комитет по законодательству и местному самоуправлению</FilterItem>
+      <FilterItem
+        onClick={(event) => {
+          FilterChange(event)
+          setModal(false)
+        }}
+        className={active == 'Комитет по экономической политике агропромышленному комплексу экологии и природопользованию' ? 'active' : ''}
+      >Комитет по экономической политике агропромышленному комплексу экологии и природопользованию</FilterItem>
+    </ModalBody>
+  </Modal>
+  </>
 }
 
 // Create Main styled component
@@ -181,6 +250,69 @@ const StainImageTen = styled.div`
     top: 550px;
     right: -300px;
     z-index: -1;
+`
+
+const Modal = styled.div<any>`
+  width: 96%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background: #FFFCF9;
+  box-shadow: -8px 0px 20px rgba(56, 56, 56, 0.2);
+  transition: .4s;
+  padding-top: 24px;
+  padding-left: 4%;
+  padding-right: 4%;
+  transform: ${({ modal }) => modal ? 'translateX(0%)' : 'translateX(100%)'};
+   opacity: ${({ modal }) => modal ? '1' : '0'};
+`
+
+const ModalHeader = styled.div`
+  position: relative;
+  display: felx;
+  align-items: center;
+`
+
+const ModalTitle = styled.p`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 42px;
+  text-transform: uppercase;
+`
+
+const ModalClose = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+`
+
+const ModalBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px 0;
+`
+
+const FilterItem = styled.p`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+
+  &.active {
+    color: #2F4395;
+  }
 `
 
 // Export default Container ui

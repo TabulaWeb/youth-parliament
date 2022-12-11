@@ -2,14 +2,14 @@
 import React, {useState} from 'react'
 import styled from '@emotion/styled'
 
-const Text = () => {
+const Text = ({setModal}) => {
   const [number, setNumber] = useState()
 
   return <Container>
     <TitleContent>
       <Title>Обращения</Title>
 
-      <SelectCommitte>Выбрать комитет</SelectCommitte>
+      <SelectCommitte onClick={() => setModal(true)}>Выбрать комитет</SelectCommitte>
     </TitleContent>
         
     <Search>
