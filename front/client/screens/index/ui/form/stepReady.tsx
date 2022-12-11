@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const StepReady = ({ step }: any) => {
+const StepReady = ({ step, unicNumber }: any) => {
 
   return <Container step={step}>
     <Code>
       <CodeContent>
         <CodeText>
-          <Title>82032</Title>
+          <Title>{unicNumber}</Title>
           <SubTitle>Уникальный номер вашего обращения</SubTitle>
         </CodeText>
       </CodeContent>

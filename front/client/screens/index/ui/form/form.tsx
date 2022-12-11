@@ -14,6 +14,7 @@ const Form = ({
   setStep
 }: any) => {
 
+  // stepTwo
   const [
     name,
     setName
@@ -39,8 +40,14 @@ const Form = ({
     setSocial
   ] = useState()
 
-  const [title, setTitle] = useState()
+  // stepThree
   const [address, setAddress] = useState()
+  const [theme, setTheme] = useState()
+  const [title, setTitle] = useState()
+  const [textAppeals, setTextAppeals] = useState()
+
+  // Result
+  const [unicNumber, setUnicNumber] = useState()
 
   return <Container>
     <FormHeader>
@@ -180,13 +187,40 @@ const Form = ({
         setSocial={setSocial}
         social={social}
       />
-      <StepApples step={step} setTitle={setTitle} title={title} setAddress={setAddress} address={address} />
-      <StepReady step={step} />
+      <StepApples 
+        step={step} 
+        setAddress={setAddress} 
+        address={address}
+        setTheme={setTheme}
+        theme={theme}
+        setTitle={setTitle} 
+        title={title} 
+        setTextAppeals={setTextAppeals}
+        textAppeals={textAppeals}
+      />
+      <StepReady 
+        step={step}
+        unicNumber={unicNumber} 
+      />
 
       {step < 4 ?
         <Buttons>
           <BackStep step={step} setStep={setStep} />
-          <NextStep step={step} setStep={setStep} />
+          <NextStep 
+            step={step}  
+            setStep={setStep}
+            name={name}
+            lastname={lastname}
+            patronymic={patronymic}
+            email={email}
+            phone={phone}
+            social={social}
+            address={address}
+            theme={theme}
+            title={title}
+            textAppeals={textAppeals}
+            setUnicNumber={setUnicNumber}
+          />
         </Buttons>
         : null}
 

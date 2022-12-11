@@ -8,17 +8,19 @@ interface Props {
   answers: any;
   tooltip?: any;
   placeholder?: any;
+  onChange: any
 }
 
 const Select: FC<Props> = ({
   answers,
   tooltip,
-  placeholder
+  placeholder,
+  onChange
 }) => {
 
   return <Container>
     <Placeholder tooltip={tooltip} placeholder={placeholder} />
-    <Dropdown answers={answers} />
+    <Dropdown answers={answers} onChange={onChange} />
   </Container>
 
 }

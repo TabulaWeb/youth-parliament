@@ -293,6 +293,7 @@ const StainImageOne = styled.div`
   top: 0;
   right: 0;
   z-index: -1;
+  pointer-events: none;
 `
 
 // Export default Header ui

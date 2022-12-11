@@ -61,11 +61,7 @@ const StepPersonal = (props: any) => {
   const toggling = () => setIsOpen(!isOpen)
 
   const onOptionClicked = (value: any) => () => {
-
-    setSelectedOption(value)
     props.setSocial(value)
-    // setIsOpen(false);
-
   }
 
   // Ошибка в имени
@@ -134,7 +130,12 @@ const StepPersonal = (props: any) => {
       </InputContainer>
     </TextField>
 
-    <Select answers={options} tooltip='123' placeholder='Социальный статус' />
+    <Select 
+      answers={options} 
+      tooltip='123' 
+      placeholder='Социальный статус'
+      onChange={props.setSocial}
+    />
 
     <TextField>
       <Placeholder>Электронная почта</Placeholder>

@@ -2,10 +2,11 @@ import { FC, useState } from 'react'
 import styled from '@emotion/styled'
 
 interface Props {
-  answers: any;
+  answers: any
+  onChange: any
 }
 
-const Dropdown: FC<Props> = ({ answers }) => {
+const Dropdown: FC<Props> = ({ answers, onChange }) => {
 
   const [
     isOpen,
@@ -19,7 +20,7 @@ const Dropdown: FC<Props> = ({ answers }) => {
   const toggling = () => setIsOpen(!isOpen)
 
   const onOptionClicked = (value: any) => () => {
-
+    onChange(value)
     setSelectedOption(value)
     setIsOpen(false)
 
@@ -61,6 +62,7 @@ const DropDownContainer = styled.div`
 `
 
 const DropDownHeader = styled.div`
+  position: relative;
   width: 100%;
   height: 48px;
   padding: 15px 25px;

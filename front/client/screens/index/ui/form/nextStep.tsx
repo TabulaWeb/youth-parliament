@@ -1,11 +1,70 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import axios from "axios";
 
-const NextStep = ({ step, setStep }:any) => {
+const NextStep = ({
+  step,
+  setStep,
+  name,
+  lastname,
+  patronymic,
+  email,
+  phone,
+  social,
+  address,
+  theme,
+  title,
+  textAppeals,
+  setUnicNumber
+}:any) => {
 
-    const next = (step:any) => step >= 4 ? step : step+1
+  const next = (step:any) => step >= 4 ? step : step+1
 
-    return <NextButton aria-label='continue' type='button' onClick={() => setStep(next)}>ПРОДОЛЖИТЬ</NextButton>
+  return <NextButton aria-label='continue' type='button' onClick={() => {
+
+    setStep(next)
+
+    if(step == 2) {
+
+      console.log({
+        name,
+        lastname,
+        patronymic,
+        email,
+        phone,
+        social,
+        address,
+        theme,
+        title,
+        textAppeals 
+      })
+    
+    }
+
+    if(step == 3) {
+
+      axios.post('http://localhost:1337/api/appeals', { data: {
+        name: name,
+        surname: lastname,
+        patronymic: patronymic,
+        social: social,
+        phone: phone,
+        adress: address,
+        theme: theme,
+        title: title,
+        appeal: textAppeals
+      }})
+      .then((response) => {
+          setUnicNumber(response.data.data.id)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    
+    }
+  
+  }}>ПРОДОЛЖИТЬ</NextButton>
+
 }
 
 const NextButton = styled.button`
@@ -34,4 +93,4 @@ const NextButton = styled.button`
     cursor: pointer;
 `
 
-export default NextStep;
+export default NextStep
