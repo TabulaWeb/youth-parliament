@@ -55,6 +55,7 @@ const Appeals = ({data, loader, page, filter, changeResponse, currentPage, setCu
           speed={1}
           width={'100%'}
           height={596}
+          backgroundOpacity={0}
         >
           <rect x="0" y="0" rx="0" ry="0" width="328" height="172" />
           <rect x="0" y="212" rx="0" ry="0" width="328" height="172" />
