@@ -6,6 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
+    "start:prod": "pm2 start site.config.js --env production",
     "build": "strapi build",
     "strapi": "strapi"
   },
@@ -22,10 +23,6 @@
   },
   "strapi": {
     "uuid": "357ca261-d9df-4639-ba25-1f1e4e31b36a"
-  },
-  "engines": {
-    "node": ">=14.19.1 <=18.x.x",
-    "npm": ">=6.0.0"
   },
   "license": "MIT"
 }
