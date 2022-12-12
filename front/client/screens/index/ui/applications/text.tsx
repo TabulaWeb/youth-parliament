@@ -1,9 +1,13 @@
 // Import global npm modules
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
-const Text = ({setModal}) => {
-  const [number, setNumber] = useState()
+const Text = ({ setModal }:any) => {
+
+  const [
+    number,
+    setNumber
+  ] = useState<any>()
 
   return <Container>
     <TitleContent>

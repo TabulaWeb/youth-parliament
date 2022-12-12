@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const Answer = ({adress, answer}) => {
+const Answer = ({
+  adress,
+  answer
+}:any) => {
 
   return <Container>
     <AnswetTitle>

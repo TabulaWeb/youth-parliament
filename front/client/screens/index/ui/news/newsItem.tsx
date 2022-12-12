@@ -8,12 +8,27 @@ import parse from 'html-react-parser'
 // ...
 const NewsItem = ({ data }:any) => {
 
-  const renderDate = (date) => {
-    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+  const renderDate = (date:any) => {
+
+    const dateArr = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек'
+    ]
     let time = date.split('T')[1]
     let month = date.split('T')[0]
 
     return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  
   }
   
   return <Container>
@@ -45,7 +60,6 @@ const NewsItem = ({ data }:any) => {
         </OtherContent>
       </OtherNewsItem>
       )}
-      
 
     </OtherNews>
   </Container>

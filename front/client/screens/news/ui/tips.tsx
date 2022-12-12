@@ -4,18 +4,38 @@ import Image from 'next/image'
 import Link from 'next/link'
 import parse from 'html-react-parser'
 
-const Tips = ({news, id}: any) => {
+const Tips = ({
+  news,
+  id
+}: any) => {
   
-  const getRandomInt = (max: number) => {
+  const getRandomInt:any = (max: number) => {
+
     return Math.floor(Math.random() * max) != id ? Math.floor(Math.random() * max) : getRandomInt(max)
+  
   }
 
   const renderDate = (date: any) => {
-    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+
+    const dateArr = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек'
+    ]
     let time = date.split('T')[1]
     let month = date.split('T')[0]
 
     return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  
   }
 
   return <Container>

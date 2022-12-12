@@ -6,21 +6,44 @@ import Link from 'next/link'
 import { Pagination } from '@mui/material'
 import ContentLoader from 'react-content-loader'
 
-const Appeals = ({data, loader, page, filter, changeResponse, currentPage, setCurrentPage}: any) => {
+const Appeals = ({
+  data,
+  loader,
+  page,
+  filter,
+  changeResponse,
+  currentPage,
+  setCurrentPage
+}: any) => {
 
-  const renderDate = (date) => {
-    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+  const renderDate = (date:any) => {
+
+    const dateArr = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек'
+    ]
     let time = date.split('T')[1]
     let month = date.split('T')[0]
 
     return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  
   }
 
   return<> 
-  <Container>
-    {data?.map(item => {
+    <Container>
+      {data?.map((item:any) => {
 
-      return loader ? <Link key={item.id} href={`/appeals/${item.id}`}>
+        return loader ? <Link key={item.id} href={`/appeals/${item.id}`}>
           <Appeal >
             <AppealHead>
               <AppealIcon>
@@ -50,41 +73,45 @@ const Appeals = ({data, loader, page, filter, changeResponse, currentPage, setCu
             </AppealBody>
           </Appeal>
         </Link>
-        :
-        <ContentLoader
-          speed={1}
-          width={'100%'}
-          height={596}
-          backgroundOpacity={0}
-        >
-          <rect x="0" y="0" rx="0" ry="0" width="328" height="172" />
-          <rect x="0" y="212" rx="0" ry="0" width="328" height="172" />
-          <rect x="0" y="384" rx="0" ry="0" width="328" height="172" />
-          <rect x="368" y="0" rx="0" ry="0" width="328" height="172" />
-          <rect x="368" y="212" rx="0" ry="0" width="328" height="172" />
-          <rect x="368" y="384" rx="0" ry="0" width="328" height="172" />
-        </ContentLoader>
-    })}
-    {data.length != 0 && 
+          :
+          <ContentLoader
+            speed={1}
+            width={'100%'}
+            height={596}
+            backgroundOpacity={0}
+          >
+            <rect x="0" y="0" rx="0" ry="0" width="328" height="172" />
+            <rect x="0" y="212" rx="0" ry="0" width="328" height="172" />
+            <rect x="0" y="384" rx="0" ry="0" width="328" height="172" />
+            <rect x="368" y="0" rx="0" ry="0" width="328" height="172" />
+            <rect x="368" y="212" rx="0" ry="0" width="328" height="172" />
+            <rect x="368" y="384" rx="0" ry="0" width="328" height="172" />
+          </ContentLoader>
+      
+      })}
+      {data.length != 0 && 
       <PaginationContainer>
         <Pagination 
           count={page}
           page={currentPage}
           onChange={(event, page) => {
+
             changeResponse(filter, page)
             setCurrentPage(page)
+          
           }}
         />
       </PaginationContainer>
-    }
+      }
 
-    {data.length == 0 &&
+      {data.length == 0 &&
       <Empty>
         <EmptyTitle>Нет ни одного обращения</EmptyTitle>
       </Empty>
-    }
-  </Container>
+      }
+    </Container>
   </>
+
 }
 
 const Container = styled.div`

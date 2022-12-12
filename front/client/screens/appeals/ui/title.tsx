@@ -1,25 +1,44 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react'
+import styled from '@emotion/styled'
 
-const Title = ({title, date}: any) => {
+const Title = ({
+  title,
+  date
+}: any) => {
 
-    const renderDate = (date) => {
-        const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
-        let time = date.split('T')[1]
-        let month = date.split('T')[0]
+  const renderDate = (date:any) => {
 
-        return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
-    }
+    const dateArr = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек'
+    ]
+    let time = date.split('T')[1]
+    let month = date.split('T')[0]
 
-    return <Container>
-        <TitleText>{title}</TitleText>
+    return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  
+  }
 
-        <MetaData>
-            <Date>{renderDate(date).split(' ')[0]} {renderDate(date).split(' ')[1]}</Date>
-            <Seporator></Seporator>
-            <Time>{renderDate(date).split(' ')[2]}</Time>
-        </MetaData>
-    </Container>
+  return <Container>
+    <TitleText>{title}</TitleText>
+
+    <MetaData>
+      <Date>{renderDate(date).split(' ')[0]} {renderDate(date).split(' ')[1]}</Date>
+      <Seporator></Seporator>
+      <Time>{renderDate(date).split(' ')[2]}</Time>
+    </MetaData>
+  </Container>
+
 }
 
 const Container = styled.div`

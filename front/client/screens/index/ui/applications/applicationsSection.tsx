@@ -1,67 +1,105 @@
 // Import global npm modules
-import React, {useState, useEffect} from 'react'
+import process from 'process'
+
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 
 // Import local ui modules
+import get from 'axios'
+
 import Text from './text'
 import Appeals from './appeals'
 import AppealsFilter from './appealsFilter'
-import process from 'process'
-
-import get from 'axios'
 
 const ApplicationsSection = () => {
 
-  const [data, setData] = useState([])
-  const [filter, setFilter] = useState('')
-  const [page, setPage] = useState()
-  const [currentPage, setCurrentPage] = useState(1)
-  const [loader, setLoader] = useState(false)
+  const [
+    data,
+    setData
+  ] = useState([])
+  const [
+    filter,
+    setFilter
+  ] = useState('')
+  const [
+    page,
+    setPage
+  ] = useState()
+  const [
+    currentPage,
+    setCurrentPage
+  ] = useState(1)
+  const [
+    loader,
+    setLoader
+  ] = useState(false)
 
-  const [modal, setModal] = useState(false)
+  const [
+    modal,
+    setModal
+  ] = useState(false)
   const [
     active,
     setActive
   ] = useState('Все')
 
   useEffect(() => {
+
     setLoader(false)
     get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?pagination[page]=1&pagination[pageSize]=6`).then(res => {
+
       setData(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
       setLoader(true)
+    
     })
 
   }, [])
 
+  const changeResponse = (filter:any, page:any) => {
 
-  const changeResponse = (filter, page) => {
     setLoader(false)
+
     if(filter == '') {
+
       get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)
         setLoader(true)
+      
       })
+    
     } else {
+
       get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)
         setLoader(true)
+      
       })
+    
     }
     
   }
 
-  const FilterChange = (event) => {
+  const FilterChange = (event:any) => {
+
     setActive(event.target.innerText)
     setFilter(event.target.innerText)
     setCurrentPage(1)
+
     if(event.target.innerText != 'Все') {
+
       changeResponse(event.target.innerText, 1)
+    
     } else {
+
       changeResponse('', 1)
+    
     }
+  
   }
 
   return<> <Main>
@@ -157,7 +195,6 @@ const ApplicationsSection = () => {
         </svg>
       </StainImageTen>
     </Wrap>
-
     
   </Main>
 
@@ -175,42 +212,53 @@ const ApplicationsSection = () => {
     <ModalBody>
       <FilterItem
         onClick={(event) => {
+
           FilterChange(event)
           setModal(false)
+        
         }}
         className={active == 'Все' ? 'active' : ''}
       >Все</FilterItem>
       <FilterItem
         onClick={(event) => {
+
           FilterChange(event)
           setModal(false)
+        
         }}
         className={active == 'Комитет по труду и социальной политике' ? 'active' : ''}
       >Комитет по труду и социальной политике</FilterItem>
       <FilterItem
-        onClick={(event) => { 
+        onClick={(event) => {
+ 
           FilterChange(event)
           setModal(false)
+        
         }}
         className={active == 'Комитет по бюджету, финансам и налоговой политики' ? 'active' : ''}
       >Комитет по бюджету, финансам и налоговой политики</FilterItem>
       <FilterItem
         onClick={(event) => {
+
           FilterChange(event)
           setModal(false)
+        
         }}
         className={active == 'Комитет по законодательству и местному самоуправлению' ? 'active' : ''}
       >Комитет по законодательству и местному самоуправлению</FilterItem>
       <FilterItem
         onClick={(event) => {
+
           FilterChange(event)
           setModal(false)
+        
         }}
         className={active == 'Комитет по экономической политике агропромышленному комплексу экологии и природопользованию' ? 'active' : ''}
       >Комитет по экономической политике агропромышленному комплексу экологии и природопользованию</FilterItem>
     </ModalBody>
   </Modal>
   </>
+
 }
 
 // Create Main styled component

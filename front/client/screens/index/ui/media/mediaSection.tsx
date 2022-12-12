@@ -1,29 +1,37 @@
 // Import global npm modules
+import process from 'process'
+
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import ContentLoader from 'react-content-loader'
-
-// Import local ui modules
 import { Swiper, SwiperSlide } from 'swiper/react'
+import get from 'axios'
+import { flexbox } from '@mui/system'
 
 import SliderButton from './sliderButton'
 
 import Container from '../container'
-import get from 'axios'
-import { flexbox } from '@mui/system'
-import process from 'process'
 
 const MediaSection = () => {
 
-  const [slide, setSlide] = useState([])
-  const [loader, setLoader] = useState(false)
+  const [
+    slide,
+    setSlide
+  ] = useState<any>([])
+  const [
+    loader,
+    setLoader
+  ] = useState(false)
 
   useEffect(() => {
+
     setLoader(false)
     get(`${process.env.NEXT_PUBLIC_SERVER}/writes?populate=image`).then((res) => {
+
       setSlide(res.data.data)
       setLoader(true)
+    
     })
     
   }, [])
@@ -88,7 +96,7 @@ const MediaSection = () => {
           800: {
             slidesPerView: 3,
             slidesPerGroup: 3
-          },
+          }
         }}
         rewind={true}
         className='sliderMedia'
@@ -102,7 +110,7 @@ const MediaSection = () => {
           </SlideNav>
         </Header>
 
-        {loader ? slide.map(item => {
+        {loader ? slide.map((item:any) => {
 
           return (
             <SwiperSlide key={item.id} className='slideMedia'>
@@ -114,16 +122,16 @@ const MediaSection = () => {
           )
         
         })
-        :
-        <ContentLoader
-          speed={1}
-          width={'100%'}
-          height={328}
-        > 
-          <rect x="0" y="0" rx="0" ry="0" width="328" height="328" />
-          <rect x="368" y="0" rx="0" ry="0" width="328" height="328" />
-          <rect x="736" y="0" rx="0" ry="0" width="328" height="328" />
-        </ContentLoader>
+          :
+          <ContentLoader
+            speed={1}
+            width={'100%'}
+            height={328}
+          > 
+            <rect x="0" y="0" rx="0" ry="0" width="328" height="328" />
+            <rect x="368" y="0" rx="0" ry="0" width="328" height="328" />
+            <rect x="736" y="0" rx="0" ry="0" width="328" height="328" />
+          </ContentLoader>
         }
       </Swiper>
     </Wrapper>

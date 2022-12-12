@@ -8,27 +8,42 @@ import parse from 'html-react-parser'
 // ...
 const NewsItemXs = ({ data }:any) => {
 
-  const renderDate = (date) => {
-    const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+  const renderDate = (date:any) => {
+
+    const dateArr = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек'
+    ]
     let time = date.split('T')[1]
     let month = date.split('T')[0]
 
     return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  
   }
 
   return <Container>
     <OtherNews>
       {data.map((item: any) => <OtherNewsItem href={`news/${item.id}`} key={item.id}>
         <OtherNewsImage src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} width='100' height='328' alt='news image'/>
-          <OtherContent>
-            <OtherNewsMeta>
-              <Tag>{item.attributes.tag}</Tag>
-              <Data>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</Data>
-            </OtherNewsMeta>
-            <OtherNewsTitle>{item.attributes.title}</OtherNewsTitle>
-            <OtherNewsText>{parse(item.attributes.text)}</OtherNewsText>
-          </OtherContent>
-        </OtherNewsItem>
+        <OtherContent>
+          <OtherNewsMeta>
+            <Tag>{item.attributes.tag}</Tag>
+            <Data>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</Data>
+          </OtherNewsMeta>
+          <OtherNewsTitle>{item.attributes.title}</OtherNewsTitle>
+          <OtherNewsText>{parse(item.attributes.text)}</OtherNewsText>
+        </OtherContent>
+      </OtherNewsItem>
       )}
     </OtherNews>
   </Container>

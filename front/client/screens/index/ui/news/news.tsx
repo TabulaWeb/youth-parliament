@@ -1,5 +1,7 @@
 'use client'
 
+import process from 'process'
+
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import ContentLoader from 'react-content-loader'
@@ -11,14 +13,13 @@ import get from 'axios'
 import Loader from './loader'
 import NewsItem from './newsItem'
 import NewsItemXs from './newsItemXs'
-import process from 'process'
 
 const News = () => {
 
   const [
     news,
     setNews
-  ] = useState([])
+  ] = useState<any>([])
   const [
     page,
     setPage
@@ -74,17 +75,17 @@ const News = () => {
     <Title>Новости</Title>
 
     {loader ? <NewsItem data={news} />
-    :
-    <ContentLoader
-      speed={1}
-      width={'100%'}
-      height={632}
-    >
-      <rect x="0" y="0" rx="0" ry="0" width="512" height="632" />
-      <rect x="552" y="0" rx="0" ry="0" width="512" height="184" />
-      <rect x="552" y="224" rx="0" ry="0" width="512" height="184" />
-      <rect x="552" y="442" rx="0" ry="0" width="512" height="184" />
-    </ContentLoader>
+      :
+      <ContentLoader
+        speed={1}
+        width={'100%'}
+        height={632}
+      >
+        <rect x="0" y="0" rx="0" ry="0" width="512" height="632" />
+        <rect x="552" y="0" rx="0" ry="0" width="512" height="184" />
+        <rect x="552" y="224" rx="0" ry="0" width="512" height="184" />
+        <rect x="552" y="442" rx="0" ry="0" width="512" height="184" />
+      </ContentLoader>
     }
 
     {loader ? <NewsItemXs data={news} /> : <></>}
