@@ -12,6 +12,7 @@ import SliderButton from './sliderButton'
 import Container from '../container'
 import get from 'axios'
 import { flexbox } from '@mui/system'
+import process from 'process'
 
 const MediaSection = () => {
 
@@ -20,7 +21,7 @@ const MediaSection = () => {
 
   useEffect(() => {
     setLoader(false)
-    get('http://localhost:1337/api/writes?populate=image').then((res) => {
+    get(`${process.env.NEXT_PUBLIC_SERVER}/writes?populate=image`).then((res) => {
       setSlide(res.data.data)
       setLoader(true)
     })

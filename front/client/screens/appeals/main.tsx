@@ -7,6 +7,7 @@ import Breadctumbs from "./ui/breadcrumbs";
 import Title from "./ui/title";
 import Address from "./ui/address";
 import Answer from './ui/answer';
+import process from "process";
 
 const Appeals = () => {
     const [data, setData] = useState([])
@@ -14,7 +15,7 @@ const Appeals = () => {
 
     useEffect(() => {
         setLoad(false)
-        get(`http://localhost:1337/api/appeals/${document.location.pathname.split('/')[2]}`).then(res => {
+        get(`${process.env.NEXT_PUBLIC_SERVER}/appeals/${document.location.pathname.split('/')[2]}`).then(res => {
             setData(res.data.data)
             setLoad(true)
             console.log(res.data)

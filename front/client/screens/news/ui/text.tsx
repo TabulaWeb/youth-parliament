@@ -14,7 +14,7 @@ const Container = styled.div`
     gap: 16px 0;
 
     & p{
-        font-family: 'Golos UI';
+        /* font-family: 'Golos UI'; */
         font-style: normal;
         font-weight: 400;
         font-size: 16px;

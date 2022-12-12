@@ -43,6 +43,10 @@ const Picture = ({image}: any) => {
 
 const Container = styled.div`
     margin-top: 180px;
+
+    @media screen and (max-width: 991px) {
+      margin-top: 30px;
+    }
 `
 
 const PostPicrute = styled(Image)`
@@ -68,7 +72,7 @@ const TextLink = styled.p`
 `
 
 const SocialText = styled.p`
-    font-family: 'Golos UI';
+    /* font-family: 'Golos UI'; */
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

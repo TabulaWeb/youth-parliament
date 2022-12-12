@@ -11,6 +11,7 @@ import get from 'axios'
 import Loader from './loader'
 import NewsItem from './newsItem'
 import NewsItemXs from './newsItemXs'
+import process from 'process'
 
 const News = () => {
 
@@ -30,7 +31,7 @@ const News = () => {
   useEffect(() => {
 
     setLoader(false)
-    get('http://localhost:1337/api/news?pagination[page]=1&pagination[pageSize]=4&populate=image').then((res) => {
+    get(`${process.env.NEXT_PUBLIC_SERVER}/news?pagination[page]=1&pagination[pageSize]=4&populate=image`).then((res) => {
 
       setNews(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
@@ -43,7 +44,7 @@ const News = () => {
   const changePage = (page: any) => {
 
     setLoader(false)
-    get(`http://localhost:1337/api/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_SERVER}/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
 
       setNews(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
@@ -56,7 +57,7 @@ const News = () => {
   const loadMore = (page: any) => {
 
     setLoader(false)
-    get(`http://localhost:1337/api/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_SERVER}/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
 
       setNews([
         ...news,

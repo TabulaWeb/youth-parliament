@@ -67,6 +67,15 @@ const Container = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0 40px;
     margin-bottom: 100px;
+
+    @media screen and (max-width: 991px) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 40px 40px;
+    }
+
+    @media screen and (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
 `
 
 const MainNews = styled(Link)`

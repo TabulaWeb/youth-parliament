@@ -8,6 +8,7 @@ import Title from "./ui/title";
 import Text from "./ui/text";
 import Tips from "./ui/tips";
 import Picture from "./ui/picture";
+import process from "process";
 
 const News = () => {
     const [data, setData] = useState<any>()
@@ -17,12 +18,12 @@ const News = () => {
     useEffect(() => {
         setLoad(false)
         console.log()
-        get(`http://localhost:1337/api/news/${document.location.pathname.split('/')[2]}?populate=image`).then((res) => {
+        get(`${process.env.NEXT_PUBLIC_SERVER}/news/${document.location.pathname.split('/')[2]}?populate=image`).then((res) => {
             setData(res.data.data)
             setLoad(true)
         })
 
-        get(`http://localhost:1337/api/news?populate=image`).then((res) => {
+        get(`${process.env.NEXT_PUBLIC_SERVER}/news?populate=image`).then((res) => {
             setNews(res.data.data)
             setLoad(true)
         })
@@ -63,6 +64,11 @@ const NewsContent = styled.div`
     grid-template-columns: 1fr 460px;
     grid-gap: 0 30px;
     margin-bottom: 160px;
+
+    @media screen and (max-width: 991px) {
+        grid-template-columns: 1fr;
+        grid-gap: 30px 0;
+    }
 `
 
 const TipsContent = styled.div``

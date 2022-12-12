@@ -39,8 +39,8 @@ const Main = (theme: Theme) => css`
     overflow-x: hidden
     line-height: 1.2;
     margin: 0;
-    background-color: ${theme.background};
-    font-family: ${theme.inter};
+    background-color: #f5f9ff;
+    font-family: 'Inter';
     -webkit-font-smoothing: antialiased;
     color: ${theme.text};
   }

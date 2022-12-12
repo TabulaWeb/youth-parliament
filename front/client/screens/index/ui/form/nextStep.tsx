@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import axios from "axios";
+import process from 'process';
 
 const NextStep = ({
   step,
@@ -43,7 +44,7 @@ const NextStep = ({
 
     if(step == 3) {
 
-      axios.post('http://localhost:1337/api/appeals', { data: {
+      axios.post(`${process.env.NEXT_PUBLIC_SERVER}/appeals`, { data: {
         name: name,
         surname: lastname,
         patronymic: patronymic,

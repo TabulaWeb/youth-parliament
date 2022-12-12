@@ -6,6 +6,7 @@ import styled from '@emotion/styled'
 import Text from './text'
 import Appeals from './appeals'
 import AppealsFilter from './appealsFilter'
+import process from 'process'
 
 import get from 'axios'
 
@@ -25,7 +26,7 @@ const ApplicationsSection = () => {
 
   useEffect(() => {
     setLoader(false)
-    get(`http://localhost:1337/api/appeals?pagination[page]=1&pagination[pageSize]=6`).then(res => {
+    get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?pagination[page]=1&pagination[pageSize]=6`).then(res => {
       setData(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
       setLoader(true)
@@ -37,13 +38,13 @@ const ApplicationsSection = () => {
   const changeResponse = (filter, page) => {
     setLoader(false)
     if(filter == '') {
-      get(`http://localhost:1337/api/appeals?pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)
         setLoader(true)
       })
     } else {
-      get(`http://localhost:1337/api/appeals?filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)
         setLoader(true)

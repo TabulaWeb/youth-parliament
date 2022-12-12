@@ -8,6 +8,7 @@ import Image from 'next/image'
 import ContentLoader from "react-content-loader"
 
 import SliderButton from './sliderButton'
+import process from 'process'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -19,7 +20,7 @@ const Slider = () => {
 
   useEffect(() => {
     setLoader(false)
-    get('http://localhost:1337/api/events?populate=slide').then((res) => {
+    get(`${process.env.NEXT_PUBLIC_SERVER}/events?populate=slide`).then((res) => {
       setSlide(res.data.data)
       setLoader(true)
     })

@@ -117,10 +117,38 @@ const Header = () => {
 
         <BurgerMenu active={active}>
           <BurgerNav>
-            <BurgerLink href='/'>Парламент</BurgerLink>
-            <BurgerLink href='/'>О нас пишут</BurgerLink>
-            <BurgerLink href='/'>Новости</BurgerLink>
-            <BurgerLink href='/'>Обращения</BurgerLink>
+            <BurgerLink 
+              href="/#parliament"
+              scroll={true}
+              onClick={(e: any) => { 
+                handleClick(e, 'parliament')
+                setActive(false)
+              }}
+            >Парламент</BurgerLink>
+            <BurgerLink
+              href="/#media"
+              scroll={true}
+              onClick={(e: any) => {
+                handleClick(e, 'media')
+                setActive(false)
+              }}
+            >О нас пишут</BurgerLink>
+            <BurgerLink 
+              href="/#news"
+              scroll={true}
+              onClick={(e: any) => {
+                handleClick(e, 'news')
+                setActive(false)
+              }}
+            >Новости</BurgerLink>
+            <BurgerLink 
+              href="/#form"
+              scroll={true}
+              onClick={(e: any) => {
+                handleClick(e, 'form')
+                setActive(false)
+              }}
+            >Обращения</BurgerLink>
           </BurgerNav>
         </BurgerMenu>
       </Burger>
