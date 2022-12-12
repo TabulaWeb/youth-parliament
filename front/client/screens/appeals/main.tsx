@@ -14,7 +14,7 @@ const Appeals = () => {
 
     useEffect(() => {
         setLoad(false)
-        get(`http://localhost:1337/api/appeals/2`).then(res => {
+        get(`http://localhost:1337/api/appeals/${document.location.pathname.split('/')[2]}`).then(res => {
             setData(res.data.data)
             setLoad(true)
             console.log(res.data)
