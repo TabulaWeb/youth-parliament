@@ -1,0 +1,20 @@
+{
+  "name": "youth-parliament",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prod": "cd front; npm install; npm run build; npm run start:prod; cd ../server; npm install; npm run build; npm run start:prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TabulaWeb/youth-parliament.git"
+  },
+  "keywords": [],
+  "author": "Pavel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TabulaWeb/youth-parliament/issues"
+  },
+  "homepage": "https://github.com/TabulaWeb/youth-parliament#readme"
+}
