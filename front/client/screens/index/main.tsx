@@ -12,11 +12,11 @@ import ApplicationsSection from './ui/applications/applicationsSection'
 const Index = () => {
   // Return jsx
   return <>
-    {/* <HomeSection /> */}
-    {/* <AboutSection /> */}
-    {/* <MediaSection /> */}
-    {/* <NewsSection /> */}
-    {/* <FormSection /> */}
+    <HomeSection />
+    <AboutSection />
+    <MediaSection />
+    <NewsSection />
+    <FormSection />
     <ApplicationsSection/>
   </>
 

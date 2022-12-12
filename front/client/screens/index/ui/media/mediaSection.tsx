@@ -72,6 +72,23 @@ const MediaSection = () => {
         slidesPerView={3}
         spaceBetween={40}
         slidesPerGroup={3}
+        breakpoints={{
+
+          300: {
+            slidesPerView: 1,
+            slidesPerGroup: 1
+          },
+
+          640: {
+            slidesPerView: 2,
+            slidesPerGroup: 2
+          },
+
+          800: {
+            slidesPerView: 3,
+            slidesPerGroup: 3
+          },
+        }}
         rewind={true}
         className='sliderMedia'
       >

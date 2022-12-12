@@ -15,13 +15,16 @@ const News = () => {
     const [news, setNews] = useState()
 
     useEffect(() => {
-        get(`http://localhost:1337/api/news/1?populate=image`).then((res) => {
+        setLoad(false)
+        console.log()
+        get(`http://localhost:1337/api/news/${document.location.pathname.split('/')[2]}?populate=image`).then((res) => {
             setData(res.data.data)
             setLoad(true)
         })
 
         get(`http://localhost:1337/api/news?populate=image`).then((res) => {
             setNews(res.data.data)
+            setLoad(true)
         })
     }, [])
 
