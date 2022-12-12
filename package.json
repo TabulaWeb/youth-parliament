@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prod": "cd front; npm install; npm run build; npm run start:prod; cd ../server; npm install; npm run build; npm run start:prod"
+    "prod": "cd front; npm install; npm run build; npm run start:prod; cd ../server; npm install; npm run build; npm run prod"
   },
   "repository": {
     "type": "git",
