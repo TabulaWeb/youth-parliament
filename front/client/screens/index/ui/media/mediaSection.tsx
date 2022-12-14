@@ -11,6 +11,7 @@ import { flexbox } from '@mui/system'
 
 import SliderButton from './sliderButton'
 
+
 import Container from '../container'
 
 const MediaSection = () => {
@@ -30,6 +31,7 @@ const MediaSection = () => {
     get(`${process.env.NEXT_PUBLIC_SERVER}/writes?populate=image`).then((res) => {
 
       setSlide(res.data.data)
+      console.log(res.data.data)
       setLoader(true)
     
     })
@@ -111,8 +113,9 @@ const MediaSection = () => {
         </Header>
 
         {loader ? slide.map((item:any) => {
-
+            console.log(item.attributes.image.data.attributes.url)
           return (
+            
             <SwiperSlide key={item.id} className='slideMedia'>
               <SlideContainer className='slideMediaContainer'>
                 <SliderBackground src={item.attributes.image.data.attributes.url} fill alt='slider background' />

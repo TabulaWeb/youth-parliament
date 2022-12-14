@@ -46,7 +46,7 @@ const ApplicationsSection = () => {
   useEffect(() => {
 
     setLoader(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?pagination[page]=1&pagination[pageSize]=6`).then(res => {
+    get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[publish][$eq]=true&pagination[page]=1&pagination[pageSize]=6`).then(res => {
 
       setData(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
@@ -62,7 +62,7 @@ const ApplicationsSection = () => {
 
     if(filter == '') {
 
-      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[publish][$eq]=true&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
 
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)
@@ -72,7 +72,7 @@ const ApplicationsSection = () => {
     
     } else {
 
-      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[publish][$eq]=true&filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
 
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)
@@ -203,8 +203,8 @@ const ApplicationsSection = () => {
       <ModalTitle>Комитеты</ModalTitle>
       <ModalClose onClick={() => setModal(false)}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 6L17.9998 17.9998" stroke="#323232" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M6.00017 17.9998L18 6" stroke="#323232" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 6L17.9998 17.9998" stroke="#323232" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M6.00017 17.9998L18 6" stroke="#323232" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </ModalClose>
     </ModalHeader>

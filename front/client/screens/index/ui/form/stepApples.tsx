@@ -127,23 +127,12 @@ const StepApples = ({
   theme,
   setTheme,
   setTextAppeals,
-  textAppeals
+  textAppeals,
+  setErrorTitle,
+  setErrorAppeal,
+  errorTitle,
+  errorAppeal
 }: any) => {
-
-  const [
-    files,
-    setFiles
-  ] = useState([])
-
-  const [
-    errorTitle,
-    setErrorTitle
-  ] = useState(false)
-
-  const [
-    errorAddress,
-    setErrorAddress
-  ] = useState(false)
 
   const [
     limit,
@@ -153,19 +142,16 @@ const StepApples = ({
     limitAddress,
     setLimitAddress
   ] = useState(0)
+  
 
-
-  const checkErrorTitle = (event: any) => {
-
-    event.target.value.length < 2 ? setErrorTitle(true) : setErrorTitle(false)
-
-  }
-
-  const checkErrorAddress = (event: any) => {
-
-    event.target.value.length < 2 ? setErrorAddress(true) : setErrorAddress(false)
-
-  }
+  const [
+    successTitle,
+    setSuccessTitle
+  ] = useState(false)
+  const [
+    successAppeals,
+    setSuccesAppeals
+  ] = useState(false)
 
   // ...
   const changeTitle = (event: any) => {
@@ -213,12 +199,24 @@ const StepApples = ({
 
       <InputContainer>
         <Input
-          onChange={(event) => changeTitle(event)}
+          onChange={(event) => {
+            changeTitle(event)
+
+            if(event.target.value.length >= 2) setSuccessTitle(true)
+            else setSuccessTitle(false)
+
+          }}
           value={title}
-          onBlur={(event) => checkErrorTitle(event)}
+          onBlur={(event) => {
+            
+            if(errorTitle) setSuccessTitle(false)
+            if(event.target.value.length <= 2) setErrorTitle(true)
+
+          }}
           onFocus={() => setErrorTitle(false)}
+          error={errorTitle}
         />
-        <TextError>qwe</TextError>
+        <TextError error={errorTitle}>Слишком коротко</TextError>
         <TextCount>{limit} / 70</TextCount>
       </InputContainer>
     </TextField>
@@ -231,13 +229,25 @@ const StepApples = ({
 
       <InputContainer>
         <TextErea
-          onChange={(event) => changeAddress(event)}
-          value={textAppeals}
-          onBlur={(event) => checkErrorAddress(event)}
-          onFocus={() => setErrorTitle(false)}
+          onChange={(event) => {
 
+            changeAddress(event)
+            
+            if(event.target.value.length >= 2) setSuccesAppeals(true)
+            else setSuccesAppeals(false)
+
+          }}
+          value={textAppeals}
+          onBlur={(event) => {
+          
+            if(errorAppeal) setSuccesAppeals(false)
+            if(event.target.value.length <= 2) setErrorAppeal(true)
+          
+          }}
+          onFocus={() => setErrorAppeal(false)}
+          error={errorAppeal}
         />
-        <TextError>qwe</TextError>
+        <TextError error={errorAppeal}>Слишком коротко</TextError>
         <TextCount>{limitAddress} / 1500</TextCount>
       </InputContainer>
     </TextField>
@@ -271,11 +281,11 @@ const Placeholder = styled.p`
   margin-bottom: 0;
 `
 
-const Input = styled.input`
+const Input = styled.input<any>`
   width: 100%;
   height: 48px;
   padding: 15px 25px;
-  border: 1.5px solid rgba(50, 50, 50, 0.5);
+  border: 1.5px solid ${({ error }) => error ? '#952F2F' : 'rgba(50, 50, 50, 0.5)'};
   border-radius: 8px;
   outline: none;
   font-weight: 400;
@@ -288,14 +298,16 @@ const InputContainer = styled.div`
   width: 100%;
 `
 
-const TextError = styled.p`
+const TextError = styled.p<any>`
   color: #952F2F;
   position: absolute;
   margin-bottom: 0;
-  bottom: -15px;
+  bottom: ${({ error }) => error ? '-17px' : '-13px'};
+  font-size: 13px;
   left: 16px;
-  opacity: 0;
+  opacity: ${({ error }) => error ? '1' : '0'};
   pointer-events: none;
+  transition: .4s;
 `
 
 const TextCount = styled.p`
@@ -309,12 +321,12 @@ const TextCount = styled.p`
   font-size: 13px;
 `
 
-const TextErea = styled.textarea`
+const TextErea = styled.textarea<any>`
   width: 100%;
   resize: none;
   height: 100px;
   padding: 15px 25px;
-  border: 1.5px solid rgba(50, 50, 50, 0.5);
+  border: 1.5px solid ${({ error }) => error ? '#952F2F' : 'rgba(50, 50, 50, 0.5)'};
   border-radius: 8px;
   outline: none;
   font-weight: 400;

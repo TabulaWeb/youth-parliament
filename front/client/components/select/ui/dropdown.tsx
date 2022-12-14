@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useState, useRef, useEffect } from 'react'
 import styled from '@emotion/styled'
 
 interface Props {
@@ -7,17 +7,53 @@ interface Props {
 }
 
 const Dropdown: FC<Props> = ({ answers, onChange }) => {
+  const wrapperRef = useRef(null);
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        if (wrapperRef.current.className.includes('active')) {
+          setIsOpen(false)
+
+          if(selectedOption == '' || selectedOption == undefined) {
+            setError(true)
+          } else {
+            setSuccess(true)
+          }
+        }
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [wrapperRef]);
 
   const [
     isOpen,
     setIsOpen
   ] = useState(false)
   const [
+    error,
+    setError
+  ] = useState(false)
+  const [
+    success,
+    setSuccess
+  ] = useState(false)
+  const [
     selectedOption,
     setSelectedOption
   ] = useState(null)
 
-  const toggling = () => setIsOpen(!isOpen)
+  const toggling = () => {
+    setIsOpen(!isOpen)
+    setError(false)
+  }
 
   const onOptionClicked = (value: any) => () => {
     onChange(value)
@@ -27,8 +63,8 @@ const Dropdown: FC<Props> = ({ answers, onChange }) => {
   }
 
   return <Main>
-    <DropDownContainer>
-      <DropDownHeader onClick={toggling}>
+    <DropDownContainer ref={wrapperRef} className={isOpen ? 'active' : ''}>
+      <DropDownHeader onClick={toggling} error={error}>
         {selectedOption || ''}
         <DropdownIcon open={isOpen}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,6 +72,8 @@ const Dropdown: FC<Props> = ({ answers, onChange }) => {
           </svg>
         </DropdownIcon>
       </DropDownHeader>
+
+      <TextError error={error}>Это обязательное поле</TextError>
 
       <DropDownListContainer isOpen={isOpen}>
         <DropDownList isOpen={isOpen}>
@@ -47,7 +85,6 @@ const Dropdown: FC<Props> = ({ answers, onChange }) => {
         </DropDownList>
       </DropDownListContainer>
     </DropDownContainer>
-    <TextError>qwe</TextError>
   </Main>
 
 }
@@ -61,12 +98,12 @@ const DropDownContainer = styled.div`
   width: 100%;
 `
 
-const DropDownHeader = styled.div`
+const DropDownHeader = styled.div<any>`
   position: relative;
   width: 100%;
   height: 48px;
   padding: 15px 25px;
-  border: 1.5px solid rgba(50, 50, 50, 0.5);
+  border: 1.5px solid ${({ error }) => error ? '#952F2F' : 'rgba(50, 50, 50, 0.5)'};
   background-color: #fff;
   border-radius: 8px;
   margin-bottom: 8px;
@@ -85,16 +122,6 @@ const DropdownIcon = styled.div<any>`
     transition: .4s;
 
     rotate: ${({ open }) => open ? '180deg' : '0deg'};
-`
-
-const TextError = styled.p`
-  color: #952F2F;
-  position: absolute;
-  margin-bottom: 0;
-  bottom: -15px;
-  left: 16px;
-  opacity: 0;
-  pointer-events: none;
 `
 
 const DropDownListContainer = styled.div<any>`
@@ -159,6 +186,36 @@ const ListItem = styled.li`
 const ListItemText = styled.p`
   pointer-events: none;
   margin-bottom: 0;
+`
+
+const TextError = styled.p<any>`
+  color: #952F2F;
+  position: absolute;
+  margin-bottom: 0;
+  bottom: ${({ error }) => error ? '-8px' : '-5px'};
+  font-size: 13px;
+  left: 16px;
+  opacity: ${({ error }) => error ? '1' : '0'};
+  pointer-events: none;
+  transition: .4s;
+`
+
+const ErrorIcon = styled.div<any>`
+  position: absolute;
+  opacity: ${({error}) => error ? '1' : '0'};
+  transform: ${({error}) => error ? 'scale(1)' : 'scale(0.8)'};
+  top: 15px;
+  right: 12px;
+  transition: .4s;
+`
+
+const SuccessIcon = styled.div<any>`
+  position: absolute;
+  opacity: ${({success}) => success ? '1' : '0'};
+  transform: ${({error}) => error ? 'scale(1)' : 'scale(0.8)'};
+  top: 12px;
+  right: 12px;
+  transition: .4s;
 `
 
 export default Dropdown

@@ -11,7 +11,17 @@ import Text from './text'
 
 // Create HomeSection ui
 const HomeSection = () => {
+  const handleClick = (e: any, id: string) => {
 
+    e.preventDefault()
+
+    const element = document.getElementById(id)
+
+    if (!element) return
+
+    element.scrollIntoView()
+
+  }
   // Return jsx
   return <Container>
     <Text
@@ -20,7 +30,11 @@ const HomeSection = () => {
     />
 
     <LinkToForm>
-      <Link href='/'>
+      <Link 
+        href="/#form"
+        scroll={true}
+        onClick={(e: any) => handleClick(e, 'form')}
+      >
         <ImageLink>
           <svg width="68" height="68">
             <defs>
@@ -87,6 +101,7 @@ const ImageLink = styled.div`
 
      & svg:nth-child(1) {
         position: absolute;
+        z-index: 100;
 
         & rect {
             stroke-width: 2;
@@ -103,7 +118,7 @@ const LinkToForm = styled.div`
     bottom: 40px;
     max-width: 1200px;
     padding: 0 4%;
-    z-index: 10;
+    z-index: 100;
 
     @media screen and (max-width: 991px)  {
         padding: 0;

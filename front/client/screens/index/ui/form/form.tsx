@@ -48,6 +48,19 @@ const Form = ({
 
   // Result
   const [unicNumber, setUnicNumber] = useState()
+  
+  // Error
+  const [errorName, setErrorName] = useState(false)
+  const [errorSurname, setErrorSurname] = useState(false)
+  const [errorPatronymic, setErrorPatranomyc] = useState(false)
+  const [errorSocial, setErrorSocial] = useState(false)
+  const [errorEmail, setErrorEmail] = useState(false)
+  const [errorPhone, setErrorPhone] = useState(false)
+  const [errorAdress, setErrorAdress] = useState(false)
+  const [errorTheme, setErrorTheme] = useState(false)
+  const [errorTitle, setErrorTitle] = useState(false)
+  const [errorAppeal, setErrorAppeal] = useState(false)
+        // appeal: textAppeals
 
   return <Container>
     <FormHeader>
@@ -186,6 +199,18 @@ const Form = ({
         phone={phone}
         setSocial={setSocial}
         social={social}
+        errorName={errorName}
+        errorSurname={errorSurname}
+        errorPatronymic={errorPatronymic}
+        errorSocial={errorSocial}
+        errorPhone={errorPhone}
+        errorEmail={errorEmail}
+        setErrorName={setErrorName}
+        setErrorSurname={setErrorSurname}
+        setErrorPatranomyc={setErrorPatranomyc}
+        setErrorSocial={setErrorSocial}
+        setErrorPhone={setErrorPhone}
+        setErrorEmail={setErrorEmail}
       />
       <StepApples 
         step={step} 
@@ -197,6 +222,14 @@ const Form = ({
         title={title} 
         setTextAppeals={setTextAppeals}
         textAppeals={textAppeals}
+        errorAdress={errorAdress}
+        errorTheme={errorTheme}
+        errorTitle={errorTitle}
+        errorAppeal={errorAppeal}
+        setErrorAdress={setErrorAdress}
+        setErrorTheme={setErrorTheme}
+        setErrorTitle={setErrorTitle}
+        setErrorAppeal={setErrorAppeal}
       />
       <StepReady 
         step={step}
@@ -220,6 +253,26 @@ const Form = ({
             title={title}
             textAppeals={textAppeals}
             setUnicNumber={setUnicNumber}
+            errorName={errorName}
+            errorSurname={errorSurname}
+            errorPatronymic={errorPatronymic}
+            errorSocial={errorSocial}
+            errorEmail={errorEmail}
+            errorPhone={errorPhone}
+            errorAdress={errorAdress}
+            errorTheme={errorTheme}
+            errorTitle={errorTitle}
+            errorAppeal={errorAppeal}
+            setErrorName={setErrorName}
+            setErrorSurname={setErrorSurname}
+            setErrorPatranomyc={setErrorPatranomyc}
+            setErrorSocial={setErrorSocial}
+            setErrorPhone={setErrorPhone}
+            setErrorEmail={setErrorEmail}
+            setErrorAdress={setErrorAdress}
+            setErrorTheme={setErrorTheme}
+            setErrorTitle={setErrorTitle}
+            setErrorAppeal={setErrorAppeal}
           />
         </Buttons>
         : null}
