@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'youth-strapi',
-      script: 'strapi start',
+      script: 'pm2 start server.js',
       watch: './',
       env: {
         MODE: 'development',

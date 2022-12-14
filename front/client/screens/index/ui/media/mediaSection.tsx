@@ -113,12 +113,12 @@ const MediaSection = () => {
         </Header>
 
         {loader ? slide.map((item:any) => {
-            console.log(item.attributes.image.data.attributes.url)
+          
           return (
-            
             <SwiperSlide key={item.id} className='slideMedia'>
               <SlideContainer className='slideMediaContainer'>
-                <SliderBackground src={item.attributes.image.data.attributes.url} fill alt='slider background' />
+                {/* <SliderBackground src={`${process.env.NEXT_PUBLIC_SERVER}${item.attributes.image.data.attributes.url}`} fill alt='slider background' /> */}
+                <SliderBackground src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} fill alt='slider background' />
                 <SlideText>{item.attributes.title}</SlideText>
               </SlideContainer>
             </SwiperSlide>

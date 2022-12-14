@@ -36,7 +36,7 @@ const Main = (theme: Theme) => css`
 
   /* Set tag styles */
   body {
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     line-height: 1.2;
     margin: 0;
     background-color: #f5f9ff;
