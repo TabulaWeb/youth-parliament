@@ -1,11 +1,13 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react'
+import styled from '@emotion/styled'
 import parse from 'html-react-parser'
 
-const Text = ({text}: any) => {
-    return <Container>
-        {parse(text)}
-    </Container>
+const Text = ({ text }: any) => {
+
+  return <Container>
+    {parse(text)}
+  </Container>
+
 }
 
 const Container = styled.div`

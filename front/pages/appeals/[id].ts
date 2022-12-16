@@ -1,6 +1,4 @@
-import Appeals from "#/screens/appeals";
+import Appeals from '#/screens/appeals'
 
 // Export object
-export {
-    Appeals as default
-}
+export { Appeals as default }

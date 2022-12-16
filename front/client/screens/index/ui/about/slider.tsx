@@ -1,28 +1,39 @@
 'use client'
 
 // Import global npm modules
+import process from 'process'
+
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
-import ContentLoader from "react-content-loader"
+import ContentLoader from 'react-content-loader'
 
 import SliderButton from './sliderButton'
-import process from 'process'
 
 // Import Swiper styles
 import 'swiper/css'
 import get from 'axios'
 
 const Slider = () => {
-  const [slide, setSlide] = useState([])
-  const [loader, setLoader] = useState(false)
+
+  const [
+    slide,
+    setSlide
+  ] = useState([])
+  const [
+    loader,
+    setLoader
+  ] = useState(false)
 
   useEffect(() => {
+
     setLoader(false)
     get(`${process.env.NEXT_PUBLIC_SERVER}/events?populate=slide`).then((res) => {
+
       setSlide(res.data.data)
       setLoader(true)
+    
     })
     
   }, [])
@@ -70,14 +81,15 @@ const Slider = () => {
       <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
     </Swiper>
   </>
-  :
-  <ContentLoader
-    speed={2}
-    width={'100%'}
-    height={500}
-  > 
-    <rect x="0" y="0" rx="2" ry="2" width="100%" height="400" />
-  </ContentLoader>
+    :
+    <ContentLoader
+      speed={2}
+      width={'100%'}
+      height={500}
+    > 
+      <rect x="0" y="0" rx="2" ry="2" width="100%" height="400" />
+    </ContentLoader>
+
 }
 
 const SlideNav = styled.div`

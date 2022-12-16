@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
  
 const Text = () => {
 
-    return <Title>Отправить обращение</Title>
+  return <Title>Отправить обращение</Title>
 
 }
 

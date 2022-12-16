@@ -11,6 +11,7 @@ import Text from './text'
 
 // Create HomeSection ui
 const HomeSection = () => {
+
   const handleClick = (e: any, id: string) => {
 
     e.preventDefault()
@@ -22,6 +23,7 @@ const HomeSection = () => {
     element.scrollIntoView()
 
   }
+
   // Return jsx
   return <Container>
     <Text

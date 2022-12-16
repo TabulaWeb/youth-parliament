@@ -11,7 +11,6 @@ import { flexbox } from '@mui/system'
 
 import SliderButton from './sliderButton'
 
-
 import Container from '../container'
 
 const MediaSection = () => {

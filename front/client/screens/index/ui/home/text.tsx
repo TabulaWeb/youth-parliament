@@ -3,7 +3,10 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 // Create Text ui
-const Text = ({ title, subtitle }:any) => {
+const Text = ({
+  title,
+  subtitle
+}:any) => {
 
   // Return jsx
   return <Main>

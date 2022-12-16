@@ -1,14 +1,17 @@
-import { FC } from "react"
+import { FC } from 'react'
 import styled from '@emotion/styled'
 
-import ToolTip from "#/components/tool";
+import ToolTip from '#/components/tool'
 
 interface Props {
   tooltip?: any;
   placeholder?: any;
 }
 
-const Placeholder: FC<Props> = ({ placeholder, tooltip }) => {
+const Placeholder: FC<Props> = ({
+  placeholder,
+  tooltip
+}) => {
 
   return <Main>
     {placeholder}

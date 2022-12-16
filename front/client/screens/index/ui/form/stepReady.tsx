@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const StepReady = ({ step, unicNumber }: any) => {
+const StepReady = ({
+  step,
+  unicNumber
+}: any) => {
 
   return <Container step={step}>
     <Code>

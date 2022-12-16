@@ -2,6 +2,4 @@
 import App from '#/root/app'
 
 // Export object
-export {
-  App as default
-}
+export { App as default }

@@ -115,7 +115,7 @@ const optionsTheme = [
   {
     id: 23,
     value: 'Другое'
-  },
+  }
 ]
 
 const StepApples = ({
@@ -142,7 +142,6 @@ const StepApples = ({
     limitAddress,
     setLimitAddress
   ] = useState(0)
-  
 
   const [
     successTitle,
@@ -199,7 +198,8 @@ const StepApples = ({
 
       <InputContainer>
         <Input
-          onChange={(event) => {
+          onChange={(event:any) => {
+
             changeTitle(event)
 
             if(event.target.value.length >= 2) setSuccessTitle(true)
@@ -207,7 +207,7 @@ const StepApples = ({
 
           }}
           value={title}
-          onBlur={(event) => {
+          onBlur={(event:any) => {
             
             if(errorTitle) setSuccessTitle(false)
             if(event.target.value.length <= 2) setErrorTitle(true)
@@ -229,7 +229,7 @@ const StepApples = ({
 
       <InputContainer>
         <TextErea
-          onChange={(event) => {
+          onChange={(event:any) => {
 
             changeAddress(event)
             
@@ -238,7 +238,7 @@ const StepApples = ({
 
           }}
           value={textAppeals}
-          onBlur={(event) => {
+          onBlur={(event:any) => {
           
             if(errorAppeal) setSuccesAppeals(false)
             if(event.target.value.length <= 2) setErrorAppeal(true)

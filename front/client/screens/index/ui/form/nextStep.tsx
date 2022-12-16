@@ -1,7 +1,8 @@
+import process, { off } from 'process'
+
 import React from 'react'
 import styled from '@emotion/styled'
-import axios from "axios";
-import process, { off } from 'process';
+import axios from 'axios'
 
 const NextStep = ({
   step,
@@ -42,11 +43,15 @@ const NextStep = ({
   const next = (step:any) => step >= 4 ? step : step+1
 
   return <NextButton aria-label='continue' type='button' onClick={() => {
+
     if(step == 1) {
+
       setStep(next)
+    
     }
 
     if(step == 2) {
+
       if(name == '' || name == undefined) return setErrorName(true)
       if(lastname == '' || lastname == undefined) return setErrorSurname(true)
       if(patronymic == '' || patronymic == undefined) return setErrorPatranomyc(true)
@@ -55,9 +60,11 @@ const NextStep = ({
       if(phone == '' || phone == undefined) return setErrorPhone(true)
       
       return setStep(next)
+    
     }
 
     if(step == 3) {
+
       if (address == '' || address == undefined) return setErrorAdress(true)
       if (theme == '' || theme == undefined) return setErrorTheme(true)
       if (title == '' || title == undefined) return setErrorTitle(true)
@@ -74,13 +81,17 @@ const NextStep = ({
         title: title,
         appeal: textAppeals,
         publish: false
-      }})
-      .then((response) => {
+      } })
+        .then((response) => {
+
           setStep(next)
           setUnicNumber(response.data.data.id)
+        
         })
         .catch((error) => {
+
           console.log(error)
+        
         })
     
     }

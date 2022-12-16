@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
-const AppealsFilter = ({setFilter, changeResponse, page, setPage, setCurrentPage}: any) => {
+const AppealsFilter = ({
+  setFilter,
+  changeResponse,
+  page,
+  setPage,
+  setCurrentPage
+}: any) => {
   
   const [
     active,
@@ -9,14 +15,21 @@ const AppealsFilter = ({setFilter, changeResponse, page, setPage, setCurrentPage
   ] = useState('Все')
 
   const handleChange = (event:any) => {
+
     setActive(event.target.value)
     setFilter(event.target.value)
     setCurrentPage(1)
+
     if(event.target.value != 'Все') {
+
       changeResponse(event.target.value, 1)
+    
     } else {
+
       changeResponse('', 1)
+    
     }
+  
   }
 
   return <Container>

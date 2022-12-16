@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
-const Breadctumbs = ({number}: any) => {
+const Breadctumbs = ({ number }: any) => {
 
   return <Container>
     <TextLink href='/'>Главная <SpanText>/</SpanText></TextLink>

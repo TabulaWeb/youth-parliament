@@ -8,9 +8,7 @@ interface Props {
 }
 
 // Create Container ui
-const Container: FC<Props> = ({
-  children
-}) => {
+const Container: FC<Props> = ({ children }) => {
 
   // Return jsx
   return <Main>

@@ -1,27 +1,47 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react'
+import styled from '@emotion/styled'
 
-const Title = ({title, date, tag}: any) => {
+const Title = ({
+  title,
+  date,
+  tag
+}: any) => {
 
-    const renderDate = (date: any) => {
-        const dateArr = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
-        let time = date.split('T')[1]
-        let month = date.split('T')[0]
+  const renderDate = (date: any) => {
+
+    const dateArr = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек'
+    ]
+    let time = date.split('T')[1]
+    let month = date.split('T')[0]
     
-        return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
-      }
+    return `${month.split('-')[2].includes('0') ? month.split('-')[2].substr(1) : month.split('-')[2]} ${month.split('-')[1].includes('0') ? dateArr[month.split('-')[1].substr(1) - 1] : dateArr[month.split('-')[1] - 1]} ${time.substr(0, 5)}`
+  
+  }
 
-    return <Container>
-        <TitleText>{title}</TitleText>
+  return <Container>
+    <TitleText>{title}</TitleText>
 
-        <MetaData>
-            <Tag>{tag}</Tag>
+    <MetaData>
+      <Tag>{tag}</Tag>
 
-            <Date>
-                {renderDate(date)}
-            </Date>
-        </MetaData>
-    </Container>
+      <Date>
+        {renderDate(date)}
+      </Date>
+    </MetaData>
+  </Container>
+
 }
 
 const Container = styled.div`
@@ -58,7 +78,7 @@ const Tag = styled.p`
     margin-bottom: 0;
 `
 
-const Date =  styled.div`
+const Date = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -25,6 +25,7 @@ const options = [
 ]
 
 const StepPersonal = (props: any) => {
+
   const [
     successName,
     setSuccessName
@@ -219,7 +220,7 @@ const StepPersonal = (props: any) => {
           className='input-phone'
           mask='+7(999)999-99-99'
           placeholder='+7(___)___-__-__'
-          onChange={(event) => {
+          onChange={(event:any) => {
 
             props.setPhone(event.target.value)
 
@@ -227,7 +228,7 @@ const StepPersonal = (props: any) => {
             else setSuccessPhone(false)
 
           }}
-          onBlur={(event) => {
+          onBlur={(event:any) => {
 
             if(props.errorPhone) setSuccessPhone(false)
             if(event.target.value.includes('_') || event.target.value.length < 1) props.setErrorPhone(true)
@@ -342,8 +343,8 @@ const TextError = styled.p<any>`
 
 const ErrorIcon = styled.div<any>`
   position: absolute;
-  opacity: ${({error}) => error ? '1' : '0'};
-  transform: ${({error}) => error ? 'scale(1)' : 'scale(0.8)'};
+  opacity: ${({ error }) => error ? '1' : '0'};
+  transform: ${({ error }) => error ? 'scale(1)' : 'scale(0.8)'};
   top: 15px;
   right: 12px;
   transition: .4s;
@@ -351,8 +352,8 @@ const ErrorIcon = styled.div<any>`
 
 const SuccessIcon = styled.div<any>`
   position: absolute;
-  opacity: ${({success}) => success ? '1' : '0'};
-  transform: ${({error}) => error ? 'scale(1)' : 'scale(0.8)'};
+  opacity: ${({ success }) => success ? '1' : '0'};
+  transform: ${({ error }) => error ? 'scale(1)' : 'scale(0.8)'};
   top: 12px;
   right: 12px;
   transition: .4s;

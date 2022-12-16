@@ -6,32 +6,51 @@ interface Props {
   onChange: any
 }
 
-const Dropdown: FC<Props> = ({ answers, onChange }) => {
-  const wrapperRef = useRef(null);
+const Dropdown: FC<Props> = ({
+  answers,
+  onChange
+}) => {
+
+  const wrapperRef = useRef<any>(null)
   useEffect(() => {
+
     /**
      * Alert if clicked on outside of element
      */
-    function handleClickOutside(event) {
+    function handleClickOutside(event:any) {
+
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+
         if (wrapperRef.current.className.includes('active')) {
+
           setIsOpen(false)
 
           if(selectedOption == '' || selectedOption == undefined) {
+
             setError(true)
+          
           } else {
+
             setSuccess(true)
+          
           }
+        
         }
+      
       }
+    
     }
     // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside)
+
     return () => {
+
       // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [wrapperRef]);
+      document.removeEventListener('mousedown', handleClickOutside)
+    
+    }
+  
+  }, [wrapperRef])
 
   const [
     isOpen,
@@ -51,11 +70,14 @@ const Dropdown: FC<Props> = ({ answers, onChange }) => {
   ] = useState(null)
 
   const toggling = () => {
+
     setIsOpen(!isOpen)
     setError(false)
+  
   }
 
   const onOptionClicked = (value: any) => () => {
+
     onChange(value)
     setSelectedOption(value)
     setIsOpen(false)
@@ -202,8 +224,8 @@ const TextError = styled.p<any>`
 
 const ErrorIcon = styled.div<any>`
   position: absolute;
-  opacity: ${({error}) => error ? '1' : '0'};
-  transform: ${({error}) => error ? 'scale(1)' : 'scale(0.8)'};
+  opacity: ${({ error }) => error ? '1' : '0'};
+  transform: ${({ error }) => error ? 'scale(1)' : 'scale(0.8)'};
   top: 15px;
   right: 12px;
   transition: .4s;
@@ -211,8 +233,8 @@ const ErrorIcon = styled.div<any>`
 
 const SuccessIcon = styled.div<any>`
   position: absolute;
-  opacity: ${({success}) => success ? '1' : '0'};
-  transform: ${({error}) => error ? 'scale(1)' : 'scale(0.8)'};
+  opacity: ${({ success }) => success ? '1' : '0'};
+  transform: ${({ error }) => error ? 'scale(1)' : 'scale(0.8)'};
   top: 12px;
   right: 12px;
   transition: .4s;

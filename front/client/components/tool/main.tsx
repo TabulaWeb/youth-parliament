@@ -1,7 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react'
 
-import Container from "./ui/container"
-import Tool from "./ui/tool"
+import Container from './ui/container'
+import Tool from './ui/tool'
 
 interface Props {
   text: string;

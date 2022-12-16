@@ -2,10 +2,12 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const Agreement:any = () => {
-    return <Container>
-        <Text>Нажимая на кнопку «Продолжить», вы принимаете соглашение</Text>
-        <TextLink>о пользовании информационными системами и даете согласие на обработку персональных данных.</TextLink>
-    </Container>
+
+  return <Container>
+    <Text>Нажимая на кнопку «Продолжить», вы принимаете соглашение</Text>
+    <TextLink>о пользовании информационными системами и даете согласие на обработку персональных данных.</TextLink>
+  </Container>
+
 }
 
 const Container = styled.div`
