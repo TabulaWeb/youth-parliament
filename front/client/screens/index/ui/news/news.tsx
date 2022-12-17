@@ -90,7 +90,7 @@ const News = () => {
 
     {loader ? <NewsItemXs data={news} /> : <></>}
 
-    {news.length > 4 &&
+    {news?.length > 4 &&
     <PaginationContainer>
       <Pagination 
         count={page}

@@ -38,7 +38,7 @@ const Tips = ({
   
   }
 
-  return <Container>
+  return news?.length > 3 && <Container>
     <MainNews href={`/news/${news[getRandomInt(news.length-1)].id}`}>
       <MainNewsImage src={`http://localhost:1337${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
       <MainNewsMeta>

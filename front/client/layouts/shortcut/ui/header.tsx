@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import Link from 'next/link'
+import process from 'process'
 
 // Create Header ui
 const Header = () => {
@@ -13,15 +14,18 @@ const Header = () => {
   ] = useState<boolean>(false)
 
   const handleClick = (e: any, id: string) => {
+    if(window.location.pathname == '/') {
+      
+      e.preventDefault()
 
-    e.preventDefault()
+      const element = document.getElementById(id)
 
-    const element = document.getElementById(id)
+      if (!element) return
 
-    if (!element) return
-
-    element.scrollIntoView()
-
+      element.scrollIntoView()
+    } else {
+      location.href=`${location.origin}/#${id}`
+    }
   }
 
   // Return jsx
