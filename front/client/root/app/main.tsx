@@ -1,5 +1,5 @@
 // Import global npm modules
-import { FC } from 'react'
+import { FC, useEffect} from 'react'
 
 import Layout from './ui/layout'
 

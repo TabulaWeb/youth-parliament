@@ -89,7 +89,7 @@ const Appeals = ({
           </ContentLoader>
       
       })}
-      {data.length != 0 && 
+      {data.length > 6 && 
       <PaginationContainer>
         <Pagination 
           count={page}
