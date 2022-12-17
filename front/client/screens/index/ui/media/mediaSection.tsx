@@ -7,7 +7,6 @@ import Image from 'next/image'
 import ContentLoader from 'react-content-loader'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import get from 'axios'
-import { flexbox } from '@mui/system'
 
 import SliderButton from './sliderButton'
 
@@ -30,7 +29,6 @@ const MediaSection = () => {
     get(`${process.env.NEXT_PUBLIC_SERVER}/writes?populate=image`).then((res) => {
 
       setSlide(res.data.data)
-      console.log(res.data.data)
       setLoader(true)
     
     })
@@ -105,24 +103,23 @@ const MediaSection = () => {
         <Header slot="container-start">
           <Title>О нас пишут</Title>
 
-          <SlideNav>
-            <SliderButton next={false} activeSlide={activeSlide} sliderLength={slide.length+1} />
-            <SliderButton next={true} activeSlide={activeSlide} sliderLength={slide.length+1} />
-          </SlideNav>
+          {slide.length > 1 &&
+            <SlideNav>
+              <SliderButton next={false} activeSlide={activeSlide} sliderLength={slide.length+1} />
+              <SliderButton next={true} activeSlide={activeSlide} sliderLength={slide.length+1} />
+            </SlideNav>
+          }
         </Header>
 
         {loader ? slide.map((item:any) => {
           
-          return (
-            <SwiperSlide key={item.id} className='slideMedia'>
+          return <SwiperSlide key={item.id} className='slideMedia'>
               <SlideContainer className='slideMediaContainer'>
                 {/* <SliderBackground src={`${process.env.NEXT_PUBLIC_SERVER}${item.attributes.image.data.attributes.url}`} fill alt='slider background' /> */}
                 <SliderBackground src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} fill alt='slider background' />
                 <SlideText>{item.attributes.title}</SlideText>
               </SlideContainer>
             </SwiperSlide>
-          )
-        
         })
           :
           <ContentLoader
@@ -140,6 +137,26 @@ const MediaSection = () => {
   </Container>
 
 }
+
+const Empty = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`
+
+const EmptyTitle = styled.p`
+  width: max-content;
+  border-radius: 16px;
+  font-size: 20px;
+  background: rgba(249, 246, 243, 0.6);
+  border: 1px solid rgba(50, 50, 50, 0.08);
+  box-shadow: 2px 2px 12px rgba(141, 141, 141, 0.2);
+  padding: 20px 50px;
+  -webkit-backdrop-filter: blur(60px);
+`
 
 const Wrapper = styled.div`
     padding-top: 60px;

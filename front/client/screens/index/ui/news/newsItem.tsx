@@ -31,7 +31,7 @@ const NewsItem = ({ data }:any) => {
   
   }
   
-  return <Container>
+  return data.length >= 1 ? <Container>
     <MainLink href={`news/${data[0].id}`} key={data[0].id}>
       <MainNews className='newsItemMain'>
         <MainNewsImage className='imageMainNews' src={`http://localhost:1337${data[0].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
@@ -63,8 +63,35 @@ const NewsItem = ({ data }:any) => {
 
     </OtherNews>
   </Container>
+  :
+  <></>
+  // <Container>
+  //   <Empty>
+  //     <EmptyTitle>Нет Новостей</EmptyTitle>
+  //   </Empty>
+  // </Container>
 
 }
+
+const Empty = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`
+
+const EmptyTitle = styled.p`
+  width: max-content;
+  border-radius: 16px;
+  font-size: 20px;
+  background: rgba(249, 246, 243, 0.6);
+  border: 1px solid rgba(50, 50, 50, 0.08);
+  box-shadow: 2px 2px 12px rgba(141, 141, 141, 0.2);
+  padding: 20px 50px;
+  -webkit-backdrop-filter: blur(60px);
+`
 
 // ...
 const Container = styled.div`

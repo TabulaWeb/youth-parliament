@@ -90,13 +90,15 @@ const News = () => {
 
     {loader ? <NewsItemXs data={news} /> : <></>}
 
+    {news.length > 4 &&
     <PaginationContainer>
       <Pagination 
         count={page}
         onChange={(event, page) => changePage(page)}
       />
     </PaginationContainer>
-    
+    }
+
     <Loader
       count={page}
       loadMore={loadMore}

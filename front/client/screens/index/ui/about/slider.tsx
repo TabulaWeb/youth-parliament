@@ -76,9 +76,13 @@ const Slider = () => {
         </SwiperSlide>
 
       })}
-
-      <ProgressBar max={slide.length} value={indexSlide} />
-      <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
+      {slide.length > 1 &&
+        <>
+          <ProgressBar max={slide.length} value={indexSlide} />
+          <ProgressNumber>{indexSlide} / {slide.length}</ProgressNumber>
+        </>
+      }
+      
     </Swiper>
   </>
     :
