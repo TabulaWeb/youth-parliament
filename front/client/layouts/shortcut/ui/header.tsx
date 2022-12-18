@@ -32,44 +32,7 @@ const Header = () => {
   return <Main>
 
     <StainImageOne>
-      <svg width="633" height="388" viewBox="0 0 633 388" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g opacity="0.6">
-          <g filter="url(#filter0_f_188_2437)">
-            <path d="M335.064 42.7497C394.738 116.943 382.034 205.882 442.297 243.646C448.64 247.621 456.792 246.584 462.566 241.82C599.749 128.634 639.927 -51.1535 502.005 -132.011C325.675 -235.386 229.766 -262.76 221.236 -156.69C212.707 -50.6191 272.076 -35.5632 335.064 42.7497Z" fill="#FFB6FB" />
-          </g>
-          <g filter="url(#filter1_f_188_2437)">
-            <path d="M337.331 138.223C369.904 185.655 418.314 154.619 439.863 131.867C440.824 130.852 441.615 129.767 442.327 128.564C459.909 98.863 512.605 16.9433 452.219 -48.3666C375.176 -131.691 352.843 -145.248 337.703 -91.5488C322.563 -37.8499 295.694 77.5929 337.331 138.223Z" fill="#D6D8FF" />
-          </g>
-          <g filter="url(#filter2_f_188_2437)">
-            <path d="M403.745 146.525C463.334 110.203 486.377 48.6503 446.463 6.66C444.213 4.29369 441.31 2.71251 438.171 1.81801C380.491 -14.6139 213.664 -70.5742 154.378 15.1624C78.113 125.455 118.235 60.1079 155.062 111.288C206.638 182.967 342.473 183.873 403.745 146.525Z" fill="#A7FFDA" />
-          </g>
-          <g filter="url(#filter3_f_188_2437)">
-            <path d="M395.418 146.381C427.801 126.642 440.783 93.5101 420.668 70.2121C418.534 67.7409 415.614 66.1868 412.478 65.2783C378.627 55.4711 288.985 26.6046 256.693 73.3032C214.266 134.66 237.187 104.552 257.674 133.025C286.366 172.9 361.332 167.158 395.418 146.381Z" fill="#F9FCFF" fillOpacity="0.5" />
-          </g>
-        </g>
-        <defs>
-          <filter id="filter0_f_188_2437" x="120.416" y="-324.092" width="567.164" height="670.189" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-            <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_188_2437" />
-          </filter>
-          <filter id="filter1_f_188_2437" x="215.112" y="-223.547" width="365.313" height="486.612" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-            <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_188_2437" />
-          </filter>
-          <filter id="filter2_f_188_2437" x="11.0076" y="-131.326" width="555.373" height="402.26" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-            <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_188_2437" />
-          </filter>
-          <filter id="filter3_f_188_2437" x="132.79" y="-52.5586" width="397.472" height="315.097" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-            <feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_188_2437" />
-          </filter>
-        </defs>
-      </svg>
+      {/* <svg xmlns="http://www.w3.org/2000/svg" width="454" height="228" fill="none"><path fill="#FFB6FB" d="M201 40c45 56 49 121 74 165 19 33 63 28 89 1 108-113 129-268 4-341C192-238 96-266 87-160 79-54 138-38 201 40Z"/><path fill="#FFDFFD" d="M203 135c33 48 81 17 103-6l2-3c18-30 83-116 23-181-78-83-150-85-165-31s-4 161 37 221Z"/><path fill="#A7FFDA" d="M280 150c60-36 75-103 35-145-39-37-247-86-297 5-24 45-28 79 14 125 60 66 187 53 248 15Z"/><path fill="#CDFBE9" d="M272 150c34-21 47-56 22-80-26-28-130-44-161 7-27 44-1 68 7 73 42 26 98 21 132 0Z"/></svg> */}
     </StainImageOne>
 
     <Wrapper>
@@ -329,10 +292,12 @@ const LinkText = styled(Link)`
   `
 
 const StainImageOne = styled.div`
+  filter: blur(50px);
+  opacity: 0.5;
   position: absolute;
   top: 0;
   right: 0;
-  z-index: -1;
+  z-index: -100;
   pointer-events: none;
 `
 
