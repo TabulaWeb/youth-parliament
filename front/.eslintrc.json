@@ -7,6 +7,7 @@
     "sort" // eslint-plugin-{name}
   ],
   "rules": {
+    "@next/next/no-document-import-in-page": "off",
     // Set errors
     "no-var": [2],
 

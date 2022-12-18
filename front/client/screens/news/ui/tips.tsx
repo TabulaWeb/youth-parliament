@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import parse from 'html-react-parser'
 
-const Tips = ({
+const Tips:any = ({
   news,
   id
 }: any) => {
