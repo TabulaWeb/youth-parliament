@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "prod": "pm2 start server.js --name youth-server --watch",
+    "prod": "pm2 start server.js --name youth-server",
     "build": "strapi build",
     "strapi": "strapi"
   },
