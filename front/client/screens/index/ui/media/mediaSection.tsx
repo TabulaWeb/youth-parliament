@@ -43,6 +43,8 @@ const MediaSection = () => {
   return <Container>
 
     <StainImageFive>
+      <Circle className='perple'></Circle>
+      <Circle className='pink'></Circle>
       {/* <svg xmlns="http://www.w3.org/2000/svg" width="719" height="850" fill="none"><path fill="#A9AEF4" d="M288 321c-70 153-113 279-38 415l3 5c196 189 566 15 589-264 29-351-96-427-158-461-147-79-326 151-396 305Z"/><path fill="#D4B5F4" d="M1 390c-18 147 161 207 234 217 120 17 325 30 320-199-7-286-183-362-301-285C135 199 24 206 1 390Z"/><path fill="#E9D8F6" d="M321 848c221-28 292-136 292-265 0-109-80-400-337-279-70 33-145 165-175 222-9 17-25 57-12 122 16 78 77 219 232 200Z"/></svg> */}
     </StainImageFive>
 
@@ -202,12 +204,28 @@ const Pagination = styled.div`
 
 const StainImageFive = styled.div`
 filter: blur(50px);
-    opacity: 0.5;
+    opacity: 0.6;
     position: absolute;
     top: -150px;
-    right: -150px;
+    right: -100px;
     z-index: -100;
+
+  & .perple {
+    width: 400px;
+    height: 400px;
+    background-color: #ACB0F5;
+    border-radius: 50px;
+  }
+
+  & .pink {
+    width: 400px;
+    height: 400px;
+    background-color: #E9D8F6;
+    border-radius: 50px;
+  }
 `
+
+const Circle = styled.div``
 
 // Export default Container ui
 export default MediaSection

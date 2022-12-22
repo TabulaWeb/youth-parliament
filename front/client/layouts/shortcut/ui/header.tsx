@@ -32,6 +32,8 @@ const Header = () => {
   return <Main>
 
     <StainImageOne>
+      <Circle className='green'></Circle>
+      <Circle className='perpl'></Circle>
       {/* <svg xmlns="http://www.w3.org/2000/svg" width="454" height="228" fill="none"><path fill="#FFB6FB" d="M201 40c45 56 49 121 74 165 19 33 63 28 89 1 108-113 129-268 4-341C192-238 96-266 87-160 79-54 138-38 201 40Z"/><path fill="#FFDFFD" d="M203 135c33 48 81 17 103-6l2-3c18-30 83-116 23-181-78-83-150-85-165-31s-4 161 37 221Z"/><path fill="#A7FFDA" d="M280 150c60-36 75-103 35-145-39-37-247-86-297 5-24 45-28 79 14 125 60 66 187 53 248 15Z"/><path fill="#CDFBE9" d="M272 150c34-21 47-56 22-80-26-28-130-44-161 7-27 44-1 68 7 73 42 26 98 21 132 0Z"/></svg> */}
     </StainImageOne>
 
@@ -292,13 +294,31 @@ const LinkText = styled(Link)`
   `
 
 const StainImageOne = styled.div`
+  display: flex;
+  flex-direction: row;
   filter: blur(50px);
-  opacity: 0.5;
+  opacity: 0.6;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 50px;
   z-index: -100;
   pointer-events: none;
+`
+
+const Circle = styled.div`
+  &.green {
+    background-color: #A7FFDA;
+    width: 300px;
+    height: 200px;
+    border-radius: 25px;
+  }
+
+  &.perpl {
+    background-color: #FFB6FB;
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+  }
 `
 
 // Export default Header ui

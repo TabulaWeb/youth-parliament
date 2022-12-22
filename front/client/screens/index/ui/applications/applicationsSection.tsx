@@ -105,6 +105,8 @@ const ApplicationsSection = () => {
   return<> <Main>
     <Wrap>
       <StainImageNine>
+        <Circle className='green'></Circle>
+        <Circle className='pink'></Circle>
         {/* <svg xmlns="http://www.w3.org/2000/svg" width="627" height="919" fill="none"><path fill="#A7FFDA" d="M-2 620c39 38 225 78 306 57 99-27 437-163 284-489C394-223 30 149-61 291c-82 127 17 290 59 329Z"/><path fill="#E0FDF4" d="M130 100C69 127-46 190-61 256c-17 77-112 315 253 469 340 143 400-409 335-521-53-91-219-117-280-124-15-2-103 14-117 20Z"/><path fill="#F7DDFF" d="M-30 376c-177 66-217 420-98 542l3 2c339 249 554 15 572-7 15-20 95-182-7-281C277 474 148 310-30 376Z"/><path fill="#EBD9FF" d="M-74 298c-193 67-356 485-261 631 106 162 338 239 575 26 211-189 108-151 34-281C164 479 120 230-74 298Z"/></svg> */}
       </StainImageNine>
 
@@ -118,6 +120,7 @@ const ApplicationsSection = () => {
       </Wrapper>
 
       <StainImageTen>
+        <Circle className='pink'></Circle>
         {/* <svg xmlns="http://www.w3.org/2000/svg" width="640" height="593" fill="none"><path fill="#FFB6FB" d="M221 100c-60 136 74 407 176 458 95 47 285 29 301-218 15-219-62-206-130-264-115-97-287-112-347 24Z"/><path fill="#A9AEF4" d="M49 558c37 91 180 112 248 63 126-72 167-236 61-338-131-128-184-125-271-41-142 138-74 225-38 316Z"/><path fill="#EBD9FF" d="M358 283c-51 76-52 219-22 258 55 70 241 120 299-6 64-140 36-207-10-249-16-14-52-27-73-34-57-18-145-41-194 31Z"/></svg> */}
       </StainImageTen>
     </Wrap>
@@ -218,8 +221,22 @@ filter: blur(50px);
     opacity: 0.5;
     position: absolute;
     top: 100px;
-    left: 0;
+    left: -100px;
     z-index: -1;
+
+  & .green {
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+    background-color: #A7FFDA;
+  }
+
+  & .pink {
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+    background-color: #EBD9FF;
+  }
 `
 
 const StainImageTen = styled.div`
@@ -227,8 +244,15 @@ filter: blur(50px);
     opacity: 0.5;
     position: absolute;
     top: 250px;
-    right: 0;
+    right: -100px;
     z-index: -1;
+
+  & .pink {
+    width: 500px;
+    height: 500px;
+    border-radius: 50px;
+    background-color: #FFB6FB;
+  }
 `
 
 const Modal = styled.div<any>`
@@ -293,6 +317,8 @@ const FilterItem = styled.p`
     color: #2F4395;
   }
 `
+
+const Circle = styled.div``
 
 // Export default Container ui
 export default ApplicationsSection
