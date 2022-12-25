@@ -40,7 +40,7 @@ const NewsItemXs = ({ data }:any) => {
             <Tag>{item.attributes.tag}</Tag>
             <Data>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</Data>
           </OtherNewsMeta>
-          <OtherNewsTitle>{`${item.attributes.title.slice(0, 50)}...`}</OtherNewsTitle>
+          <OtherNewsTitle>{`${item.attributes.title.slice(0, 40)}...`}</OtherNewsTitle>
           <OtherNewsText>{parse(`${item.attributes.text.slice(0, 200)}...`)}</OtherNewsText>
         </OtherContent>
       </OtherNewsItem>

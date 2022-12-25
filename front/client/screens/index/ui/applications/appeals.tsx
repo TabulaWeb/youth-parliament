@@ -68,7 +68,7 @@ const Appeals = ({
               </AppealData>
             </AppealHead>
             <AppealBody>
-              <AppealMessage>{`${item.attributes.appeal.slice(0, 50)}...`}</AppealMessage>
+              <AppealMessage>{`${item.attributes.appeal.slice(0, 40)}...`}</AppealMessage>
               <AppealTag>{item.attributes.adress}</AppealTag>
             </AppealBody>
           </Appeal>
