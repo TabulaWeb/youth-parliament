@@ -39,9 +39,9 @@ const NewsItem = ({ data }:any) => {
           <Tag>{data[0].attributes.tag}</Tag>
           <Data>{renderDate(data[0].attributes.createdAt)}</Data>
         </MainNewsMeta>
-        <MainNewsTitle>{`${data[0].attributes.title.slice(0, 40)}...}...`}</MainNewsTitle>
+        <MainNewsTitle>{`${data[0].attributes.title.slice(0, 40)}...`}</MainNewsTitle>
         <MainNewsText>
-          {parse(`${data[0].attributes.text.slice(0, 600)}...`)}
+          {`${parse(data[0].attributes.text.slice(0, 600))}...`}
         </MainNewsText>
       </MainNews>
     </MainLink>
@@ -55,7 +55,7 @@ const NewsItem = ({ data }:any) => {
           </OtherNewsMeta>
           <OtherNewsTitle>{`${item.attributes.title.slice(0, 40)}...`}</OtherNewsTitle>
           <OtherNewsText>
-            {parse(`${item.attributes.text.slice(0, 200)}...`)}
+            {`${parse(item.attributes.text.slice(0, 200))}...`}
           </OtherNewsText>
         </OtherContent>
       </OtherNewsItem>
