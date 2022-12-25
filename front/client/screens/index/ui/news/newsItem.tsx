@@ -39,9 +39,9 @@ const NewsItem = ({ data }:any) => {
           <Tag>{data[0].attributes.tag}</Tag>
           <Data>{renderDate(data[0].attributes.createdAt)}</Data>
         </MainNewsMeta>
-        <MainNewsTitle>{data[0].attributes.title}</MainNewsTitle>
+        <MainNewsTitle>{`${data[0].attributes.title.slice(0, 50)}...}...`}</MainNewsTitle>
         <MainNewsText>
-          {parse(data[0].attributes.text)}
+          {parse(`${data[0].attributes.text.slice(0, 600)}...`)}
         </MainNewsText>
       </MainNews>
     </MainLink>
@@ -53,9 +53,9 @@ const NewsItem = ({ data }:any) => {
             <Tag>{item.attributes.tag}</Tag>
             <Data>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</Data>
           </OtherNewsMeta>
-          <OtherNewsTitle>{item.attributes.title}</OtherNewsTitle>
+          <OtherNewsTitle>{`${item.attributes.title.slice(0, 50)}...`}</OtherNewsTitle>
           <OtherNewsText>
-            {parse(item.attributes.text)}
+            {parse(`${item.attributes.text.slice(0, 200)}...`)}
           </OtherNewsText>
         </OtherContent>
       </OtherNewsItem>
@@ -192,6 +192,7 @@ const OtherNewsItem = styled(Link)`
 const OtherNewsImage = styled(Image)`
     width: 184px;
     height: 184px;
+    border-radius: 16px;
 `
 
 // ...
