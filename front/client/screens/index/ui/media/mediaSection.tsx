@@ -26,7 +26,7 @@ const MediaSection = () => {
   useEffect(() => {
 
     setLoader(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/writes?populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_API}/writes?populate=image`).then((res) => {
 
       setSlide(res.data.data)
       setLoader(true)
@@ -88,7 +88,7 @@ const MediaSection = () => {
           
           return <SwiperSlide key={item.id} className='slideMedia'>
               <SlideContainer className='slideMediaContainer'>
-                {/* <SliderBackground src={`${process.env.NEXT_PUBLIC_SERVER}${item.attributes.image.data.attributes.url}`} fill alt='slider background' /> */}
+                {/* <SliderBackground src={`${process.env.NEXT_PUBLIC_API}${item.attributes.image.data.attributes.url}`} fill alt='slider background' /> */}
                 <SliderBackground src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} fill alt='slider background' />
                 <SlideText>{item.attributes.title}</SlideText>
               </SlideContainer>

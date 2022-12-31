@@ -39,9 +39,9 @@ const NewsItem = ({ data }:any) => {
           <Tag>{data[0].attributes.tag}</Tag>
           <Data>{renderDate(data[0].attributes.createdAt)}</Data>
         </MainNewsMeta>
-        <MainNewsTitle>{`${data[0].attributes.title.slice(0, 40)}...`}</MainNewsTitle>
+        <MainNewsTitle>{data[0].attributes.title.length > 20 ? `${data[0].attributes.title.length.slice(0, 20)}..` : data[0].attributes.title}</MainNewsTitle>
         <MainNewsText>
-          {`${parse(data[0].attributes.text.slice(0, 600))}...`}
+          {`${parse(data[0].attributes.text.replace(/<(.|\n)*?>/g, '').substring(0, 500))}...`}
         </MainNewsText>
       </MainNews>
     </MainLink>
@@ -53,9 +53,9 @@ const NewsItem = ({ data }:any) => {
             <Tag>{item.attributes.tag}</Tag>
             <Data>{renderDate(item.attributes.createdAt).split(' ')[0]} {renderDate(item.attributes.createdAt).split(' ')[1]}</Data>
           </OtherNewsMeta>
-          <OtherNewsTitle>{`${item.attributes.title.slice(0, 40)}...`}</OtherNewsTitle>
+          <OtherNewsTitle>{item.attributes.title.length > 20 ? `${item.attributes.title.slice(0, 20)}...` : item.attributes.title}</OtherNewsTitle>
           <OtherNewsText>
-            {`${parse(item.attributes.text.slice(0, 200))}...`}
+            {`${parse(item.attributes.text.replace(/<(.|\n)*?>/g, '').substring(0, 100))}...`}
           </OtherNewsText>
         </OtherContent>
       </OtherNewsItem>

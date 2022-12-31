@@ -29,7 +29,7 @@ const Slider = () => {
   useEffect(() => {
 
     setLoader(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/events?populate=slide`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_API}/events?populate=slide`).then((res) => {
 
       setSlide(res.data.data)
       setLoader(true)

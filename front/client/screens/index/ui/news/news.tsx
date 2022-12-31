@@ -20,6 +20,7 @@ const News = () => {
     news,
     setNews
   ] = useState<any>([])
+  const [allNews, setAllNews] = useState([])
   const [
     page,
     setPage
@@ -32,11 +33,17 @@ const News = () => {
   useEffect(() => {
 
     setLoader(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/news?pagination[page]=1&pagination[pageSize]=4&populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_API}/news?pagination[page]=1&pagination[pageSize]=4&populate=image`).then((res) => {
 
       setNews(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
       setLoader(true)
+    
+    })
+
+    get(`${process.env.NEXT_PUBLIC_API}/news`).then((res) => {
+
+      setAllNews(res.data.data)
     
     })
   
@@ -45,7 +52,7 @@ const News = () => {
   const changePage = (page: any) => {
 
     setLoader(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_API}/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
 
       setNews(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
@@ -58,7 +65,7 @@ const News = () => {
   const loadMore = (page: any) => {
 
     setLoader(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_API}/news?pagination[page]=${page}&pagination[pageSize]=4&populate=image`).then((res) => {
 
       setNews([
         ...news,
@@ -89,8 +96,10 @@ const News = () => {
     }
 
     {loader ? <NewsItemXs data={news} /> : <></>}
+  
+    {console.log(news.length)}
 
-    {news?.length > 4 &&
+    {allNews?.length > 4 &&
     <PaginationContainer>
       <Pagination 
         count={page}

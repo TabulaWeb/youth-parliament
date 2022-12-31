@@ -70,7 +70,7 @@ const NextStep = ({
       if (title == '' || title == undefined) return setErrorTitle(true)
       if (textAppeals == '' || textAppeals == undefined) return setErrorAppeal(true)
 
-      return axios.post(`${process.env.NEXT_PUBLIC_SERVER}/appeals`, { data: {
+      return axios.post(`${process.env.NEXT_PUBLIC_API}/appeals`, { data: {
         name: name,
         surname: lastname,
         patronymic: patronymic,

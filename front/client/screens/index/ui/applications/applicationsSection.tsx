@@ -46,7 +46,7 @@ const ApplicationsSection = () => {
   useEffect(() => {
 
     setLoader(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[publish][$eq]=true&pagination[page]=1&pagination[pageSize]=6`).then(res => {
+    get(`${process.env.NEXT_PUBLIC_API}/appeals?filters[publish][$eq]=true&pagination[page]=1&pagination[pageSize]=6`).then(res => {
 
       setData(res.data.data)
       setPage(res.data.meta.pagination.pageCount)
@@ -62,7 +62,7 @@ const ApplicationsSection = () => {
 
     if(filter == '') {
 
-      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[publish][$eq]=true&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      get(`${process.env.NEXT_PUBLIC_API}/appeals?filters[publish][$eq]=true&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
 
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)
@@ -72,7 +72,7 @@ const ApplicationsSection = () => {
     
     } else {
 
-      get(`${process.env.NEXT_PUBLIC_SERVER}/appeals?filters[publish][$eq]=true&filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
+      get(`${process.env.NEXT_PUBLIC_API}/appeals?filters[publish][$eq]=true&filters[adress][$eq]=${filter}&pagination[page]=${page}&pagination[pageSize]=6`).then(res => {
 
         setData(res.data.data)
         setPage(res.data.meta.pagination.pageCount)

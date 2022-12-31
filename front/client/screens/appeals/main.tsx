@@ -24,7 +24,7 @@ const Appeals = () => {
   useEffect(() => {
 
     setLoad(false)
-    get(`${process.env.NEXT_PUBLIC_SERVER}/appeals/${document.location.pathname.split('/')[2]}`).then(res => {
+    get(`${process.env.NEXT_PUBLIC_API}/appeals/${document.location.pathname.split('/')[2]}`).then(res => {
 
       setData(res.data.data)
       setLoad(true)

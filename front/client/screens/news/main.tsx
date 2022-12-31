@@ -30,14 +30,14 @@ const News = () => {
 
     setLoad(false)
     console.log()
-    get(`${process.env.NEXT_PUBLIC_SERVER}/news/${document.location.pathname.split('/')[2]}?populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_API}/news/${document.location.pathname.split('/')[2]}?populate=image`).then((res) => {
 
       setData(res.data.data)
       setLoad(true)
     
     })
 
-    get(`${process.env.NEXT_PUBLIC_SERVER}/news?populate=image`).then((res) => {
+    get(`${process.env.NEXT_PUBLIC_API}/news?populate=image`).then((res) => {
 
       setNews(res.data.data)
       setLoad(true)
