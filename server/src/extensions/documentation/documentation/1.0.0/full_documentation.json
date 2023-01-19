@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-01-19T14:49:57.399Z"
+    "x-generation-date": "2023-01-19T17:41:50.740Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -28,7 +28,7 @@
   },
   "servers": [
     {
-      "url": "youth-parliament-wuyk.vercel.app/api",
+      "url": "http://localhost:1337/api",
       "description": "Development server"
     }
   ],
