@@ -9,7 +9,7 @@ module.exports = () => {
           apiToken: "HQ7gj77hkXQuZXxoLgGwkZDe",
           appFilter: "youth-parliament-wuyk",
           teamFilter: "tabulaweb",
-          roles: ["strapi-super-admin", "strapi-editor", "strapi-author"],
+          roles: ["strapi-super-admin"],
         },
       }
   }
