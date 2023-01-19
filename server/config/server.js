@@ -4,5 +4,5 @@ module.exports = ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
-  url: 'http://youth.v4lka.ru/strapi',
+  url: 'youth-parliament-wuyk.vercel.app',
 });
