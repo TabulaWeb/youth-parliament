@@ -1,7 +1,6 @@
 module.exports = [
   'strapi::errors',
   'strapi::security',
-  // 'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
@@ -14,7 +13,7 @@ module.exports = [
     config: {
       enabled: true,
       header: '*',
-      origin: ['http://localhost:1337', 'http://85.193.90.213', 'https://mp60.ru']
+      origin: ['http://localhost:1337', 'http://85.193.90.213', 'https://mp60.ru', '*']
     }
   },
 ];
