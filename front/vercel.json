@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "http://85.193.90.213/strapi/api/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
