@@ -26,6 +26,8 @@ const Main = (theme: Theme) => css`
 
   /* Set tag styles */
   body {
+    position: relative;
+    z-index:0;
     overflow-x: hidden;
     line-height: 1.2;
     margin: 0;
