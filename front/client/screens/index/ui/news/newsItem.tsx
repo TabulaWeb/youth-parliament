@@ -34,7 +34,7 @@ const NewsItem = ({ data }:any) => {
   return data.length >= 1 && data != undefined ? <Container>
     <MainLink href={`news/${data[0].id}`} key={data[0].id}>
       <MainNews className='newsItemMain'>
-        <MainNewsImage className='imageMainNews' src={`http://localhost:1337${data[0].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
+        <MainNewsImage className='imageMainNews' src={`https://admin.mp60.ru${data[0].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
         <MainNewsMeta>
           <Tag>{data[0].attributes.tag}</Tag>
           <Data>{renderDate(data[0].attributes.createdAt)}</Data>
@@ -48,7 +48,7 @@ const NewsItem = ({ data }:any) => {
     </MainLink>
     <OtherNews>
       {data.slice(1).map((item: any) => <OtherNewsItem href={`news/${item.id}`} className='newsItemOther' key={item.id}>
-        <OtherNewsImage src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} width='184' height='184' alt='news image' />
+        <OtherNewsImage src={`https://admin.mp60.ru${item.attributes.image.data.attributes.url}`} width='184' height='184' alt='news image' />
         <OtherContent>
           <OtherNewsMeta>
             <Tag>{item.attributes.tag}</Tag>
@@ -105,6 +105,7 @@ const OtherNews = styled.div`
 
 // ...
 const MainNewsImage = styled(Image)`
+object-fit: cover;
     width: 100%;
     border-radius: 16px;
     border-radius: 16px;
@@ -171,6 +172,7 @@ const OtherNewsItem = styled(Link)`
 
 // ...
 const OtherNewsImage = styled(Image)`
+  object-fit: cover;
     width: 184px;
     height: 184px;
     border-radius: 16px;

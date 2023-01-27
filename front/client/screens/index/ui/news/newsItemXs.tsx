@@ -34,7 +34,7 @@ const NewsItemXs = ({ data }:any) => {
   return <Container>
     <OtherNews>
       {data.map((item: any) => <OtherNewsItem href={`news/${item.id}`} key={item.id}>
-        <OtherNewsImage src={`${process.env.NEXT_PUBLIC_API}${item.attributes.image.data.attributes.url}`} width='100' height='328' alt='news image'/>
+        <OtherNewsImage src={`https://admin.mp60.ru${item.attributes.image.data.attributes.url}`} width='100' height='328' alt='news image'/>
         <OtherContent>
           <OtherNewsMeta>
             <Tag>{item.attributes.tag}</Tag>
@@ -111,6 +111,7 @@ const OtherNewsItem = styled(Link)`
 
 // ...
 const OtherNewsImage = styled(Image)`
+object-fit: cover;
     width: 100%;
     height: 328px;
     object-fit: cover;

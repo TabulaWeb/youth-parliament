@@ -65,10 +65,10 @@ const Slider = () => {
           {({ isActive }) => (
             <>
               <SlideContainer className='slideImageAbout' active={isActive}>
-                <SliderBackground src={`http://localhost:1337${item.attributes.slide.data.attributes.url}`}
+                <SliderBackground src={`https://admin.mp60.ru${item.attributes.slide.data.attributes.url}`}
                 
                   fill
-                  alt='slider background' />
+                  alt='sliderrr background' />
               </SlideContainer>
               <SlideText>{item.attributes.title}</SlideText>
             </>
@@ -113,7 +113,8 @@ const SlideNav = styled.div`
     }
 `
 
-const SliderBackground = styled(Image)`   
+const SliderBackground = styled(Image)`
+  object-fit: cover;
 
     @media screen and (max-width: 991px) {
         width: 100%;

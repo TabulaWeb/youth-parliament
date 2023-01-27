@@ -40,7 +40,7 @@ const Tips:any = ({
 
   return news?.length > 3 && <Container>
     <MainNews href={`/news/${news[getRandomInt(news.length-1)].id}`}>
-      <MainNewsImage src={`http://localhost:1337${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
+      <MainNewsImage src={`https://admin.mp60.ru${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
       <MainNewsMeta>
         <Tag>{news[getRandomInt(news.length-1)].attributes.tag}</Tag>
         <Data>
@@ -53,7 +53,7 @@ const Tips:any = ({
       </MainNewsText>
     </MainNews>
     <MainNews href={`/news/${news[getRandomInt(news.length-1)].id}`}>
-      <MainNewsImage src={`http://localhost:1337${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
+      <MainNewsImage src={`https://admin.mp60.ru${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
       <MainNewsMeta>
         <Tag>{news[getRandomInt(news.length-1)].attributes.tag}</Tag>
         <Data>
@@ -66,7 +66,7 @@ const Tips:any = ({
       </MainNewsText>
     </MainNews>
     <MainNews href={`/news/${news[getRandomInt(news.length-1)].id}`}>
-      <MainNewsImage src={`http://localhost:1337${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
+      <MainNewsImage src={`https://admin.mp60.ru${news[getRandomInt(news.length-1)].attributes.image.data.attributes.url}`} width='100' height='316' alt='news image' />
       <MainNewsMeta>
         <Tag>{news[getRandomInt(news.length-1)].attributes.tag}</Tag>
         <Data>

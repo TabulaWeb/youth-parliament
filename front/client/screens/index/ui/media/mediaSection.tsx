@@ -89,7 +89,7 @@ const MediaSection = () => {
           return <SwiperSlide key={item.id} className='slideMedia'>
               <SlideContainer className='slideMediaContainer'>
                 {/* <SliderBackground src={`${process.env.NEXT_PUBLIC_API}${item.attributes.image.data.attributes.url}`} fill alt='slider background' /> */}
-                <SliderBackground src={`http://localhost:1337${item.attributes.image.data.attributes.url}`} fill alt='slider background' />
+                <SliderBackground src={`https://admin.mp60.ru${item.attributes.image.data.attributes.url}`} fill alt='slider background' />
                 <SlideText>{item.attributes.title}</SlideText>
               </SlideContainer>
             </SwiperSlide>

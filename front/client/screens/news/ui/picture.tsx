@@ -6,7 +6,7 @@ import Link from 'next/link'
 const Picture = ({ image }: any) => {
 
   return <Container>
-    <PostPicrute src={`http://localhost:1337${image}`} width='100' height='100' alt='post image' />
+    <PostPicrute src={`https://admin.mp60.ru${image}`} width='100' height='100' alt='post image' />
 
     <SocialLink>
       <Link href=''>
