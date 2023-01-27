@@ -150,6 +150,7 @@ const MainNewsTitle = styled.p`
 
 // ...
 const MainNewsText = styled.div`
+    color: #323232;
     display: flex;
     flex-direction: column;
     gap: 16px 0;
